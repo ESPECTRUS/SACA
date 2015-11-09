@@ -56,6 +56,7 @@
 							messages: 
 							{
 							'ncj_arc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+
 							'cub_arc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'npr_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'lug_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
@@ -261,8 +262,12 @@
 						<tr style="height: 30px;">
 							<td width="130px" class="lblnombre">Nombre de carpeta</td>
 							<td width="220px"><input type="text" name="nom_car" class="txtcampo" placeholder="ADJUDICATARIO/BENEFICIARIO" onkeypress="return sololetras(event);" onpaste="return false" ></td>
+							<form method="post">
 							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
-							<td width="70px"><input type="text" name="cant_fol" class="txtcampo" placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="70px"><input type="text" name="cant_fol" class="txtcampo short" placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td><input type="button" value="csa" ></td>
+							<td> <? echo $_POST['cant_fol']?> </td>
+							</form>
 						</tr>
 						<tr style="height: 30px;">
 							<td width="130px" class="lblnombre">Fecha Inicial Extrema</td>
@@ -272,6 +277,7 @@
 							</tr>
 					</table>
 					<!--TIPOS DE DOCUMENTOS-->
+
 					<fieldset class="fieldcuerpo">
 						<legend>Documento 1</legend>
 						<table>
@@ -301,6 +307,7 @@
 						</table>
 					</fieldset>
 				</fieldset>
+
 				<fieldset class="fieldcuerpo" align="left" >
 					<legend> UBICACION FISICA </legend>
 					<table >
