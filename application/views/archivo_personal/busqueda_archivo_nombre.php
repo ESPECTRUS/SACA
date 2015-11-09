@@ -132,13 +132,14 @@
 			<div class="titulo">CONSULTA DE ARCHIVO POR NOMBRE </div>
 			<form name="frmbusquedanombre" id="frmbusquedanombre" action="<?=base_url();?>personal/insertar" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
+			<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
 				<center>
             <div class="colordiv">
                 <center>
 	        <table>
 	        <tr>
 	            <td rowspan="5">
-	            <img src="<?= base_url('templates/img/images/busquedafolder.png');?>">
+	            <img height="160px" width="175px" src="<?= base_url('templates/img/images/buscar.jpg');?>">
 	            </td>
 	        </tr>
 	        <tr>
@@ -163,6 +164,7 @@
 </center>
 </div>
 </center>
+</fieldset>
 			</form>
 		</div><!-- cB -->
 		<div class="Cpad">

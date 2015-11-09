@@ -138,14 +138,14 @@
 					<table>
 					<tr>
 						<td>
-						<table style="padding-top: 140px;">
+						<table style="padding-top: 40px;">
 					    <tr>
                             <td><img src="<?= base_url('templates/img/images/team.png');?>" title="Login"></td>
                         </tr>
                     </table>
                     </td>
                     <td>
-                    <table style="padding-top:140px;">
+                    <table style="padding-top:40px;">
 						<tr style="height: 50px;">
 							<td width="100px" class="lblnombre">Nombre</td>
 							<td width="100px"><input type="text" name="nom_usu" class="txtcampo" placeholder="NOMBRE DE USUARIO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
