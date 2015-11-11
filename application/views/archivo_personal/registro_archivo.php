@@ -262,11 +262,11 @@
 						<tr style="height: 30px;">
 							<td width="130px" class="lblnombre">Nombre de carpeta</td>
 							<td width="220px"><input type="text" name="nom_car" class="txtcampo" placeholder="ADJUDICATARIO/BENEFICIARIO" onkeypress="return sololetras(event);" onpaste="return false" ></td>
-							<form method="post">
+							<form method="get" name="guarda">
 							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
 							<td width="70px"><input type="text" name="cant_fol" class="txtcampo short" placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-							<td><input type="button" value="csa" ></td>
-							<td> <? echo $_POST['cant_fol']?> </td>
+							<td><input type="button" value="csa" onclick="captura();"></td>
+							<td></td>
 							</form>
 						</tr>
 						<tr style="height: 30px;">
@@ -277,9 +277,9 @@
 							</tr>
 					</table>
 					<!--TIPOS DE DOCUMENTOS-->
-
+					<?php for ($i = 1; $i <= 10; $i++) { ?>
 					<fieldset class="fieldcuerpo">
-						<legend>Documento 1</legend>
+						<legend>Documento <?php echo($i)?></legend>
 						<table>
 							<tr>
 								<td rowspan="2" width="100px"></td>
@@ -306,8 +306,8 @@
 							</tr>
 						</table>
 					</fieldset>
+				<?php }?>
 				</fieldset>
-
 				<fieldset class="fieldcuerpo" align="left" >
 					<legend> UBICACION FISICA </legend>
 					<table >
@@ -370,4 +370,4 @@
 	</div><!-- foot -->
 </div><!-- footer -->
 </body>
-</html>
+</html> 

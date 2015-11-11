@@ -10,4 +10,8 @@ class Login extends CI_Controller
 	{
 		$this->load->view('archivo_personal/personal_login');
 	}
+	public function principal()
+	{
+		$this->load->view('archivo_personal/personal_view');
+	}
 }

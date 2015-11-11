@@ -59,3 +59,7 @@ function alfanumerico(e){
 				}
 
 				}
+function captura(){
+	var a= document.guarda.cant_fol.value;
+	alert(a);
+}
