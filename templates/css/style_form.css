@@ -21,12 +21,18 @@
 .txtcampo.large{
   width: 450px;
 }
+.txtcampo.large3{
+  width: 450px;
+  }
 .txtcampo.large2{
   width: 450px;
   height: 100px;
 }
 .txtcampo.short{
   width: 70px;
+}
+.txtcampo.medio{
+  width: 400px;
 }
 .txtcampo:hover{
   color: #2E3133;

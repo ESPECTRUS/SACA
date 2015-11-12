@@ -138,14 +138,14 @@
 					<table>
 					<tr>
 						<td>
-						<table style="padding-top: 140px;">
+						<table style="padding-top: 40px;">
 					    <tr>
                             <td><img src="<?= base_url('templates/img/images/team.png');?>" title="Login"></td>
                         </tr>
                     </table>
                     </td>
                     <td>
-                    <table style="padding-top:140px;">
+                    <table style="padding-top:40px;">
 						<tr style="height: 50px;">
 							<td width="100px" class="lblnombre">Nombre</td>
 							<td width="100px"><input type="text" name="nom_usu" class="txtcampo" placeholder="NOMBRE DE USUARIO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
@@ -154,7 +154,7 @@
 							<td width="100px" class="lblnombre">Password</td>
 							<td width="100px"><input type="password" name="pas_usu" class="txtcampo"  placeholder="PASSWORD" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 				    	</tr>   
-						<tr style="height: 80px; padding-left:50px;" align="center">
+						<tr style="height: 80px; padding-left:60px;" align="center">
 							<td><input type="submit" class="botones ico-btnsave" value="INGRESAR"></td>
                  			<td><input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS"></td>
 						</tr>

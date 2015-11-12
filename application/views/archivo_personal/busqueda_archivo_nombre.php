@@ -27,11 +27,11 @@
 					 	{
 							rules:
 							{
-							'nom_arc': {required: true}
+							'nom_car': {required: true}
 							},
 							messages: 
 							{
-							'nom_arc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'nom_car':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							},
 							debug: true,
 							submitHandler: function(form)
@@ -132,23 +132,20 @@
 			<div class="titulo">CONSULTA DE ARCHIVO POR NOMBRE </div>
 			<form name="frmbusquedanombre" id="frmbusquedanombre" action="<?=base_url();?>personal/insertar" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
+			<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
 				<center>
             <div class="colordiv">
                 <center>
 	        <table>
 	        <tr>
 	            <td rowspan="5">
-	            <img src="<?= base_url('templates/img/images/busquedafolder.png');?>">
+	            <img height="160px" width="175px" src="<?= base_url('templates/img/images/buscar.jpg');?>">
 	            </td>
-	        </tr>
-	        <tr>
-	        <td></td>
-	        <td></td>
 	        </tr>
 	        <tr>
 	        <tr style="height: 50px;">
 			   <td width="100px" class="lblnombre">Ingrese nombre:</td>
-			   <td width="100px"><input type="text" name="nom_arc" class="txtcampo" placeholder="NOMBRE DE ARCHIVO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
+			   <td width="100px"><input type="text" name="nom_car" class="txtcampo" placeholder="NOMBRE DE ARCHIVO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
 		    </tr>  
 	        </tr>
 	        <tr>
@@ -157,12 +154,12 @@
                 <input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS">
                </td>
            </tr>
-	<tr><td></td><td></td></tr>
 	</table>
 </form>
 </center>
 </div>
 </center>
+</fieldset>
 			</form>
 		</div><!-- cB -->
 		<div class="Cpad">
