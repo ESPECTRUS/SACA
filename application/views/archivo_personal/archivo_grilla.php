@@ -257,6 +257,10 @@
 		</tr>
 	</tbody>
 </table>
+<?php		
+			echo anchor('grilla/exportarFpdf', 'Descargar documento en PDF', ' target="_blank" class=""'); 
+		?><br/>
+
 <center>
 <table>
 	<tr style="height: 230px;">

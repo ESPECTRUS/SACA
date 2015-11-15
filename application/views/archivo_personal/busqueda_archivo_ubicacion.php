@@ -160,7 +160,7 @@
 				    	</tr> 
 				    	<table style="padding-left:85px;">
 				    		<tr style="height: 80px;">
-							<td><input type="submit" class="botones ico-btnsave" value="INGRESAR"></td>
+							<td><input type="submit" class="botones ico-btnsearch" value="BUSCAR"></td>
                  			<td><input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS"></td>
 						</tr>
 				    	</table>  
