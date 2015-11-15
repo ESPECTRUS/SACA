@@ -261,25 +261,27 @@
 					<table>
 						<tr style="height: 30px;">
 							<td width="130px" class="lblnombre">Nombre de carpeta</td>
-							<td width="220px"><input type="text" name="nom_car" class="txtcampo" placeholder="ADJUDICATARIO/BENEFICIARIO" onkeypress="return sololetras(event);" onpaste="return false" ></td>
-							<form method="get" name="guarda">
-							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
-							<td width="70px"><input type="text" name="cant_fol" class="txtcampo short" placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-							<td><input type="button" value="csa" onclick="captura();"></td>
-							<td></td>
-							</form>
+							<td width="220px"><input type="text" name="nom_car" class="txtcampo large" placeholder="ADJUDICATARIO/BENEFICIARIO" onkeypress="return sololetras(event);" onpaste="return false" ></td>
 						</tr>
+					</table>
+					<table>
 						<tr style="height: 30px;">
 							<td width="130px" class="lblnombre">Fecha Inicial Extrema</td>
 							<td width="220px"><input type="text" name="fec_ini" class="txtcampo datepicker" readonly="" placeholder="FECHA INICIAL" ></td>
 							<td width="100px" class="lblnombre">Fecha Final Extrema</td>
 							<td width="70px"><input type="text" name="fec_fin" class="txtcampo datepicker" readonly="" placeholder="FECHA FINAL" ></td>
-							</tr>
+						</tr>
+						<tr style="height: 30px;">
+							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
+							<td width="70px"><input type="text" name="cant_fol" class="txtcampo " placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="80px" class="lblnombre">Hoja de ruta</td>
+							<td width="70px"><input type="text" name="hru_car" class="txtcampo " placeholder="NUMERO DE HOJA DE RUTA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+								
+						</tr>
 					</table>
 					<!--TIPOS DE DOCUMENTOS-->
-					<?php for ($i = 1; $i <= 10; $i++) { ?>
 					<fieldset class="fieldcuerpo">
-						<legend>Documento <?php echo($i)?></legend>
+						<legend>Documento</legend>
 						<table>
 							<tr>
 								<td rowspan="2" width="100px"></td>
@@ -306,7 +308,7 @@
 							</tr>
 						</table>
 					</fieldset>
-				<?php }?>
+				
 				</fieldset>
 				<fieldset class="fieldcuerpo" align="left" >
 					<legend> UBICACION FISICA </legend>
