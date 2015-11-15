@@ -87,26 +87,26 @@
 		</script>
 		<!--Datepicker-->
 		<script type="text/javascript">
-			$(function() {
-			$('.datepicker').datepicker
-				({
-				monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
-				monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "Mar", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
-				dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
-				
-				dateFormat:'yy/mm/dd',
-				beforeShowDay: $ .datepicker.noWeekends,
-				changeMonth: true,
-				changeYear: true,
-				firstDay: 1,
-				yearRange: "1900:2025",
-				beforeShow :  function (){     
-		        $ ( ".ui-datepicker" ). css ( 'font-size' ,  12 )  
-		    	} 
+				$(function() {
+		$('.datepicker').datepicker
+			({
+			monthNames: [ "Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre" ],
+			monthNamesShort: [ "Ene", "Feb", "Mar", "Abr", "Mar", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic" ],
+			dayNamesMin: [ "Do", "Lu", "Ma", "Mi", "Ju", "Vi", "Sa" ],
+			
+			dateFormat:'yy-mm-dd',
+			beforeShowDay: $ .datepicker.noWeekends,
+			changeMonth: true,
+			changeYear: true,
+			firstDay: 1,
+			yearRange: "1900:2025",
+			beforeShow :  function (){     
+	        $ ( ".ui-datepicker" ). css ( 'font-size' ,  12 )  
+	    	} 
 
-			});
+		});
 
-			});
+	});
 		</script>
 	</head>
 <body>
@@ -195,7 +195,7 @@
 
 		<div id="cB">
 			<div class="titulo">REGISTRAR DATOS DE CARPETA SOCIAL INDIVIDUAL - CSI</div>
-			<form name="frmarchivo" id="frmarchivo" action="<?=base_url();?>personal/insertar" method="post">
+			<form name="frmarchivo" id="frmarchivo" action="<?=base_url();?>registro/insertar" method="post">
 				<fieldset class="fieldcuerpo" align="left">
 					<legend> DATOS GENERALES </legend>
 					<table >
@@ -289,13 +289,13 @@
 								<td width="200px">
 									<select name="tip_doc" class="txtselect">
 										<option value="">SELECCIONE</option>
-										<option value="LP">Resolucion</option>
-										<option value="OR">Memorandum</option>
-										<option value="CBBA">Informe Tecnico</option>
-										<option value="PT">Minuta</option>				
-										<option value="TJ">Testimonio</option>
-										<option value="BN">Certificado de no propiedad</option>
-										<option value="CH">Documento de identificacion</option>
+										<option value="Resolucion">Resolucion</option>
+										<option value="Memorandum">Memorandum</option>
+										<option value="Informe Tecnico">Informe Tecnico</option>
+										<option value="Minuta">Minuta</option>				
+										<option value="Testimonio">Testimonio</option>
+										<option value="Certificado de no propiedad">Certificado de no propiedad</option>
+										<option value="Documento de identificacion">Documento de identificacion</option>
 									</select>
 								<td width="80px" class="lblnombre">Fecha Doc.</td>
 								<td width="70px"><input type="text" name="fec_doc" class="txtcampo datepicker" readonly="" placeholder="FECHA" ></td>
