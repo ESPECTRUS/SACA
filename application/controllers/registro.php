@@ -7,6 +7,7 @@ class Registro extends CI_Controller
         parent::__construct();
          $this->load->model('registro_model'); 
     	 $this->load->helper('form');
+    	 $this->load->helper('date');
       	 $this->load->helper('url');
     	 $this->load->database('default');
     }
@@ -43,6 +44,7 @@ class Registro extends CI_Controller
 	{
 		$carpeta=array(
 			'NOM_CAR' => strtoupper($this->input->post('nom_car')),
+			'TIP_CAR' =>('SOCIAL INDIVIDUAL')
 		);
 		return $carpeta;
 	}
@@ -53,22 +55,79 @@ class Registro extends CI_Controller
 			'CANT_FOL' => $this->input->post('cant_fol'),
 		);
 		return $folder;
+	}
 
+	public function fechas_extremas()
+	{
 		$fechas_extremas=array(
-			'FEC_INI' => (date('Y').'-'.date('m').'-'.date('d')),
-			'FEC_FIN' => (date('Y').'-'.date('m').'-'.date('d')),
+
+			'FEC_INI' => $this->input->post('fec_ini'),
+			'FEC_FIN' => $this->input->post('fec_fin'),
+
 		);
 		return $fechas_extremas;
 	}
-
-	public function documento()
+    public function ubicacion()
+    {
+    	$ubicacion=array(
+    	'AMB_UBI' => strtoupper($this->input->post('amb_ubi')),
+    	'EST_UBI' => strtoupper($this->input->post('est_ubi')),
+    	'CUE_UBI' => strtoupper($this->input->post('cue_ubi')),
+    	'BAL_UBI' => strtoupper($this->input->post('bal_ubi')),
+    	);
+    	return $ubicacion;
+    }
+	public function certificado_np()
 	{
-		$documento=array(
-			'TIP_DOC' => $this->input->post('tip_doc'),
-			'FEC_DOC' => (date('Y').'-'.date('m').'-'.date('d')),
-			'DES_DOC' => $this->input->post('des_doc'),
+		$certificado_np=array(
+			'DES_CER' => strtoupper($this->input->post('des_doc')),
+			'FEC_CER' => strtoupper($this->input->post('fec_doc')),
 		);
-		return $documento;
+		return $certificado_np;
+	}
+
+		public function memorandum()
+	{
+		$memorandum=array(
+			'DES_MEM' => strtoupper($this->input->post('des_doc')),
+			'FEC_MEM' => strtoupper($this->input->post('fec_doc')),
+		);
+		return $memorandum;
+	}
+
+		public function resolucion()
+	{
+		$resolucion=array(			
+			'DES_RES' => strtoupper($this->input->post('des_doc')),
+			'FEC_RES' => strtoupper($this->input->post('fec_doc')),
+		);
+		return $resolucion;
+	}
+
+	public function minuta()
+	{
+		$minuta=array(
+			'FEC_MIN' => strtoupper($this->input->post('fec_doc')),
+			'TIP_MIN' => strtoupper($this->input->post('des_doc')),			
+		);
+		return $minuta;
+	}
+
+		public function testimonio()
+	{
+		$testimonio=array(
+			'DES_TES' => strtoupper($this->input->post('des_doc')),
+			'FEC_TES' => strtoupper($this->input->post('fec_doc')),
+		);
+		return $testimonio;
+	}
+		public function informe_tecnico()
+	{
+		$informe_tecnico=array(
+			'DES_INF' => strtoupper($this->input->post('des_doc')),
+			'FEC_INF' => strtoupper($this->input->post('fec_doc')),
+		);
+		return $informe_tecnico;
 	}
 	
 	public function area()
@@ -82,24 +141,126 @@ class Registro extends CI_Controller
 /*FUNCION INSERTA*/
 	   public function insertar()
     {  
+    	/*Declaracion de arrays*/
          $archivo = array();
+         //$id_car = $this->registro_model->retornar_id();
          $archivo = $this->archivo();
+         //$archivo = array('id_car' => $id_car);
+
+
          $datos_tecnicos = array();
          $datos_tecnicos = $this->datos_tecnicos();
+
+         $carpeta=array();
+         $carpeta = $this->carpeta();
+
+         $fechas_extremas=array();
+         $fechas_extremas = $this->fechas_extremas();
+
+         $resolucion = array();
+         $resolucion = $this->resolucion();
+
+         $memorandum = array();
+         $memorandum = $this->memorandum();
+
+         $informe_tecnico = array();
+         $informe_tecnico = $this->informe_tecnico();
+
+         $minuta = array();
+         $minuta = $this->minuta();
+
+         $testimonio=array();
+         $testimonio=$this->testimonio();
+
+         $certificado_np = array();
+         $certificado_np = $this->certificado_np();
+
+         $ubicacion = array();
+         $ubicacion=$this->ubicacion();
+
+         $area = array();
+         $area = $this->area();
+
+		if($this->registro_model->inserta_ubicacion($ubicacion))
+         {
           if($this->registro_model->inserta_archivo($archivo))
           {
-		  if($this->registro_model->inserta_datotecnico($datos_tecnicos))
-		  	{return true;}
-          }
-          else
-          	{return false;}
-    }
-	
-}
 
-/*
-			'TIP_DOC' => $this->input->post('tip_doc'),
-			'AMB_UBI' => strtoupper($this->input->post('amb_ubi')),
-			'EST_UBI' => strtoupper($this->input->post('est_ubi')),
-			'CRP_UBI' => strtoupper($this->input->post('crp_ubi')),
-			'BAL_UBI' => strtoupper($this->input->post('bal_ubi')),*/
+		  	if($this->registro_model->inserta_datotecnico($datos_tecnicos))
+		  	{
+		  	   if($this->registro_model->inserta_carpeta($carpeta))
+		  	   {
+		  	      if($this->registro_model->inserta_fechasextremas($fechas_extremas))
+		  	      {
+		  	      	 if($this->registro_model->inserta_productor($area))
+		  	      	 {
+		  	      	 	if($this->registro_model->inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio,$certificado_np))
+		  	      	 	{
+		  	      	 		
+		  	      	 		return true;
+		  	      	 		
+		  	      	 	}
+					 }					 		  	   	  
+		  	   	  }
+		  	   }
+		  	}
+          }
+      }
+          else
+          {return false;}
+    }
+
+
+/*AREA USUARIO*/
+    public function reg_usuario()
+    {
+    	$reg_usuario=array(
+
+    		'CI_USU' => $this->input->post('ci_usu'),
+    		'NOM_USU' => $this->input->post('nom_usu'),
+    		'APA_USU' => $this->input->post('apa_usu'),
+    		'AMA_USU' => $this->input->post('ama_usu'),
+    		'PAS_USU' => $this->input->post('pas_usu'),
+    		'REG_USU' =>(date('Y').'-'.date('m').'-'.date('d')),
+    		);
+    	return $reg_usuario;
+
+    }
+
+    public function insertar_usuario()
+    {
+    	$reg_usuario=array();
+    	$reg_usuario=$this->reg_usuario();
+    	if($this->registro_model->inserta_usuario($reg_usuario))
+    	{
+    		return true;
+    	}
+    	else
+    	{
+    		return false;
+    	}
+    }
+
+    /*CONSULTAS*/
+
+	/*CONSULTA DE ARCHIVO POR NOMBRE*/
+	public function busca_archivo_nombre()
+	{
+		$query = $this->input->post('nom_arc');
+		    if($query)
+		    {
+		    	$result = $this->registro_model->busca_archivo_nombre($query);
+		        if ($result != FALSE)
+		        	{
+		        		$data = array('result' => $result);
+		        	}
+		        	else
+		        	{
+		        		$data = array('result' =>'' );
+		        	}
+		    }
+		$this->load->view('archivo_personal/archivo_grilla',$data);
+	}
+
+
+}
