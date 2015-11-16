@@ -128,11 +128,16 @@
 	                </li>
 	            </ul>
 	        </nav> 
+
 		</div><!-- cA -->
 
 		<div id="cB">
+
 			<div class="titulo">INICIAR SESIÓN </div>
-			<form name="frmlogin" id="frmlogin" action="<?=base_url();?>personal/insertar" method="post">
+			<?php if(isset($mensaje)):?>
+			<label class="mensaje"><?= $mensaje;?></label>
+			<?php endif;?>
+			<form name="frmlogin" id="frmlogin" action="<?= base_url().'login/very_session'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
 					<table>
@@ -148,11 +153,11 @@
                     <table style="padding-top:40px;">
 						<tr style="height: 50px;">
 							<td width="100px" class="lblnombre">Nombre</td>
-							<td width="100px"><input type="text" name="nom_usu" class="txtcampo" placeholder="NOMBRE DE USUARIO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
+							<td width="100px"><input type="text" name="nic_usu"  class="txtcampo" placeholder="NOMBRE DE USUARIO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
 						</tr>
 						<tr>
 							<td width="100px" class="lblnombre">Password</td>
-							<td width="100px"><input type="password" name="pas_usu" class="txtcampo"  placeholder="PASSWORD" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="100px"><input type="password" name="pas_usu"  class="txtcampo"  placeholder="PASSWORD" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 				    	</tr>   
 						<tr style="height: 80px; padding-left:60px;" align="center">
 							<td><input type="submit" class="botones ico-btnsave" value="INGRESAR"></td>

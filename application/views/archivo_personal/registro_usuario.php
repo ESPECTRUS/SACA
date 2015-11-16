@@ -25,60 +25,35 @@
 		
 		<!--Validacion de campos-->
 		<script type="text/javascript">
+	
 			$(
 			   function()
 			   {
-					$('#frmarchivo').validate
-					(
+					$('#frmregusuario').validate
+					(  
 					 	{
 							rules:
 							{
-							'ncj_arc': {required: true},
-							'cub_arc': 'required',
-							'npr_dte': {required: true},
-							'lug_dte': 'required',
-							'man_dte': {required: true},
-							'lot_dte': {required: true},
-							'nom_car': {required: true},
-							'cant_fol': {required: true},
-							'fec_ini': {required: true},
-							'fec_fin': {required: true},
-							'tip_doc': {required: true},
-							'fec_doc': {required: true},
-							'amb_ubi': {required: true},
-							'est_ubi': {required: true},
-							'crp_ubi': 'required',
-							'bal_ubi': {required: true},
-							'pro_area': {required: true},
-							'obs_area': {required: true}
-
+							'ci_usu': {
+								required: true,
+								},
+							'nom_usu': {required: true},
+							'apa_usu': {required: true},
+							'ama_usu': {required: true}
+							
 							},
 							messages: 
 							{
-							'ncj_arc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-
-							'cub_arc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'npr_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'lug_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'man_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'lot_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'nom_car':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'cant_fol':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'fec_ini':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'fec_fin':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'tip_doc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'fec_doc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'amb_ubi':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'est_ubi':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'crp_ubi':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'bal_ubi':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'pro_area':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'obs_area':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'ci_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'nom_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'apa_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'ama_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'}
+							
 							},
 							debug: true,
 							submitHandler: function(form)
 							{
-								document.getElementById("frmarchivo").submit();
+								document.getElementById("frmregusuario").submit();
 							}
 					 	}
 					);
@@ -174,26 +149,29 @@
 		<div id="cB">
 			
 			<div class="titulo">REGISTRO DE USUARIO </div>
-			<form name="frmusuario" id="frmregusuario" action="<?=base_url().'registro/registro_very'?>" method="post">
+			<?php if(isset($mensaje)):?>
+			<label class="mensaje"><?= $mensaje;?></label>
+		<?php endif;?>
+			<form name="frmregusuario" id="frmregusuario" action="<?= base_url().'registro/registro_very'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" >
 					<legend>DATOS DE USUARIO</legend>
 					<table>
 						<tr style="height:30px;">
 							<td width="90px" class="lblnombre">C.I.</td>
-							<td width="480px"><input type="text" name="ci_usu" class="txtcampo " placeholder="CARNET DE IDENTIDAD" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="480px"><input type="text" name="ci_usu" class="txtcampo " value="<?= @set_value('ci_usu')?>" placeholder="CARNET DE IDENTIDAD" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 						</tr>
 						<tr style="height:30px;">
 							<td width="90px" class="lblnombre">NOMBRE(S)</td>
-							<td width="480px"><input type="text" name="nom_usu" class="txtcampo large" placeholder="NOMBRE" onkeypress="return sololetras(event);" onpaste="return false"></td>
+							<td width="480px"><input type="text" name="nom_usu" value="<?= @set_value('nom_usu')?>" class="txtcampo large" placeholder="NOMBRE" onkeypress="return sololetras(event);" onpaste="return false"></td>
 						</tr>
 					</table>
 					<table >
 						<tr style="height: 30px;">
 							<td width="100px" class="lblnombre">AP. PATERNO</td>
-							<td width="240px" ><input type="text" name="apa_usu" class="txtcampo" placeholder="APELLIDO PATERNO" onkeypress="return sololetras(event);" onpaste="return false"></td>
+							<td width="240px" ><input type="text" name="apa_usu" value="<?= @set_value('apa_usu')?>" class="txtcampo" placeholder="APELLIDO PATERNO" onkeypress="return sololetras(event);" onpaste="return false"></td>
 							<td width="100px" class="lblnombre">AP. MATERNO</td>
-							<td width="240px" ><input type="text" name="ama_usu" class="txtcampo" placeholder="APELLIDO MATERNO" onkeypress="return sololetras(event);" onpaste="return false"></td>
+							<td width="240px" ><input type="text" name="ama_usu" value="<?= @set_value('ama_usu')?>" class="txtcampo" placeholder="APELLIDO MATERNO" onkeypress="return sololetras(event);" onpaste="return false"></td>
 						</tr>
 					</table>
 				</fieldset>
@@ -201,13 +179,18 @@
 					<legend>DATOS DE CUENTA</legend>
 					<table>
 						<tr style="height:30px;">
-							<?php echo(form_error('Contraseña'))?>
+							
+							<td width="150px" class="lblnombre">USUARIO</td>
+							<td width="480px"><input type="text" name="nic_usu" value="<?= @set_value('nic_usu')?>" class="txtcampo large" placeholder="NOMBRE DE USUARIO" onpaste="return false"></td>
+						</tr>
+						<tr style="height:30px;">
+							
 							<td width="150px" class="lblnombre">PASSWORD</td>
-							<td width="480px"><input type="password" name="pas_usu" class="txtcampo large" placeholder="NOMBRE DE USUARIO" onkeypress="return sololetras(event);" onpaste="return false"></td>
+							<td width="480px"><input type="password" name="pas_usu" value="<?= @set_value('pas_usu')?>" class="txtcampo large" placeholder="CONTRASEÑA" onpaste="return false"></td>
 						</tr>
 						<tr style="height:30px;">
 							<td width="150px" class="lblnombre">REPITA EL PASSWORD</td>
-							<td width="480px"><input type="password" name="conf_pas" class="txtcampo large" placeholder="NOMBRE DE USUARIO" onkeypress="return sololetras(event);" onpaste="return false"></td>
+							<td width="480px"><input type="password" name="conf_pas" class="txtcampo large" placeholder="REPITA CONTRASEÑA"  onpaste="return false"></td>
 						</tr>
 					</table>	
 				</fieldset>
@@ -225,8 +208,7 @@
 				</table>
 				</center>	
 				
-
-		<?= validation_errors();?> 			
+		<?= validation_errors();?>
 			</form>
 			
 		</div><!-- cB -->
