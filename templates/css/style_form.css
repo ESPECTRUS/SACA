@@ -113,8 +113,14 @@
 }
 .mensajevalidacion{
   
-  --webkit-color: #036;
-  --ms-color: #036;
-  --moz-color: #036;
+  -webkit-color: red;
+  -ms-color: red;
+  -moz-color: red;
+  color: red;
   font-size: 9px;
+}
+.mensaje{
+  background-color: red;
+  color: white;
+  font-size: 12px;
 }

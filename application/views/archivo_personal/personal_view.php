@@ -95,7 +95,7 @@
 	        </nav> 
 		</div><!-- cA -->
 		<div id="cB">
-			contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido contenido	contenido contenido contenido contenido contenido contenido
+			<img src="<?= base_url('templates/img/principal.jpg');?>">			
 		</div><!-- cB -->
 		<div class="Cpad">
 			<br class="clear" /></div>

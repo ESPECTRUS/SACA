@@ -5,15 +5,58 @@ class Registro extends CI_Controller
 	public function __construct()
 	{
         parent::__construct();
+        
          $this->load->model('registro_model'); 
+         $this->load->library('form_validation');
     	 $this->load->helper('form');
     	 $this->load->helper('date');
       	 $this->load->helper('url');
     	 $this->load->database('default');
+    	 $this->load->model('usuarios_model');
     }
 	public function index()
 	{
 		$this->load->view('archivo_personal/registro_archivo');
+	}
+	public function usuario()
+	{
+		$this->load->view('archivo_personal/registro_usuario');
+	}
+	public function registro_very()
+	{
+		if ($this->input->post('submit_reg')) {
+			$this->form_validation->set_rules('nic_usu','Usuario','required|trim|callback_very_user');
+			$this->form_validation->set_rules('pas_usu','Contraseña','required|trim|min_length[6]');
+			$this->form_validation->set_rules('conf_pas','Repita contraseña','required|trim|min_length[6]|matches[pas_usu]');
+			$this->form_validation->set_message('required', 'La %s es requerida');
+			$this->form_validation->set_message('min_length', 'La %s debe tener al menos 6 caracteres');
+			$this->form_validation->set_message('very_user', 'El %s ya existe');
+			$this->form_validation->set_message('matches', 'La contraseña no es igual');
+			if ($this->form_validation->run() != FALSE) {
+				$this->usuarios_model->add_user();
+				$data = array('mensaje' => 'El usuario se registro correctamente');
+				$this->load->view('archivo_personal/registro_usuario',$data);
+			}
+			else 
+				$this->load->view('archivo_personal/registro_usuario');
+		}
+		else
+		{
+			redirect(base_url().'registro/usuario');
+		}
+	}
+
+	function very_user($nic_usu){
+
+		$variable = $this->usuarios_model->very_user($nic_usu);
+		if($variable == true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
 	}
 
 	public function archivo()
