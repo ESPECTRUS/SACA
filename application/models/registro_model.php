@@ -64,15 +64,18 @@ Class Registro_model extends CI_Model
     {
         if($this->db->insert('fechas_extremas',$fechas_extremas))
         {
-            
+            return true;
         }
         else
         {
             return false;
-        }
-     
-
+        }    
     }
+      public function retornar_id_fec()
+    {
+        return ($this->db->insert_id('inserta_fechasextremas'));
+    }
+
 
     /*INSERTA TIPO DE DOCUMENTO*/
     public function inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio, $certificado_np)

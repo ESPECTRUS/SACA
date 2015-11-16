@@ -155,15 +155,21 @@ class Registro extends CI_Controller
          $this->registro_model->inserta_datotecnico($datos_tecnicos);
          $id_dte = $this->registro_model->retornar_id_dte();
 
+
+         $fechas_extremas=array();
+         $fechas_extremas = $this->fechas_extremas();
+         $this->registro_model->inserta_fechasextremas($fechas_extremas);
+         $id_fec = $this->registro_model->retornar_id_fec();
+
          
          $archivo = array();
          $archivo = $this->archivo();
          $archivo = array(
          				'ID_DTE'=>$id_dte,
          			    'ID_CAR'=>$id_car,
+         			    'ID_FEC'=>$id_fec,
          			    'REG_ARC' => (date('Y').'-'.date('m').'-'.date('d').'-'.date('H:i:s')),
          			    );
-
          $this->registro_model->inserta_archivo($archivo);
 
 
