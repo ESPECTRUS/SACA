@@ -35,21 +35,28 @@ Class Registro_model extends CI_Model
             return false;
         }
     }
+
+    public function retornar_id_dte()
+    {
+        return ($this->db->insert_id('inserta_datotecnico'));
+    }
+
+
     /*INSERTA CARPETA*/
     public function inserta_carpeta($carpeta)
     {   
         if($this->db->insert('carpeta',$carpeta))
-        {     
-                   
-            $id_car= $this->db->insert_id();
-            return true;
-            
+        {   
+            return true;            
         }
         else
         {
-            $id_car=0;
             return false;
         } 
+    }
+    public function retornar_id_car()
+    {
+        return ($this->db->insert_id('inserta_carpeta'));
     }
 
     /*INSERTA FECHAS EXTREMAS*/
@@ -203,7 +210,6 @@ public function inserta_usuario($reg_usuario)
     {
         $x='%'.$variable.'%';
         $query = $this->db->query("CALL busca_archivo('$x')");
-
         if ($query->num_rows() > 0)
             {return $query;}
             else

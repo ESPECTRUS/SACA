@@ -33,7 +33,7 @@
 					 	{
 							rules:
 							{
-							'ncj_arc': {required: true},
+							/*'ncj_arc': {required: true},
 							'cub_arc': 'required',
 							'npr_dte': {required: true},
 							'lug_dte': 'required',
@@ -50,7 +50,7 @@
 							'crp_ubi': 'required',
 							'bal_ubi': {required: true},
 							'pro_area': {required: true},
-							'obs_area': {required: true}
+							'obs_area': {required: true}*/
 
 							},
 							messages: 

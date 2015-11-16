@@ -142,17 +142,33 @@ class Registro extends CI_Controller
 	   public function insertar()
     {  
     	/*Declaracion de arrays*/
-         $archivo = array();
-         //$id_car = $this->registro_model->retornar_id();
-         $archivo = $this->archivo();
-         //$archivo = array('id_car' => $id_car);
+	
+
+		 $carpeta=array();
+		 $carpeta = $this->carpeta();
+         $this->registro_model->inserta_carpeta($carpeta);
+         $id_car = $this->registro_model->retornar_id_car();
 
 
          $datos_tecnicos = array();
          $datos_tecnicos = $this->datos_tecnicos();
+         $this->registro_model->inserta_datotecnico($datos_tecnicos);
+         $id_dte = $this->registro_model->retornar_id_dte();
 
-         $carpeta=array();
-         $carpeta = $this->carpeta();
+         
+         $archivo = array();
+         $archivo = $this->archivo();
+         $archivo = array(
+         				'ID_DTE'=>$id_dte,
+         			    'ID_CAR'=>$id_car,
+         			    'REG_ARC' => (date('Y').'-'.date('m').'-'.date('d').'-'.date('H:i:s')),
+         			    );
+
+         $this->registro_model->inserta_archivo($archivo);
+
+
+
+
 
          $fechas_extremas=array();
          $fechas_extremas = $this->fechas_extremas();
@@ -181,7 +197,7 @@ class Registro extends CI_Controller
          $area = array();
          $area = $this->area();
 
-		if($this->registro_model->inserta_ubicacion($ubicacion))
+	/*	if($this->registro_model->inserta_ubicacion($ubicacion))
          {
           if($this->registro_model->inserta_archivo($archivo))
           {
@@ -207,7 +223,7 @@ class Registro extends CI_Controller
           }
       }
           else
-          {return false;}
+          {return false;}*/
     }
 
 
@@ -246,10 +262,11 @@ class Registro extends CI_Controller
 	/*CONSULTA DE ARCHIVO POR NOMBRE*/
 	public function busca_archivo_nombre()
 	{
-		$query = $this->input->post('nom_arc');
+		$query = $this->input->post('nom_car');
 		    if($query)
 		    {
 		    	$result = $this->registro_model->busca_archivo_nombre($query);
+
 		        if ($result != FALSE)
 		        	{
 		        		$data = array('result' => $result);
