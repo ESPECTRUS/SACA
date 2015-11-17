@@ -23,17 +23,17 @@
 		<!-- menu -->
 		<div id="menu">
 			<ul>
-				<li><a href="" id="active">Principal</a></li>
-				<li><a href="">C.S.I.</a></li>
-				<li><a href="">C.P.I.</a></li>
-				<li><a href="">Solicitudes</a></li>
-				<li><a href="">Autorizaciones</a></li>
-				<li><a href="">Devoluciones</a></li>
+				<li><a href="<?= base_url().'principal'?>" id="active">Principal</a></li>
+				<li><a href="<?= base_url().'principal'?>">C.S.I.</a></li>
+				<li><a href="<?= base_url().'principal'?>">C.P.I.</a></li>
+				<li><a href="<?= base_url().'principal'?>">Solicitudes</a></li>
+				<li><a href="<?= base_url().'principal'?>">Notificaciones</a></li>
+				<li><a href="<?= base_url().'principal'?>">Devoluciones</a></li>
 			</ul>
 		</div>
 		<!-- ticker -->
 		<div id="ticker">
-			<b>Unidad Ejecutora de Titulación</b> del Ministerio de Obas Públicas, Servicios y Vivienda.
+			<b>Unidad Ejecutora de Titulación</b> del Ministerio de Obras Públicas, Servicios y Vivienda.
 		</div>
 		<div class="clear"></div>
 		<!-- headerimage -->
@@ -49,9 +49,9 @@
 			</div>
 			<!-- icons -->
 			<div id="icons">
-				<a href="" ><img src="<?= base_url('templates/img/images/icon_home.gif');?>" title="Principal" width="13" height="13" id="home" /></a>
-				<a href=""><img src="<?= base_url('templates/img/images/icon_sitemap.gif');?>" title="Configuraciones" width="13" height="13" id="sitemap" /></a>
-				<a href=""><img src="<?= base_url('templates/img/images/icon_contact.gif');?>" title="Correo Electrónico" width="13" height="13" id="contact" /></a>			
+				<a href="<?= base_url().'principal'?>" ><img src="<?= base_url('templates/img/images/icon_home.gif');?>" title="Principal" width="13" height="13" id="home" /></a>
+				<a href="<?= base_url().'principal'?>"><img src="<?= base_url('templates/img/images/icon_sitemap.gif');?>" title="Configuraciones" width="13" height="13" id="sitemap" /></a>
+				<a href="<?= base_url().'principal'?>"><img src="<?= base_url('templates/img/images/icon_contact.gif');?>" title="Correo Electrónico" width="13" height="13" id="contact" /></a>			
 			</div>
 			<div id="slogan">UNIDAD EJECUTORA DE TITULACION</div>
 		</div>
@@ -64,24 +64,25 @@
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">INICIO<span class="vnav-counter2">1</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="">VOLVER A MENU PRINCIPAL</a></li>
+	                        <li><a href="<?= base_url().'principal'?>">VOLVER A MENU PRINCIPAL</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
-	                    <a href="" class="vnav-item2">PERSONAL<span class="vnav-counter2">2</span></a>
+	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">DOCUMENTO C.S.I<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="index.html">REGISTRAR NUEVO PERSONAL</a></li>
-	                        <li><a href="index.html">LISTAR PERSONAL EN GENERAL</a></li>
+	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
+	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
-	                    <a href="" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>
+	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="index.html">FECHA DE REGISTRO</a></li>
-	                        <li><a href="index.html">NOMBRE COMPLETO O CI</a></li>
-	                        <li><a href="index.html">POR PROFESION</a></li>
-	                        <li><a href="index.html">GENERO (M/F)</a></li>
-	                        <li><a href="index.html">POR ESTADO</a></li>
+	                        <li><a href="<?= base_url().'busquedaarchivo'?>">POR NOMBRE DE CARPETA</a></li>
+	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
+	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
+	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
+	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">

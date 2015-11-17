@@ -120,12 +120,12 @@
 		<!-- menu -->
 		<div id="menu">
 			<ul>
-				<li><a href="" id="active">Principal</a></li>
-				<li><a href="">C.S.I.</a></li>
-				<li><a href="">C.P.I.</a></li>
-				<li><a href="">Solicitudes</a></li>
-				<li><a href="">Notificaciones</a></li>
-				<li><a href="">Devoluciones</a></li>
+				<li><a href="<?= base_url().'principal'?>" id="active">Principal</a></li>
+				<li><a href="<?= base_url().'principal'?>">C.S.I.</a></li>
+				<li><a href="<?= base_url().'principal'?>">C.P.I.</a></li>
+				<li><a href="<?= base_url().'principal'?>">Solicitudes</a></li>
+				<li><a href="<?= base_url().'principal'?>">Notificaciones</a></li>
+				<li><a href="<?= base_url().'principal'?>">Devoluciones</a></li>
 			</ul>
 		</div>
 		<!-- ticker -->
@@ -146,9 +146,9 @@
 			</div>
 			<!-- icons -->
 			<div id="icons">
-				<a href="" ><img src="<?= base_url('templates/img/images/icon_home.gif');?>" title="Principal" width="13" height="13" id="home" /></a>
-				<a href=""><img src="<?= base_url('templates/img/images/icon_sitemap.gif');?>" title="Configuraciones" width="13" height="13" id="sitemap" /></a>
-				<a href=""><img src="<?= base_url('templates/img/images/icon_contact.gif');?>" title="Correo Electrónico" width="13" height="13" id="contact" /></a>			
+				<a href="<?= base_url().'principal'?>" ><img src="<?= base_url('templates/img/images/icon_home.gif');?>" title="Principal" width="13" height="13" id="home" /></a>
+				<a href="<?= base_url().'principal'?>"><img src="<?= base_url('templates/img/images/icon_sitemap.gif');?>" title="Configuraciones" width="13" height="13" id="sitemap" /></a>
+				<a href="<?= base_url().'principal'?>"><img src="<?= base_url('templates/img/images/icon_contact.gif');?>" title="Correo Electrónico" width="13" height="13" id="contact" /></a>			
 			</div>
 			<div id="slogan">UNIDAD EJECUTORA DE TITULACION</div>
 		</div>
@@ -161,25 +161,25 @@
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">INICIO<span class="vnav-counter2">1</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="">VOLVER A MENU PRINCIPAL</a></li>
+	                        <li><a href="<?= base_url().'principal'?>">VOLVER A MENU PRINCIPAL</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
-	                    <a href="" class="vnav-item2">DOCUMENTO C.S.I<span class="vnav-counter2">2</span></a>
+	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">DOCUMENTO C.S.I<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
-	                    	<li><a href="index.html">LISTAR ARCHIVOS</a></li>
-	                        <li><a href="index.html">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="index.html">MODIFICAR ARCHIVO</a></li>
+	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
+	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
-	                    <a href="" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>
+	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="index.html">POR NOMBRE DE CARPETA</a></li>
-	                        <li><a href="index.html">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
-	                        <li><a href="index.html">POR NOMBRE DE PRODUCTOR</a></li>
-	                        <li><a href="index.html">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR DEPARTAMENTO</a></li>
+	                        <li><a href="<?= base_url().'busquedaarchivo'?>">POR NOMBRE DE CARPETA</a></li>
+	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
+	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
+	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
+	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
@@ -284,27 +284,12 @@
 						<legend>Documento</legend>
 						<table>
 							<tr>
-								<td rowspan="2" width="100px"></td>
-								<td width="100px" class="lblnombre">Tipo de Doc.</td>
-								<td width="200px">
-									<select name="tip_doc" class="txtselect">
-										<option value="">SELECCIONE</option>
-										<option value="Resolucion">Resolucion</option>
-										<option value="Memorandum">Memorandum</option>
-										<option value="Informe Tecnico">Informe Tecnico</option>
-										<option value="Minuta">Minuta</option>				
-										<option value="Testimonio">Testimonio</option>
-										<option value="Certificado de no propiedad">Certificado de no propiedad</option>
-										<option value="Documento de identificacion">Documento de identificacion</option>
-									</select>
 								<td width="80px" class="lblnombre">Fecha Doc.</td>
 								<td width="70px"><input type="text" name="fec_doc" class="txtcampo datepicker" readonly="" placeholder="FECHA" ></td>
 							</tr>
 							<tr style="height: 30px;">
-								<td width="100px" class="lblnombre">Cargar Archivo</td>
-								<td><input type="file" value="CARGAR ARCHIVO" class="txtcampo" style="border: 0px;"></td>
 								<td width="80px" class="lblnombre">Descripción</td>
-								<td width="70px"><input type="text" name="des_doc" class="txtcampo " placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></td>
+								<td width="70px"><textarea name="des_doc" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
 							</tr>
 						</table>
 					</fieldset>
