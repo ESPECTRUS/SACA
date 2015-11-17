@@ -283,13 +283,9 @@
 					<fieldset class="fieldcuerpo">
 						<legend>Documento</legend>
 						<table>
-							<tr>
-								<td width="80px" class="lblnombre">Fecha Doc.</td>
-								<td width="70px"><input type="text" name="fec_doc" class="txtcampo datepicker" readonly="" placeholder="FECHA" ></td>
-							</tr>
 							<tr style="height: 30px;">
 								<td width="80px" class="lblnombre">Descripción</td>
-								<td width="70px"><textarea name="des_doc" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
+								<td width="70px"><textarea name="des_car" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
 							</tr>
 						</table>
 					</fieldset>
