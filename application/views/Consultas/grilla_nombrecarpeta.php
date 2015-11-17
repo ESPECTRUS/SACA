@@ -141,7 +141,7 @@
 	<tbody style="font-size:11px;">
     	<tr>
 		<?php
-				if (isset($result))
+				if ($result)
 				{
 					foreach ($result->result() as $row) 
 					{

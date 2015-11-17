@@ -35,39 +35,43 @@ Class Registro_model extends CI_Model
             return false;
         }
     }
+
+    public function retornar_id()
+    {
+        return ($this->db->insert_id());
+    }
+
+
     /*INSERTA CARPETA*/
     public function inserta_carpeta($carpeta)
     {   
         if($this->db->insert('carpeta',$carpeta))
-        {     
-                   
-            $id_car= $this->db->insert_id();
-            return true;
-            
+        {   
+            return true;            
         }
         else
         {
-            $id_car=0;
             return false;
         } 
     }
+    
 
     /*INSERTA FECHAS EXTREMAS*/
     public function inserta_fechasextremas($fechas_extremas)
     {
         if($this->db->insert('fechas_extremas',$fechas_extremas))
         {
-            
+            return true;
         }
         else
         {
             return false;
-        }
+        }    
+    }
      
 
-    }
 
-    /*INSERTA TIPO DE DOCUMENTO*/
+    /*INSERTA TIPO DE DOCUMENTO
     public function inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio, $certificado_np)
     {
         $tipo=$_POST['tip_doc'];
@@ -158,7 +162,7 @@ Class Registro_model extends CI_Model
 
             }
         }
-    }
+    }*/
 
 /*INSERTA UBICACION*/
     public function inserta_ubicacion($ubicacion)
@@ -173,6 +177,8 @@ Class Registro_model extends CI_Model
         }
     }
 
+          
+
     /*INSERTA AREA*/
     public function inserta_productor($area)
     {
@@ -185,6 +191,8 @@ Class Registro_model extends CI_Model
             return false;
         }
     }
+
+    
     /*REGISTRO USUARIO*/
 public function inserta_usuario($reg_usuario)
 {
@@ -202,8 +210,7 @@ public function inserta_usuario($reg_usuario)
    public function busca_archivo_nombre($variable)
     {
         $x='%'.$variable.'%';
-        $query = $this->db->query("CALL busca_archivo('$x')");
-
+        $query = $this->db->query("CALL busca_nombre('$x')");
         if ($query->num_rows() > 0)
             {return $query;}
             else

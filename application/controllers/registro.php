@@ -66,6 +66,7 @@ class Registro extends CI_Controller
 			'NTM_ARC' => $this->input->post('ntm_arc'),
 			'FOJ_ARC' => $this->input->post('foj_arc'),
 			'CUB_ARC' => $this->input->post('cub_arc'),
+			'EST_ARC' =>'EN ARHIVO',
 		 );
 		return $archivo;
 	}
@@ -87,7 +88,9 @@ class Registro extends CI_Controller
 	{
 		$carpeta=array(
 			'NOM_CAR' => strtoupper($this->input->post('nom_car')),
-			'TIP_CAR' =>('SOCIAL INDIVIDUAL')
+			'TIP_CAR' =>('SOCIAL INDIVIDUAL'),
+			'HRU_CAR' =>($this->input->post('hru_car')),
+			'DES_CAR' =>($this->input->post('des_car')),
 		);
 		return $carpeta;
 	}
@@ -185,21 +188,52 @@ class Registro extends CI_Controller
 	   public function insertar()
     {  
     	/*Declaracion de arrays*/
-         $archivo = array();
-         //$id_car = $this->registro_model->retornar_id();
-         $archivo = $this->archivo();
-         //$archivo = array('id_car' => $id_car);
+	
+
+		 $carpeta=array();
+		 $carpeta = $this->carpeta();
+         $this->registro_model->inserta_carpeta($carpeta);
+         $id_car = $this->registro_model->retornar_id();
 
 
          $datos_tecnicos = array();
          $datos_tecnicos = $this->datos_tecnicos();
+         $this->registro_model->inserta_datotecnico($datos_tecnicos);
+         $id_dte = $this->registro_model->retornar_id();
 
-         $carpeta=array();
-         $carpeta = $this->carpeta();
 
          $fechas_extremas=array();
          $fechas_extremas = $this->fechas_extremas();
+         $this->registro_model->inserta_fechasextremas($fechas_extremas);
+         $id_fec = $this->registro_model->retornar_id();
 
+
+         $ubicacion = array();
+         $ubicacion=$this->ubicacion();
+         $this->registro_model->inserta_ubicacion($ubicacion);
+         $id_ubi = $this->registro_model->retornar_id();
+
+
+         $area = array();
+         $area = $this->area();
+         $this->registro_model->inserta_productor($area);
+         $id_area = $this->registro_model->retornar_id();
+
+         
+         $archivo = array();
+         $archivo = $this->archivo();
+         $a = array(
+         				'ID_DTE'=>$id_dte,
+         			    'ID_CAR'=>$id_car,
+         			    'ID_FEC'=>$id_fec,
+         			    'ID_UBI'=>$id_ubi,
+         			    'ID_AREA'=>$id_area,
+         			    'REG_ARC' => (date('Y').'-'.date('m').'-'.date('d').'-'.date('H:i:s')),
+         			    );
+         $archivo=$a+$archivo;
+         $this->registro_model->inserta_archivo($archivo);
+
+         /*INSERTA POR TIPO DE DOCUMENTO
          $resolucion = array();
          $resolucion = $this->resolucion();
 
@@ -218,39 +252,8 @@ class Registro extends CI_Controller
          $certificado_np = array();
          $certificado_np = $this->certificado_np();
 
-         $ubicacion = array();
-         $ubicacion=$this->ubicacion();
-
-         $area = array();
-         $area = $this->area();
-
-		if($this->registro_model->inserta_ubicacion($ubicacion))
-         {
-          if($this->registro_model->inserta_archivo($archivo))
-          {
-
-		  	if($this->registro_model->inserta_datotecnico($datos_tecnicos))
-		  	{
-		  	   if($this->registro_model->inserta_carpeta($carpeta))
-		  	   {
-		  	      if($this->registro_model->inserta_fechasextremas($fechas_extremas))
-		  	      {
-		  	      	 if($this->registro_model->inserta_productor($area))
-		  	      	 {
-		  	      	 	if($this->registro_model->inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio,$certificado_np))
-		  	      	 	{
-		  	      	 		
-		  	      	 		return true;
-		  	      	 		
-		  	      	 	}
-					 }					 		  	   	  
-		  	   	  }
-		  	   }
-		  	}
-          }
-      }
-          else
-          {return false;}
+         $this->registro_model->inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio,$certificado_np);
+    	*/
     }
 
 
@@ -289,10 +292,11 @@ class Registro extends CI_Controller
 	/*CONSULTA DE ARCHIVO POR NOMBRE*/
 	public function busca_archivo_nombre()
 	{
-		$query = $this->input->post('nom_arc');
+		$query = $this->input->post('nom_car');
 		    if($query)
 		    {
 		    	$result = $this->registro_model->busca_archivo_nombre($query);
+
 		        if ($result != FALSE)
 		        	{
 		        		$data = array('result' => $result);
@@ -302,7 +306,9 @@ class Registro extends CI_Controller
 		        		$data = array('result' =>'' );
 		        	}
 		    }
+
 		$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+
 	}
 
 

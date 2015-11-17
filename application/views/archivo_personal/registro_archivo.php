@@ -302,7 +302,7 @@
 						</tr>
 						<tr style="height: 30px;">
 							<td width="100px" class="lblnombre">Cuerpo</td>
-							<td width="240px"><input type="text" name="crp_ubi" class="txtcampo" placeholder="CUERPO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="240px"><input type="text" name="cue_ubi" class="txtcampo" placeholder="CUERPO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 							<td width="100px" class="lblnombre">Balda</td>
 							<td width="240px"><input type="text" name="bal_ubi" class="txtcampo" placeholder="BALDA" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 						</tr>

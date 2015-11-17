@@ -146,7 +146,7 @@
 	        <tr>
 	        <tr style="height: 50px;">
 			   <td width="100px" class="lblnombre">Ingrese nombre:</td>
-			   <td width="100px"><input type="text" name="nm_car" class="txtcampo" placeholder="NOMBRE DE ARCHIVO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
+			   <td width="100px"><input type="text" name="nom_car" class="txtcampo" placeholder="NOMBRE DE ARCHIVO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
 		    </tr>  
 	        </tr>
 	        <tr>
