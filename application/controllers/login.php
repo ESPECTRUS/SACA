@@ -20,7 +20,7 @@ class Login extends CI_Controller
 		$this->load->view('archivo_personal/personal_view');
 	}
 	public function very_session(){
-		if($this->input->post('submit'))
+		if($this->input->post('submit_log'))
 		{
 			$variable = $this->usuarios_model->very_session();
 			if($variable == true)

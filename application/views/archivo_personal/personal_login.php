@@ -159,7 +159,7 @@
 							<td width="100px"><input type="password" name="pas_usu"  class="txtcampo"  placeholder="PASSWORD" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 				    	</tr>   
 						<tr style="height: 80px; padding-left:60px;" align="center">
-							<td><input type="submit" name="submit" class="botones ico-btnsave" value="INGRESAR"></td>
+							<td><input type="submit" name="submit_log" class="botones ico-btnsave" value="INGRESAR"></td>
                  			<td><input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS"></td>
 						</tr>
 				        </td>
