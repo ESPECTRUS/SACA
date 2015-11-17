@@ -71,7 +71,7 @@ Class Registro_model extends CI_Model
      
 
 
-    /*INSERTA TIPO DE DOCUMENTO*/
+    /*INSERTA TIPO DE DOCUMENTO
     public function inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio, $certificado_np)
     {
         $tipo=$_POST['tip_doc'];
@@ -162,7 +162,7 @@ Class Registro_model extends CI_Model
 
             }
         }
-    }
+    }*/
 
 /*INSERTA UBICACION*/
     public function inserta_ubicacion($ubicacion)

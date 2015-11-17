@@ -231,7 +231,7 @@ class Registro extends CI_Controller
          $archivo=$a+$archivo;
          $this->registro_model->inserta_archivo($archivo);
 
-         //INSERTA POR TIPO DE DOCUMENTO
+         /*INSERTA POR TIPO DE DOCUMENTO
          $resolucion = array();
          $resolucion = $this->resolucion();
 
@@ -251,6 +251,7 @@ class Registro extends CI_Controller
          $certificado_np = $this->certificado_np();
 
          $this->registro_model->inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio,$certificado_np);
+    	*/
     }
 
 
