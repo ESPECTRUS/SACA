@@ -36,9 +36,9 @@ Class Registro_model extends CI_Model
         }
     }
 
-    public function retornar_id_dte()
+    public function retornar_id()
     {
-        return ($this->db->insert_id('inserta_datotecnico'));
+        return ($this->db->insert_id());
     }
 
 
@@ -54,10 +54,7 @@ Class Registro_model extends CI_Model
             return false;
         } 
     }
-    public function retornar_id_car()
-    {
-        return ($this->db->insert_id('inserta_carpeta'));
-    }
+    
 
     /*INSERTA FECHAS EXTREMAS*/
     public function inserta_fechasextremas($fechas_extremas)
@@ -71,10 +68,7 @@ Class Registro_model extends CI_Model
             return false;
         }    
     }
-      public function retornar_id_fec()
-    {
-        return ($this->db->insert_id('inserta_fechasextremas'));
-    }
+     
 
 
     /*INSERTA TIPO DE DOCUMENTO*/
@@ -183,6 +177,8 @@ Class Registro_model extends CI_Model
         }
     }
 
+          
+
     /*INSERTA AREA*/
     public function inserta_productor($area)
     {
@@ -195,6 +191,8 @@ Class Registro_model extends CI_Model
             return false;
         }
     }
+
+    
     /*REGISTRO USUARIO*/
 public function inserta_usuario($reg_usuario)
 {

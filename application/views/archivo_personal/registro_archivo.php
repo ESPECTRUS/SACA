@@ -33,7 +33,7 @@
 					 	{
 							rules:
 							{
-							/*'ncj_arc': {required: true},
+							'ncj_arc': {required: true},
 							'cub_arc': 'required',
 							'npr_dte': {required: true},
 							'lug_dte': 'required',
@@ -50,7 +50,7 @@
 							'crp_ubi': 'required',
 							'bal_ubi': {required: true},
 							'pro_area': {required: true},
-							'obs_area': {required: true}*/
+							'obs_area': {required: true}
 
 							},
 							messages: 
@@ -321,7 +321,7 @@
 						</tr>
 						<tr style="height: 30px;">
 							<td width="100px" class="lblnombre">Cuerpo</td>
-							<td width="240px"><input type="text" name="crp_ubi" class="txtcampo" placeholder="CUERPO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="240px"><input type="text" name="cue_ubi" class="txtcampo" placeholder="CUERPO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 							<td width="100px" class="lblnombre">Balda</td>
 							<td width="240px"><input type="text" name="bal_ubi" class="txtcampo" placeholder="BALDA" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 						</tr>
