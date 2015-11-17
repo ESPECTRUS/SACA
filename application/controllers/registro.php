@@ -306,7 +306,9 @@ class Registro extends CI_Controller
 		        		$data = array('result' =>'' );
 		        	}
 		    }
-		$this->load->view('Consultas/archivo_grilla',$data);
+
+		$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+
 	}
 
 
