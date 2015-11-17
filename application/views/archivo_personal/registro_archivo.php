@@ -285,7 +285,7 @@
 						<table>
 							<tr style="height: 30px;">
 								<td width="80px" class="lblnombre">Descripción</td>
-								<td width="70px"><textarea name="des_doc" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
+								<td width="70px"><textarea name="des_car" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
 							</tr>
 						</table>
 					</fieldset>
