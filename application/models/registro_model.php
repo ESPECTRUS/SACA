@@ -210,7 +210,7 @@ public function inserta_usuario($reg_usuario)
    public function busca_archivo_nombre($variable)
     {
         $x='%'.$variable.'%';
-        $query = $this->db->query("CALL busca_archivo('$x')");
+        $query = $this->db->query("CALL busca_nombre('$x')");
         if ($query->num_rows() > 0)
             {return $query;}
             else

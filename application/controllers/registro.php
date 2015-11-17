@@ -88,7 +88,9 @@ class Registro extends CI_Controller
 	{
 		$carpeta=array(
 			'NOM_CAR' => strtoupper($this->input->post('nom_car')),
-			'TIP_CAR' =>('SOCIAL INDIVIDUAL')
+			'TIP_CAR' =>('SOCIAL INDIVIDUAL'),
+			'HRU_CAR' =>($this->input->post('hru_car')),
+			'DES_CAR' =>($this->input->post('des_car')),
 		);
 		return $carpeta;
 	}
