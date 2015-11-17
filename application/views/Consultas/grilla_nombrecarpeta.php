@@ -115,51 +115,59 @@
 		<div id="cB">
 			<div class="titulo">LISTADO DE ARCHIVO POR NOMBRE</div>
 			<form name="frmpersonal" id="frmpersonal" action="<?=base_url();?>personal/insertar" method="post">
-		<table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
+<div style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;border:1px #036 solid;margin-top:4px;padding:4px 0 4px 0;overflow:auto;">
+<table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
 	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
-			<th>ID CARPETA.</th>
+			<th>NRO</th>
             <th>TIPO DE CARPETA</th>
-			<th>NOMBRE DE LA CARPETA</th>
+			<th width="500px">NOMBRE DE LA CARPETA</th>
 			<th>NRO. DE CAJA DE ARCHIVO</th>
 			<th>NRO. DE TOMO DE ARCHIVO</th>
 			<th>NRO. FOJAS DE ARCHIVO</th>
+			<th>CUBIERTA DE ARCHIVO</th>
+			<th>CUBIERTA DE ARCHIVO</th>
 			<th>CUBIERTA DE ARCHIVO</th>
 		</tr>
 	</thead>
 	<tfoot style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
-			<th>ID CARPETA.</th>
+			<th>NRO</th>
             <th>TIPO DE CARPETA</th>
-			<th>NOMBRE DE LA CARPETA</th>
+			<th width="500px">NOMBRE DE LA CARPETA</th>
 			<th>NRO. DE CAJA DE ARCHIVO</th>
 			<th>NRO. DE TOMO DE ARCHIVO</th>
 			<th>NRO. FOJAS DE ARCHIVO</th>
 			<th>CUBIERTA DE ARCHIVO</th>
+			<th>CUBIERTA DE ARCHIVO</th>
+			<th>CUBIERTA DE ARCHIVO</th>
 		</tr>
 	</tfoot>
 	<tbody style="font-size:11px;">
-    	<tr>
 		<?php
+			
 				if ($result)
 				{
+
 					foreach ($result->result() as $row) 
 					{
 						echo "<tr>";
 						echo "<td align='center'>".$row->ID_CAR."</td>";
 						echo "<td align='center'>".$row->TIP_CAR."</td>";
-						echo "<td align='center'>".$row->NOM_CAR."</td>";
+						echo "<td align='left' width='500px'>".$row->NOM_CAR."</td>";
 						echo "<td align='center'>".$row->NCJ_ARC."</td>";
 						echo "<td align='center'>".$row->NTM_ARC."</td>";
 						echo "<td align='center'>".$row->FOJ_ARC."</td>";
+						echo "<td align='center'>".$row->CUB_ARC."</td>";
+						echo "<td align='center'>".$row->CUB_ARC."</td>";
 						echo "<td align='center'>".$row->CUB_ARC."</td>";
 						echo "</tr>";
 					} 
 				}
 			?>
-		</tr>
 	</tbody>
 </table>
+</div>
 <center>
 <table>
 	<tr style="height: 230px;">

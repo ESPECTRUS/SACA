@@ -293,22 +293,14 @@ class Registro extends CI_Controller
 	public function busca_archivo_nombre()
 	{
 		$query = $this->input->post('nom_car');
-		    if($query)
-		    {
-		    	$result = $this->registro_model->busca_archivo_nombre($query);
-
-		        if ($result != FALSE)
-		        	{
-		        		$data = array('result' => $result);
-		        	}
-		        	else
-		        	{
-		        		$data = array('result' =>'' );
-		        	}
-		    }
-
-		$this->load->view('Consultas/grilla_nombrecarpeta',$data);
-
+		if($query)
+		{
+			$query1 = $this->db->query("CALL busca_nombre('%".$query."%')");
+			$data['result'] = $query1;
+			$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+		}
+		else
+			redirect('busquedaarchivo');
 	}
 
 

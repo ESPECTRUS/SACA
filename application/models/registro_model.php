@@ -211,10 +211,7 @@ public function inserta_usuario($reg_usuario)
     {
         $x='%'.$variable.'%';
         $query = $this->db->query("CALL busca_nombre('$x')");
-        if ($query->num_rows() > 0)
-            {return $query;}
-            else
-            {return false;}
+        return $query;
     }
 }
 
