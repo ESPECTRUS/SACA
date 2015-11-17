@@ -302,7 +302,7 @@ class Registro extends CI_Controller
 		        		$data = array('result' =>'' );
 		        	}
 		    }
-		$this->load->view('archivo_personal/archivo_grilla',$data);
+		$this->load->view('Consultas/grilla_nombrecarpeta',$data);
 	}
 
 
