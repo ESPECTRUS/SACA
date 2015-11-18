@@ -25,7 +25,7 @@ class Login extends CI_Controller
 			$variable = $this->usuarios_model->very_session();
 			if($variable == true)
 			{
-
+				redirect ('principal');
 			}
 			else
 			{

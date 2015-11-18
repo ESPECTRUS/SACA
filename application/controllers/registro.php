@@ -61,12 +61,17 @@ class Registro extends CI_Controller
 
 	public function archivo()
 	{
+		$a=$this->input->post('pro_area');
+		$b=$this->input->post('npr_dte');
+
+		$c=$a.'-'.$b;
 		$archivo = array(
 			'NCJ_ARC' => $this->input->post('ncj_arc'),
 			'NTM_ARC' => $this->input->post('ntm_arc'),
 			'FOJ_ARC' => $this->input->post('foj_arc'),
 			'CUB_ARC' => $this->input->post('cub_arc'),
 			'EST_ARC' =>'EN ARHIVO',
+			'REF_ARC' =>strtoupper(($c)),
 		 );
 		return $archivo;
 	}
@@ -293,22 +298,14 @@ class Registro extends CI_Controller
 	public function busca_archivo_nombre()
 	{
 		$query = $this->input->post('nom_car');
-		    if($query)
-		    {
-		    	$result = $this->registro_model->busca_archivo_nombre($query);
-
-		        if ($result != FALSE)
-		        	{
-		        		$data = array('result' => $result);
-		        	}
-		        	else
-		        	{
-		        		$data = array('result' =>'' );
-		        	}
-		    }
-
-		$this->load->view('Consultas/grilla_nombrecarpeta',$data);
-
+		if($query)
+		{
+			$query1 = $this->db->query("CALL busca_nombre('%".$query."%')");
+			$data['result'] = $query1;
+			$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+		}
+		else
+			redirect('busquedaarchivo');
 	}
 
 
