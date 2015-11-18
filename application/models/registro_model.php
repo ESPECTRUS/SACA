@@ -207,12 +207,13 @@ public function inserta_usuario($reg_usuario)
 }
 
 /*CONSULATAS*/
+/*
    public function busca_archivo_nombre($variable)
     {
         $x='%'.$variable.'%';
         $query = $this->db->query("CALL busca_nombre('$x')");
         return $query;
-    }
+    }*/
 }
 
 

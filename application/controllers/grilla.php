@@ -5,10 +5,15 @@ class Grilla extends CI_Controller
 	public function __construct()
 	{
         parent::__construct();
+        $this->load->helper('date');
+      	 $this->load->helper('url');
+    	 $this->load->database('default');
     }
 	public function index()
 	{
-		$this->load->view('Consultas/archivo_grilla');
+		$query = $this->db->query("CALL listar_archivos()");
+        $data['result'] = $query;   
+		$this->load->view('Consultas/archivo_grilla',$data);
 	}
 	public function pornombre()
 	{

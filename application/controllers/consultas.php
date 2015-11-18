@@ -12,24 +12,10 @@ class Consultas extends CI_Controller
     	 $this->load->database('default');
     }
 
-        public function buca_proy()
+        public function listar_archivos()
     {
-        $query = $this->input->post('nom_car');
-            if($query)
-            {
-                $result = $this->registro_model->busca_archivo_nombre($query);
-
-                if ($result != FALSE)
-                    {
-                        $data = array('result' => $result);
-                    }
-                    else
-                    {
-                        $data = array('result' =>'' );
-                    }
-            }
-
-        $this->load->view('Consultas/grilla_nombrecarpeta',$data);
+                   
+      //  $this->load->view('Consultas/archivo_grilla',$data);
 
     }
 }
