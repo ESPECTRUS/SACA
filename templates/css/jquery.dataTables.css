@@ -62,7 +62,7 @@ table.dataTable thead .sorting_desc_disabled {
   background-image: url("img/images/sort2_desc.png");
 }
 table.dataTable tbody tr {
-  background-color: #444444;
+  background-color: #FFF;
 }
 table.dataTable tbody tr.selected {
   background-color: #444444;

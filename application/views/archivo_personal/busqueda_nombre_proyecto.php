@@ -105,56 +105,33 @@
 			<div class="titulo">BUSQUEDA DE ARCHIVO POR PROYECTO </div>
 			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>personal/insertar" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
-				<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
+				<fieldset class="fieldcuerpo" align="left" style="height: 585px;">
 					<table>
 					<tr>
 						<td>
-						<table style="padding-top: 10px;">
+						<table style="padding-right: 35px;">
 					    <tr>
-                            <td><img height="150" width="190"src="<?= base_url('templates/img/images/casa.png');?>" title="Busqueda"></td>
+                            <td><img height="130" width="170"src="<?= base_url('templates/img/images/casa.png');?>" title="Busqueda"></td>
                         </tr>
                         </table>
                         </td>
 
                     <td>
-                    <table style="padding-top:60px; width:450px;">
+                    <table style="padding-top:60px;  ">
 						<tr style="height: 50px;">
-							<td width="50px" class="lblnombre">Nombre del proyecto</td>
+							<td width="250px" class="lblnombre">Nombre de la Urbanizacion</td>
 							<td width="400px"><input type="text" name="npr_dte" class="txtcampo medio" placeholder="NOMBRE DEL PROYECTO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
 						</tr>
 				    </table>
-						<table>
-						<tr>
-						    <td width="10px" class="lblnombre">Lugar</td>
-						    <td width="100px">
-								<select name="lug_dte" class="txtselect short">
-									<option value="">SELECCIONE</option>
-									<option value="Carpetilla">LA PAZ</option>
-									<option value="Carpeta de palanca">ORURO</option>
-									<option value="Otros">POTOSI</option>
-									<option value="Otros">SANTA CRUZ</option>
-									<option value="Otros">COCHABAMBA</option>
-									<option value="Otros">SUCRE</option>
-									<option value="Otros">TARIJA</option>
-									<option value="Otros">BENI</option>
-									<option value="Otros">PANDO</option>
-								</select>
-							</td>
-							<td width="60px" class="lblnombre">Sector</td>
-							<td width="100px"><input type="text" name="sec_dte" class="txtcampo short"  placeholder="SECTOR"></td>
-				    	    <td width="60px" class="lblnombre">Plan</td>
-							<td width="100px"><input type="text" name="pln_dte" class="txtcampo short"  placeholder="PLAN" ></td>
-				    	</tr>
-				    	<tr>
-				    		<td width="60px" class="lblnombre">Manzano</td>
-				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo short"  placeholder="MANZANO"></td>
-				    	    <td width="60px" class="lblnombre">Lote</td>
-				    	    <td width="100px"><input type="text" name="lot_dte" class="txtcampo short"  placeholder="LOTE"></td>
+						<table >
+				    	<tr style="height: 50px;">
+				    		<td width="135px" class="lblnombre">Manzano</td>
+				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo medio"  placeholder="MANZANO"></td>
 				    	</tr>
 				    	</table>
 				    	<table style="padding-left:95px;">
-				    		<tr style="height: 80px;">
-							<td><input type="submit" class="botones ico-btnsearch" value="BUSCAR"></td>
+				    		<tr style="height: 80px; width:180px;">
+							<td style="padding-right: 20px;"><input type="submit" class="botones ico-btnsearch" value="BUSCAR"></td>
                  			<td><input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS"></td>
 						</tr>
 				    	</table>  
