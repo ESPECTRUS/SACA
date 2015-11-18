@@ -12,10 +12,39 @@
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_form.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_botones.css');?>"/>
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	    <!-- validaciones -->
-		<script type="text/javascript" src="<?= base_url('templates/js/jquery_1.4.js');?>"/></script>
+	<!-- validaciones -->
+        <script type="text/javascript" src="<?= base_url('templates/js/jquery_1.4.js');?>"/></script>
         <script type="text/javascript" src="<?= base_url('templates/js/jquery_validate.js');?>"/></script>
-        <script type="text/javascript" src="<?= base_url('templates/js/validaciones.js');?>"/></script>		
+        <script type="text/javascript" src="<?= base_url('templates/js/validaciones.js');?>"/></script>
+        		
+		<!--Validacion de campos-->
+		<script type="text/javascript">
+			$(
+			   function()
+			   {
+					$('#frmlogin').validate
+					(
+					 	{
+							rules:
+							{
+							'nom_usu': {required: true},
+							'pas_usu': {required: true}
+							},
+							messages: 
+							{
+							'nom_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'pas_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							},
+							debug: true,
+							submitHandler: function(form)
+							{
+								document.getElementById("frmlogin").submit();
+							}
+					 	}
+					);
+				}
+			);
+		</script>
 	</head>
 <body>
 <div id="daddy">
@@ -102,45 +131,11 @@
 		</div><!-- cA -->
 
 		<div id="cB">
-			<div class="titulo">BUSQUEDA DE ARCHIVO POR URBANIZACIÓN </div>
-			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>personal/insertar" method="post">
+			<div class="titulo">INICIAR SESIÓN </div>
+			<form name="frmlogin" id="frmlogin" action="<?=base_url();?>personal/insertar" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
-					<table>
-					<tr>
-						<td>
-						<table style="padding-top: 10px;">
-					    <tr>
-                            <td><img height="150" width="190"src="<?= base_url('templates/img/images/casa.png');?>" title="Busqueda"></td>
-                        </tr>
-                        </table>
-                        </td>
-
-                    <td>
-                    <table style="padding-top:60px; width:450px;">
-						<tr style="height: 50px;">
-							<td width="50px" class="lblnombre">Nombre del proyecto</td>
-							<td width="400px"><input type="text" name="npr_dte" class="txtcampo medio" placeholder="NOMBRE DEL PROYECTO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
-						</tr>
-				    </table>
-						<table>
-						<tr>
-							</td>
-							<td width="60px" class="lblnombre">Manzano</td>
-				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo short"  placeholder="MANZANO"></td>
-				    	    <td width="60px" class="lblnombre">Lote</td>
-				    	    <td width="100px"><input type="text" name="lot_dte" class="txtcampo short"  placeholder="LOTE"></td>
-				    	</tr>
-					    	</table>
-				    	<table style="padding-left:95px;">
-				    		<tr style="height: 80px;">
-							<td><input type="submit" class="botones ico-btnsearch" value="BUSCAR"></td>
-                 			<td><input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS"></td>
-						</tr>
-				    	</table>  
-				    </table>
-				    </td>
-				    </tr>
+	
 				</fieldset>
 			</form>
 		</div><!-- cB -->
@@ -151,7 +146,6 @@
 	</div><!-- content -->
 	<div id="properspace"></div><!-- properspace -->
 </div><!-- daddy -->
-
 <div id="footer">
 	<div id="foot">
 		<div id="foot1"><a href="">&copy; Copyright 2015</a> - Sistemas UET</div><!-- foot1 -->
