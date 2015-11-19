@@ -103,7 +103,7 @@
 
 		<div id="cB">
 			<div class="titulo">BUSQUEDA DE ARCHIVO POR PROYECTO </div>
-			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>personal/insertar" method="post">
+			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>consultas/busqueda_proyecto" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" style="height: 585px;">
 					<table>
@@ -120,13 +120,13 @@
                     <table style="padding-top:60px;  ">
 						<tr style="height: 50px;">
 							<td width="250px" class="lblnombre">Nombre de la Urbanizacion</td>
-							<td width="400px"><input type="text" name="npr_dte" class="txtcampo medio" placeholder="NOMBRE DEL PROYECTO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
+							<td width="400px"><input type="text" name="npr_dte" class="txtcampo medio" value="" placeholder="NOMBRE DEL PROYECTO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
 						</tr>
 				    </table>
 						<table >
 				    	<tr style="height: 50px;">
 				    		<td width="135px" class="lblnombre">Manzano</td>
-				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo medio"  placeholder="MANZANO"></td>
+				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo medio" value="" placeholder="MANZANO"></td>
 				    	</tr>
 				    	</table>
 				    	<table style="padding-left:95px;">

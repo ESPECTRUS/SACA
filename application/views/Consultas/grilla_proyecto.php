@@ -114,51 +114,64 @@
 		<div id="cB">
 			<div class="titulo">LISTADO DE ARCHIVO POR NOMBRE</div>
 			<form name="frmpersonal" id="frmpersonal" action="<?=base_url();?>personal/insertar" method="post">
+			<div style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;border:1px #036 solid;margin-top:4px;padding:4px 0 4px 0;overflow:auto;">
 		<table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
 	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
-			<th>ID CARPETA.</th>
-            <th>TIPO DE CARPETA</th>
-			<th>NOMBRE DE LA CARPETA</th>
-			<th>NRO. DE CAJA DE ARCHIVO</th>
-			<th>NRO. DE TOMO DE ARCHIVO</th>
-			<th>NRO. FOJAS DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
+			<th>OPERACION</th>
+			<th>ID CARPETA</th>
+            <th>ADJUDICATARIO</th>
+			<th>PRODUCTOR</th>
+			<th>HOJA DE RUTA</th>
+			<th>NOMBRE DE PROYECTO</th>
+			<th>LUGAR</th>
+			<th>SECTOR</th>
+			<th>PLAN</th>
+			<th>MANZANO</th>
+			<th>LOTE</th>
 		</tr>
 	</thead>
 	<tfoot style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
-			<th>ID CARPETA.</th>
-            <th>TIPO DE CARPETA</th>
-			<th>NOMBRE DE LA CARPETA</th>
-			<th>NRO. DE CAJA DE ARCHIVO</th>
-			<th>NRO. DE TOMO DE ARCHIVO</th>
-			<th>NRO. FOJAS DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
+			<th>OPERACION</th>
+			<th>ID CARPETA</th>
+            <th>ADJUDICATARIO</th>
+			<th>PRODUCTOR</th>
+			<th>HOJA DE RUTA</th>
+			<th>NOMBRE DE PROYECTO</th>
+			<th>LUGAR</th>
+			<th>SECTOR</th>
+			<th>PLAN</th>
+			<th>MANZANO</th>
+			<th>LOTE</th>
 		</tr>
 	</tfoot>
 	<tbody style="font-size:11px;">
-    	<tr>
 		<?php
-				if (isset($result))
-				{
-					foreach ($result->result() as $row) 
-					{
-						echo "<tr>";
-						echo "<td align='center'>".$row->ID_CAR."</td>";
-						echo "<td align='center'>".$row->TIP_CAR."</td>";
-						echo "<td align='center'>".$row->NOM_CAR."</td>";
-						echo "<td align='center'>".$row->NCJ_ARC."</td>";
-						echo "<td align='center'>".$row->NTM_ARC."</td>";
-						echo "<td align='center'>".$row->FOJ_ARC."</td>";
-						echo "<td align='center'>".$row->CUB_ARC."</td>";
-						echo "</tr>";
-					}
-				}
-			?>
-		</tr>
+				if ($result):
+				
+					foreach ($result->result() as $row): 
+		?>			
+				<tr>
+				<td>
+				<a href="<?= base_url();?>registro/index/<?php echo $row->ID_CAR; ?>">
+				<img src="<?= base_url();?>templates/img/images/pdf.gif" title="Reporte">
+				</td>
+				<td align="left"><?php echo $row->ID_CAR?></td>
+				<td align="left"><?php echo $row->NOM_CAR;?></td>
+				<td align="left"><?php echo $row->HRU_CAR?></td>
+				<td align="left"><?php echo $row->PRO_AREA?></td>
+				<td align="left"><?php echo $row->NPR_DTE?></td>
+				<td align="left"><?php echo $row->LUG_DTE;?></td>
+				<td align="left"><?php echo $row->SEC_DTE?></td>
+				<td align="left"><?php echo $row->PLN_DTE;?></td>
+				<td align="left"><?php echo $row->MAN_DTE;?></td>
+				<td align="left"><?php echo $row->LOT_DTE;?></td>				
+				</tr>
+		<?php endforeach; endif;?>
 	</tbody>
 </table>
+</div>
 <center>
 <table>
 	<tr style="height: 230px;">

@@ -325,7 +325,7 @@
 					<table>
 						<tr style="height: 50px;">
 							<td>
-								<input type="submit" class="botones ico-btnsave" value="GUARDAR DATOS">
+								<input type="submit" name="submit_reg_arc" class="botones ico-btnsave" value="GUARDAR DATOS" >
                  				<input type="reset"  onclick="document.location.reload();" class="botones ico-btnlimpiar" value="LIMPIAR DATOS">
                  			</td>
 						</tr>
@@ -333,7 +333,8 @@
 				</td>
 				</tr>
 				</table>
-				</center>	
+				</center>
+				<?= validation_errors();?>	
 				</fieldset>
 			</form>
 		</div><!-- cB -->

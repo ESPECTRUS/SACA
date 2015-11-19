@@ -119,19 +119,19 @@
 <table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
 	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
+			<th>OPERACION</th>
 			<th>NRO</th>
             <th>TIPO DE CARPETA</th>
 			<th width="500px">NOMBRE DE LA CARPETA</th>
 			<th>NRO. DE CAJA DE ARCHIVO</th>
 			<th>NRO. DE TOMO DE ARCHIVO</th>
 			<th>NRO. FOJAS DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
 			<th>CUBIERTA DE ARCHIVO</th>
 		</tr>
 	</thead>
 	<tfoot style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
+			<th>OPERACION</th>
 			<th>NRO</th>
             <th>TIPO DE CARPETA</th>
 			<th width="500px">NOMBRE DE LA CARPETA</th>
@@ -139,32 +139,33 @@
 			<th>NRO. DE TOMO DE ARCHIVO</th>
 			<th>NRO. FOJAS DE ARCHIVO</th>
 			<th>CUBIERTA DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
 		</tr>
 	</tfoot>
 	<tbody style="font-size:11px;">
+
 		<?php
 			
-				if ($result)
-				{
+				if ($result):
+				
 
-					foreach ($result->result() as $row) 
-					{
-						echo "<tr>";
-						echo "<td align='center'>".$row->ID_CAR."</td>";
-						echo "<td align='center'>".$row->TIP_CAR."</td>";
-						echo "<td align='left' width='500px'>".$row->NOM_CAR."</td>";
-						echo "<td align='center'>".$row->NCJ_ARC."</td>";
-						echo "<td align='center'>".$row->NTM_ARC."</td>";
-						echo "<td align='center'>".$row->FOJ_ARC."</td>";
-						echo "<td align='center'>".$row->CUB_ARC."</td>";
-						echo "<td align='center'>".$row->CUB_ARC."</td>";
-						echo "<td align='center'>".$row->CUB_ARC."</td>";
-						echo "</tr>";
-					} 
-				}
-			?>
+					foreach ($result->result() as $row): 
+					
+		?>
+						<tr>
+						<td>
+						<a href="<?= base_url();?>registro/index/<?php echo $row->ID_CAR; ?>">
+						<img src="<?= base_url();?>templates/img/images/pdf.gif" title="Reporte">
+						</td>
+						<td align="center"><?php echo $row->ID_CAR;?></td>
+						<td align="center"><?php echo $row->TIP_CAR;?></td>
+						<td align="center"><?php echo $row->NOM_CAR;?></td>
+						<td align="center"><?php echo $row->NCJ_ARC;?></td>
+						<td align="center"><?php echo $row->NTM_ARC;?></td>
+						<td align="center"><?php echo $row->FOJ_ARC;?></td>
+						<td align="center"><?php echo $row->CUB_ARC;?></td>	
+						</tr>					
+						
+		<?php endforeach; endif;?>
 	</tbody>
 </table>
 </div>
