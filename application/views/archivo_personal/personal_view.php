@@ -44,7 +44,7 @@
 					<div id="user-icon">
 						<img src="<?= base_url('templates/img/images/user-men.png');?>">
 					</div>
-					<span id="download-text"><a href="">eajahuanca.uet<br/>Edwin Ajahuanca Callisaya</a></span>
+					<span id="download-text"><a href=""><?php echo $nic ?><br/><?php echo $nombre.' '.$apellidop.' '.$apellidom ?></a></span>
 				</center>
 			</div>
 			<!-- icons -->
@@ -96,7 +96,10 @@
 	        </nav> 
 		</div><!-- cA -->
 		<div id="cB">
-			<img src="<?= base_url('templates/img/principal.jpg');?>">			
+			<h1> Bienvenido/a <?php echo $nombre.' '.$apellidop.' '.$apellidom ?> </h1>
+    <p>
+       <a href="<?php echo base_url() ?>login/cerrar_sesion"> Cerrar sesión </a>
+    </p>	
 		</div><!-- cB -->
 		<div class="Cpad">
 			<br class="clear" /></div>

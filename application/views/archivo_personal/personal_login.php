@@ -27,12 +27,12 @@
 					 	{
 							rules:
 							{
-							'nom_usu': {required: true},
+							'nic_usu': {required: true},
 							'pas_usu': {required: true}
 							},
 							messages: 
 							{
-							'nom_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'nic_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'pas_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							},
 							debug: true,
@@ -131,10 +131,15 @@
 		</div><!-- cA -->
 
 		<div id="cB">
+		 <script type="text/javascript">
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeIn(1500); },0000); });
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeOut(1500); },5000); });
+            </script>
+       
 
 			<div class="titulo">INICIAR SESIÓN </div>
 			<?php if(isset($mensaje)):?>
-			<label class="mensaje"><?= $mensaje;?></label>
+			<div class="mensajelogin" id="mensaje"><label><?php echo $mensaje;?></label></div>
 			<?php endif;?>
 			<form name="frmlogin" id="frmlogin" action="<?= base_url().'login/very_session'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->

@@ -147,10 +147,16 @@
 
 
 		<div id="cB">
+		
+		<script type="text/javascript">
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeIn(1500); },0000); });
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeOut(1500); },5000); });
+            </script>
 			
 			<div class="titulo">REGISTRO DE USUARIO </div>
 			<?php if(isset($mensaje)):?>
-			<label class="mensaje"><?= $mensaje;?></label>
+						<div class="mensajelogin" id="mensajebien"><label><?php echo $mensaje;?></label></div>
+
 		<?php endif;?>
 			<form name="frmregusuario" id="frmregusuario" action="<?= base_url().'registro/registro_very'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
