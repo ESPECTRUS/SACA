@@ -25,3 +25,4 @@ class Solicitud extends CI_Controller
 	}
 		
 }
+

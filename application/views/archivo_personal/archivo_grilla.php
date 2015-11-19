@@ -12,8 +12,23 @@
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_form.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_botones.css');?>"/>
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	</head>
+	    <link rel="stylesheet" type="text/css" href="<?= base_url();?>templates/css/jquery.dataTables.css">
+		<link rel="stylesheet" type="text/css" href="<?= base_url();?>templates/css/shCore.css">
+		<link rel="stylesheet" type="text/css" href="<?= base_url();?>templates/css/demo.css">
+		<style type="text/css" class="init">
+		</style>
+		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/jquery.js"></script>
+		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/jquery.dataTables.js"></script>
+		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/shCore.js"></script>
+		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/demo.js"></script>
+		<script type="text/javascript" language="javascript" class="init">
+			$(document).ready(function() {
+				$('#example').DataTable();
+			} );
+		</script>
+		</head>
 <body>
+
 <div id="daddy">
 	<!-- header -->
 	<div id="header">
@@ -24,12 +39,12 @@
 		<!-- menu -->
 		<div id="menu">
 			<ul>
-				<li><a href="" id="active">Principal</a></li>
-				<li><a href="">C.S.I.</a></li>
-				<li><a href="">C.P.I.</a></li>
-				<li><a href="">Solicitudes</a></li>
-				<li><a href="">Notificaciones</a></li>
-				<li><a href="">Devoluciones</a></li>
+				<li><a href="<?= base_url().'principal'?>" id="active">Principal</a></li>
+				<li><a href="<?= base_url().'principal'?>">C.S.I.</a></li>
+				<li><a href="<?= base_url().'principal'?>">C.P.I.</a></li>
+				<li><a href="<?= base_url().'principal'?>">Solicitudes</a></li>
+				<li><a href="<?= base_url().'principal'?>">Notificaciones</a></li>
+				<li><a href="<?= base_url().'principal'?>">Devoluciones</a></li>
 			</ul>
 		</div>
 		<!-- ticker -->
@@ -50,9 +65,9 @@
 			</div>
 			<!-- icons -->
 			<div id="icons">
-				<a href="" ><img src="<?= base_url('templates/img/images/icon_home.gif');?>" title="Principal" width="13" height="13" id="home" /></a>
-				<a href=""><img src="<?= base_url('templates/img/images/icon_sitemap.gif');?>" title="Configuraciones" width="13" height="13" id="sitemap" /></a>
-				<a href=""><img src="<?= base_url('templates/img/images/icon_contact.gif');?>" title="Correo Electrónico" width="13" height="13" id="contact" /></a>			
+				<a href="<?= base_url().'principal'?>" ><img src="<?= base_url('templates/img/images/icon_home.gif');?>" title="Principal" width="13" height="13" id="home" /></a>
+				<a href="<?= base_url().'principal'?>"><img src="<?= base_url('templates/img/images/icon_sitemap.gif');?>" title="Configuraciones" width="13" height="13" id="sitemap" /></a>
+				<a href="<?= base_url().'principal'?>"><img src="<?= base_url('templates/img/images/icon_contact.gif');?>" title="Correo Electrónico" width="13" height="13" id="contact" /></a>			
 			</div>
 			<div id="slogan">UNIDAD EJECUTORA DE TITULACION</div>
 		</div>
@@ -65,25 +80,25 @@
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">INICIO<span class="vnav-counter2">1</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="">VOLVER A MENU PRINCIPAL</a></li>
+	                        <li><a href="<?= base_url().'principal'?>">VOLVER A MENU PRINCIPAL</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
-	                    <a href="" class="vnav-item2">DOCUMENTO C.S.I<span class="vnav-counter2">2</span></a>
+	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">DOCUMENTO C.S.I<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
-	                    	<li><a href="index.html">LISTAR ARCHIVOS</a></li>
-	                        <li><a href="index.html">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="index.html">MODIFICAR ARCHIVO</a></li>
+	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
+	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
-	                    <a href="" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>
+	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>
 	                    <ul class="vnav-subnav2">
-	                        <li><a href="index.html">POR NOMBRE DE CARPETA</a></li>
-	                        <li><a href="index.html">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
-	                        <li><a href="index.html">POR NOMBRE DE PRODUCTOR</a></li>
-	                        <li><a href="index.html">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR DEPARTAMENTO</a></li>
+	                        <li><a href="<?= base_url().'busquedaarchivo'?>">POR NOMBRE DE CARPETA</a></li>
+	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
+	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
+	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
+	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
@@ -100,6 +115,7 @@
 		<div id="cB">
 			<div class="titulo">LISTADO DE ARCHIVO POR NOMBRE</div>
 			<form name="frmpersonal" id="frmpersonal" action="<?=base_url();?>personal/insertar" method="post">
+<<<<<<< HEAD
 				<!--TIPOS DE DOCUMENTOS-->	
 <head><br>
     <meta charset="utf-8" />
@@ -119,6 +135,9 @@
 	</script>
 </head>
 <table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
+=======
+		<table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
+>>>>>>> 225e67350616f6c4ee5cf621307fbb532476fde1
 	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
 			<th>ID CARPETA.</th>
@@ -181,6 +200,10 @@
 </center>
 </div>
 	<div style="clear: both;"></div>	
+<<<<<<< HEAD
+=======
+		<!--TIPOS DE DOCUMENTOS-->	
+>>>>>>> 225e67350616f6c4ee5cf621307fbb532476fde1
 </form>
 		</div><!-- cB -->
 		<div class="Cpad">

@@ -5,24 +5,73 @@ class Registro extends CI_Controller
 	public function __construct()
 	{
         parent::__construct();
+        
          $this->load->model('registro_model'); 
+         $this->load->library('form_validation');
     	 $this->load->helper('form');
     	 $this->load->helper('date');
       	 $this->load->helper('url');
     	 $this->load->database('default');
+    	 $this->load->model('usuarios_model');
     }
 	public function index()
 	{
 		$this->load->view('archivo_personal/registro_archivo');
 	}
+	public function usuario()
+	{
+		$this->load->view('archivo_personal/registro_usuario');
+	}
+	public function registro_very()
+	{
+		if ($this->input->post('submit_reg')) {
+			$this->form_validation->set_rules('nic_usu','Usuario','required|trim|callback_very_user');
+			$this->form_validation->set_rules('pas_usu','Contraseña','required|trim|min_length[6]');
+			$this->form_validation->set_rules('conf_pas','Repita contraseña','required|trim|min_length[6]|matches[pas_usu]');
+			$this->form_validation->set_message('required', 'La %s es requerida');
+			$this->form_validation->set_message('min_length', 'La %s debe tener al menos 6 caracteres');
+			$this->form_validation->set_message('very_user', 'El %s ya existe');
+			$this->form_validation->set_message('matches', 'La contraseña no es igual');
+			if ($this->form_validation->run() != FALSE) {
+				$this->usuarios_model->add_user();
+				$data = array('mensaje' => 'El usuario se registro correctamente');
+				$this->load->view('archivo_personal/registro_usuario',$data);
+			}
+			else 
+				$this->load->view('archivo_personal/registro_usuario');
+		}
+		else
+		{
+			redirect(base_url().'registro/usuario');
+		}
+	}
+
+	function very_user($nic_usu){
+
+		$variable = $this->usuarios_model->very_user($nic_usu);
+		if($variable == true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
 
 	public function archivo()
 	{
+		$a=$this->input->post('pro_area');
+		$b=$this->input->post('npr_dte');
+
+		$c=$a.'-'.$b;
 		$archivo = array(
 			'NCJ_ARC' => $this->input->post('ncj_arc'),
 			'NTM_ARC' => $this->input->post('ntm_arc'),
 			'FOJ_ARC' => $this->input->post('foj_arc'),
 			'CUB_ARC' => $this->input->post('cub_arc'),
+			'EST_ARC' =>'EN ARHIVO',
+			'REF_ARC' =>strtoupper(($c)),
 		 );
 		return $archivo;
 	}
@@ -44,7 +93,9 @@ class Registro extends CI_Controller
 	{
 		$carpeta=array(
 			'NOM_CAR' => strtoupper($this->input->post('nom_car')),
-			'TIP_CAR' =>('SOCIAL INDIVIDUAL')
+			'TIP_CAR' =>('SOCIAL INDIVIDUAL'),
+			'HRU_CAR' =>($this->input->post('hru_car')),
+			'DES_CAR' =>($this->input->post('des_car')),
 		);
 		return $carpeta;
 	}
@@ -142,21 +193,52 @@ class Registro extends CI_Controller
 	   public function insertar()
     {  
     	/*Declaracion de arrays*/
-         $archivo = array();
-         //$id_car = $this->registro_model->retornar_id();
-         $archivo = $this->archivo();
-         //$archivo = array('id_car' => $id_car);
+	
+
+		 $carpeta=array();
+		 $carpeta = $this->carpeta();
+         $this->registro_model->inserta_carpeta($carpeta);
+         $id_car = $this->registro_model->retornar_id();
 
 
          $datos_tecnicos = array();
          $datos_tecnicos = $this->datos_tecnicos();
+         $this->registro_model->inserta_datotecnico($datos_tecnicos);
+         $id_dte = $this->registro_model->retornar_id();
 
-         $carpeta=array();
-         $carpeta = $this->carpeta();
 
          $fechas_extremas=array();
          $fechas_extremas = $this->fechas_extremas();
+         $this->registro_model->inserta_fechasextremas($fechas_extremas);
+         $id_fec = $this->registro_model->retornar_id();
 
+
+         $ubicacion = array();
+         $ubicacion=$this->ubicacion();
+         $this->registro_model->inserta_ubicacion($ubicacion);
+         $id_ubi = $this->registro_model->retornar_id();
+
+
+         $area = array();
+         $area = $this->area();
+         $this->registro_model->inserta_productor($area);
+         $id_area = $this->registro_model->retornar_id();
+
+         
+         $archivo = array();
+         $archivo = $this->archivo();
+         $a = array(
+         				'ID_DTE'=>$id_dte,
+         			    'ID_CAR'=>$id_car,
+         			    'ID_FEC'=>$id_fec,
+         			    'ID_UBI'=>$id_ubi,
+         			    'ID_AREA'=>$id_area,
+         			    'REG_ARC' => (date('Y').'-'.date('m').'-'.date('d').'-'.date('H:i:s')),
+         			    );
+         $archivo=$a+$archivo;
+         $this->registro_model->inserta_archivo($archivo);
+
+         /*INSERTA POR TIPO DE DOCUMENTO
          $resolucion = array();
          $resolucion = $this->resolucion();
 
@@ -175,39 +257,8 @@ class Registro extends CI_Controller
          $certificado_np = array();
          $certificado_np = $this->certificado_np();
 
-         $ubicacion = array();
-         $ubicacion=$this->ubicacion();
-
-         $area = array();
-         $area = $this->area();
-
-		if($this->registro_model->inserta_ubicacion($ubicacion))
-         {
-          if($this->registro_model->inserta_archivo($archivo))
-          {
-
-		  	if($this->registro_model->inserta_datotecnico($datos_tecnicos))
-		  	{
-		  	   if($this->registro_model->inserta_carpeta($carpeta))
-		  	   {
-		  	      if($this->registro_model->inserta_fechasextremas($fechas_extremas))
-		  	      {
-		  	      	 if($this->registro_model->inserta_productor($area))
-		  	      	 {
-		  	      	 	if($this->registro_model->inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio,$certificado_np))
-		  	      	 	{
-		  	      	 		
-		  	      	 		return true;
-		  	      	 		
-		  	      	 	}
-					 }					 		  	   	  
-		  	   	  }
-		  	   }
-		  	}
-          }
-      }
-          else
-          {return false;}
+         $this->registro_model->inserta_documento($resolucion, $memorandum, $informe_tecnico, $minuta, $testimonio,$certificado_np);
+    	*/
     }
 
 
@@ -246,20 +297,15 @@ class Registro extends CI_Controller
 	/*CONSULTA DE ARCHIVO POR NOMBRE*/
 	public function busca_archivo_nombre()
 	{
-		$query = $this->input->post('nom_arc');
-		    if($query)
-		    {
-		    	$result = $this->registro_model->busca_archivo_nombre($query);
-		        if ($result != FALSE)
-		        	{
-		        		$data = array('result' => $result);
-		        	}
-		        	else
-		        	{
-		        		$data = array('result' =>'' );
-		        	}
-		    }
-		$this->load->view('archivo_personal/archivo_grilla',$data);
+		$query = $this->input->post('nom_car');
+		if($query)
+		{
+			$query1 = $this->db->query("CALL busca_nombre('%".$query."%')");
+			$data['result'] = $query1;
+			$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+		}
+		else
+			redirect('busquedaarchivo');
 	}
 
 
