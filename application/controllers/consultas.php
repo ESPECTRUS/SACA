@@ -12,10 +12,29 @@ class Consultas extends CI_Controller
     	 $this->load->database('default');
     }
 
-        public function listar_archivos()
+        public function busqueda_proyecto()
     {
-                   
-      //  $this->load->view('Consultas/archivo_grilla',$data);
-
+        $query = $this->input->post('npr_dte');
+        $a = $this->input->post('man_dte');
+        if($query)
+        {
+            $query = $this->db->query("CALL busca_archivo_proy('%".$query."%','')");
+            $data['result'] = $query;
+        $this->load->view('Consultas/grilla_proyecto',$data);            
+        }
+        else
+        if($a)
+        {
+            $query = $this->db->query("CALL busca_archivo_proy('','%".$a."%')");
+            $data['result'] = $query;
+        $this->load->view('Consultas/grilla_proyecto',$data);
+        }
+        else
+        {
+            redirect('busquedanomproy');
+        }
     }
 }
+
+  
+
