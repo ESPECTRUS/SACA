@@ -13,7 +13,7 @@ Class Registro_model extends CI_Model
 
 public function very_adj($adj)
     {
-        $consulta = $this->db->get_where('carpeta',array('NOM_CAR'=>$adj));
+        $consulta = $this->db->get_where('carpeta',array('CI_CAR'=>$adj));
         if($consulta->num_rows() == 1)
         {
             return true;    

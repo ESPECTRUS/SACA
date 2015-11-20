@@ -231,18 +231,18 @@ class Registro extends CI_Controller
 	}
 
 	   public function insertar()
-    {$id_car=0;  
+    {  
 
-    	if ($this->input->post('submit_reg_arc')) {
-			$this->form_validation->set_rules('nom_car','Adjudicatario','trim|callback_very_adj');
+    	/*if ($this->input->post('submit_reg_arc')) {
+			$this->form_validation->set_rules('ci_car','Adjudicatario','trim|callback_very_adj');
 			$this->form_validation->set_message('very_adj', 'El %s ya esta registrado');
 
-			if ($this->form_validation->run() != FALSE) {
+			if ($this->form_validation->run() != FALSE) {*/
 				$carpeta=array();
 		 		$carpeta = $this->carpeta();
          		$this->registro_model->inserta_carpeta($carpeta);
          		$id_car = $this->registro_model->retornar_id();	
-			}
+			/*}
 			else 
 				$this->load->view('archivo_personal/registro_archivo');
 		}
@@ -250,7 +250,7 @@ class Registro extends CI_Controller
 		{
 			$this->load->view('archivo_personal/registro_archivo');
 		}
-		
+		*/
     	/*Declaracion de arrays*/
 	
          $datos_tecnicos = array();
