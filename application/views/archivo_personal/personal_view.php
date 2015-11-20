@@ -9,7 +9,7 @@
 		<meta http-equiv="imagetoolbar" content="no"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_general.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_menu.css');?>"/>
-		<!--<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/ico_menu.css');?>"/>-->
+		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/ico_menu.css');?>"/>
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
 	</head>
 <body>
@@ -82,14 +82,14 @@
 	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
 	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
 	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
+	                        <li><a href="<?= base_url().'busquedausuario'?>">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">CUENTA DE USUARIO<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
 	                        <li><a href="index.html">CAMBIAR CONTRASEÑA</a></li>
-	                        <li><a href="index.html">CERRAR SESION</a></li>
+	                        <li><a href="<?php echo base_url() ?>login/cerrar_sesion">CERRAR SESION</a></li>
 	                    </ul>
 	                </li>
 	            </ul>

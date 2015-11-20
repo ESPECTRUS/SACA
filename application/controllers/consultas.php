@@ -6,8 +6,9 @@ class Consultas extends CI_Controller
 	{
         parent::__construct();        
          $this->load->model('consultas_model');          
-    	 $this->load->helper('form');
-    	 $this->load->helper('date');
+    	   $this->load->model('usuarios_model');          
+         $this->load->helper('form');
+    	   $this->load->helper('date');
       	 $this->load->helper('url');
         if(!$this->session->userdata('logueado'))
         {

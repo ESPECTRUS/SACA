@@ -131,14 +131,14 @@
 	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
 	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
 	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
+	                        <li><a href="<?= base_url().'busquedausuario'?>">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">CUENTA DE USUARIO<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
 	                        <li><a href="index.html">CAMBIAR CONTRASEÑA</a></li>
-	                        <li><a href="index.html">CERRAR SESION</a></li>
+	                        <li><a href="<?php echo base_url() ?>login/cerrar_sesion">CERRAR SESION</a></li>
 	                    </ul>
 	                </li>
 	            </ul>
@@ -157,8 +157,9 @@
 			<?php if(isset($mensaje)):?>
 						<div class="mensajelogin" id="mensajebien"><label><?php echo $mensaje;?></label></div>
 		<?php endif;?>
+		<?php if($this->form_validation->run()==false):?>
 						<div class="mensajelogin" id="mensaje"><label><?= form_error('pas_usu');?></label></div>
-
+		<?php endif;?>
 			<form name="frmregusuario" id="frmregusuario" action="<?= base_url().'registro/registro_very'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" >

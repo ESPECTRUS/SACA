@@ -179,14 +179,14 @@
 	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
 	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
 	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
+	                        <li><a href="<?= base_url().'busquedausuario'?>">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">CUENTA DE USUARIO<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
 	                        <li><a href="index.html">CAMBIAR CONTRASEÑA</a></li>
-	                        <li><a href="index.html">CERRAR SESION</a></li>
+	                        <li><a href="<?php echo base_url() ?>login/cerrar_sesion">CERRAR SESION</a></li>
 	                    </ul>
 	                </li>
 	            </ul>
@@ -325,7 +325,7 @@
 					<table>
 						<tr style="height: 50px;">
 							<td>
-								<input type="submit" name="submit_reg_arc" class="botones ico-btnsave" value="GUARDAR DATOS" >
+								<input type="submit" class="botones ico-btnsave" value="GUARDAR DATOS">
                  				<input type="reset"  onclick="document.location.reload();" class="botones ico-btnlimpiar" value="LIMPIAR DATOS">
                  			</td>
 						</tr>
@@ -333,8 +333,7 @@
 				</td>
 				</tr>
 				</table>
-				</center>
-				<?= validation_errors();?>	
+				</center>	
 				</fieldset>
 			</form>
 		</div><!-- cB -->

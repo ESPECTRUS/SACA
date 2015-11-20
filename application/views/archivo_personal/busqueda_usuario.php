@@ -12,12 +12,40 @@
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_form.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_botones.css');?>"/>
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	    <!-- validaciones -->
-		<script type="text/javascript" src="<?= base_url('templates/js/jquery_1.4.js');?>"/></script>
+		<!-- validaciones -->
+        <script type="text/javascript" src="<?= base_url('templates/js/jquery_1.4.js');?>"/></script>
         <script type="text/javascript" src="<?= base_url('templates/js/jquery_validate.js');?>"/></script>
-        <script type="text/javascript" src="<?= base_url('templates/js/validaciones.js');?>"/></script>		
+        <script type="text/javascript" src="<?= base_url('templates/js/validaciones.js');?>"/></script>
+        		
+		<!--Validacion de campos-->
+		<script type="text/javascript">
+			$(
+			   function()
+			   {
+					$('#frmbusquedanombre').validate
+					(
+					 	{
+							rules:
+							{
+							'nom_car': {required: true}
+							},
+							messages: 
+							{
+							'nom_car':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							},
+							debug: true,
+							submitHandler: function(form)
+							{
+								document.getElementById("frmbusquedanombre").submit();
+							}
+					 	}
+					);
+				}
+			);
+		</script>
 	</head>
 <body>
+
 <div id="daddy">
 	<!-- header -->
 	<div id="header">
@@ -49,7 +77,7 @@
 					<div id="user-icon">
 						<img src="<?= base_url('templates/img/images/user-men.png');?>">
 					</div>
-					<span id="download-text"><a href=""><?php echo $nic ?><br/><?php echo $nombre.' '.$apellidop.' '.$apellidom ?></a></span>
+					<span id="download-text"><?php echo $nic ?><br/><?php echo $nombre.' '.$apellidop.' '.$apellidom ?></a></span>
 				</center>
 			</div>
 			<!-- icons -->
@@ -100,53 +128,39 @@
 	            </ul>
 	        </nav> 
 		</div><!-- cA -->
+
 		<div id="cB">
-			<div class="titulo">SOLICITUD DE ARCHIVO </div>
-			<form name="frmautorizacion" id="frmautorizacion" action="<?=base_url();?>personal/insertar" method="post">
+			<div class="titulo">CONSULTA DE ARCHIVO POR NOMBRE </div>
+			<form name="frmbusquedanombre" id="frmbusquedanombre" action="<?=base_url();?>registro/busca_archivo_nombre" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 			<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
-			<legend> DATOS PARA LA SOLICITUD</legend>
-					<table >
-						<tr style="height: 30px;">
-							<td width="100px" class="lblnombre">Usuario</td>
-							<td width="240px" ><input type="text" name="id_usu" class="txtcampo" placeholder="NRO DE PERSONAL"></td>
-							<td width="100px" class="lblnombre">Razón</td>
-							<td width="240px">
-								<select name="tip_sol" class="txtselect">
-									<option value="">SELECCIONE</option>
-									<option value="Carpetilla">Solicitud de retiro</option>
-									<option value="Carpeta de palanca">Carpeta de palanca</option>
-									<option value="Otros">Otros</option>
-								</select>
-							</td>
-						</tr>
-						<tr style="height: 40px;">
-							<td width="100px" class="lblnombre">Nro. de archivo</td>
-							<td width="240px"><input type="text" name="nro_arc" class="txtcampo" placeholder="NRO. DE ARCHIVO"></td>
-						    <td width="130px" class="lblnombre">Fecha de autorización </td>
-							<td width="220px"><input type="text" name="fec_sol" class="txtcampo datepicker" readonly="" placeholder="FECHA DE AUTORIZACIÓN " ></td>
-					    </tr> 
-					   <table>
-						<tr style="height: 60px;">
-							<td width="83px" class="lblnombre">Motivos</td>
-							<td width="240px"><textarea class="txtcampo large2" type="text" name="mot_sol" placeholder="MOTIVOS DE AUTORIZACIÓN"></textarea> </td>
-						</tr>
-					   </table>
-					</table>
-					<center>
-					<table>
-						<tr style="height: 80px;">
-							<td>
-								<input type="submit" class="botones ico-btnsave" value="ENVIAR DATOS">
-                 				<input type="reset"  onclick="document.location.reload();" class="botones ico-btnlimpiar" value="LIMPIAR DATOS">
-                 			</td>
-						</tr>
-					</table>
-				</td>
-				</tr>
-				</table>
-				</center>	
-				</fieldset>	
+				<center>
+            <div class="colordiv">
+                <center>
+	        <table>
+	        <tr>
+	            <td rowspan="5">
+	            <img height="160px" width="175px" src="<?= base_url('templates/img/images/usuarios.png');?>">
+	            </td>
+	        </tr>
+	        <tr>
+	        <tr style="height: 50px;">
+			   <td width="100px" class="lblnombre">Ingrese nombre de usuario:</td>
+			   <td width="100px"><input type="text" name="nic_usu" class="txtcampo" placeholder="NOMBRE DE USUARIO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
+		    </tr>  
+	        </tr>
+	        <tr>
+	           <td height="40px" colspan="2" style="padding-left:25px" align="center">
+				<input type="submit" class="botones ico-btnsearch" value="BUSCAR">
+                <input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS">
+               </td>
+           </tr>
+	</table>
+</form>
+</center>
+</div>
+</center>
+</fieldset>
 			</form>
 		</div><!-- cB -->
 		<div class="Cpad">

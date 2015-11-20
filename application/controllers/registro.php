@@ -12,6 +12,7 @@ class Registro extends CI_Controller
       	 $this->load->helper('url');
     	 $this->load->database('default');  
     	 $this->load->model('usuarios_model');
+    	 $this->load->model('registro_model');
         if(!$this->session->userdata('logueado'))
         {
         	redirect('login');
@@ -36,6 +37,12 @@ class Registro extends CI_Controller
 	}
 	public function registro_very()
 	{
+				$data=array();
+         	 $data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');	
+
 		if ($this->input->post('submit_reg')) {
 			$this->form_validation->set_rules('nic_usu','Usuario','required|trim|callback_very_user');
 			$this->form_validation->set_rules('pas_usu','Contraseña','required|trim|min_length[6]');
@@ -47,14 +54,14 @@ class Registro extends CI_Controller
 			if ($this->form_validation->run() != FALSE) {
 				$this->usuarios_model->add_user();
 				$data = array('mensaje' => 'El usuario se registro correctamente');
-				$this->load->view('archivo_personal/registro_usuario',$data,$data2);
+				$this->load->view('archivo_personal/registro_usuario', $data, $data2);
 			}
 			else 
-				$this->load->view('archivo_personal/registro_usuario');
+				$this->load->view('archivo_personal/registro_usuario',$data2);
 		}
 		else
 		{
-			redirect(base_url().'registro/usuario');
+			redirect(base_url().'registro/usuario',$data2);
 		}
 	}
 
@@ -338,12 +345,17 @@ class Registro extends CI_Controller
 	/*CONSULTA DE ARCHIVO POR NOMBRE*/
 	public function busca_archivo_nombre()
 	{
+         	 $data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');
+
 		$query = $this->input->post('nom_car');
 		if($query)
 		{
 			$query1 = $this->db->query("CALL busca_nombre('%".$query."%')");
-			$data['result'] = $query1;
-			$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+			$data2['result'] = $query1;
+			$this->load->view('Consultas/grilla_nombrecarpeta',$data2);
 		}
 		else
 			redirect('busquedaarchivo');
