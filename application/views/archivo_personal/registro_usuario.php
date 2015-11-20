@@ -121,7 +121,7 @@
 	                    <ul class="vnav-subnav2">
 	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
 	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro/usuario'?>">REGISTRAR USUARIO</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
@@ -157,9 +157,10 @@
 			<?php if(isset($mensaje)):?>
 						<div class="mensajelogin" id="mensajebien"><label><?php echo $mensaje;?></label></div>
 		<?php endif;?>
-		<?php if($this->form_validation->run()==false):?>
-						<div class="mensajelogin" id="mensaje"><label><?= form_error('pas_usu');?></label></div>
-		<?php endif;?>
+		<?php if(validation_errors()) {?>    
+				<div class="mensajelogin" id="mensaje"><label><?= validation_errors();?></label></div>
+		        <?php } ?>
+		
 			<form name="frmregusuario" id="frmregusuario" action="<?= base_url().'registro/registro_very'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" >
