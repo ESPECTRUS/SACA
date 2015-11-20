@@ -196,30 +196,43 @@
 		<div id="cB">
 			<div class="titulo">REGISTRAR DATOS DE CARPETA SOCIAL INDIVIDUAL - CSI</div>
 			<form name="frmarchivo" id="frmarchivo" action="<?=base_url();?>registro/insertar" method="post">
+				
+				
 				<fieldset class="fieldcuerpo" align="left">
-					<legend> DATOS GENERALES </legend>
-					<table >
+					<legend>DATOS DE CARPETA</legend>
+					<table>
 						<tr style="height: 30px;">
-							<td width="100px" class="lblnombre">Nro. de caja</td>
-							<td width="240px" ><input type="text" name="ncj_arc" class="txtcampo" placeholder="NRO DE CAJA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-							<td width="100px" class="lblnombre">Nro. de tomo</td>
-							<td width="240px" ><input type="text" name="ntm_arc" class="txtcampo" placeholder="NRO DE TOMO" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-						</tr>
-						<tr style="height: 30px;">
-							<td width="100px" class="lblnombre">Nro. de fojas</td>
-							<td width="240px"><input type="text" name="foj_arc" class="txtcampo" placeholder="NRO DE FOJAS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-							<td width="100px" class="lblnombre">Cubierta</td>
-							<td width="240px">
-								<select name="cub_arc" class="txtselect">
-									<option value="">SELECCIONE</option>
-									<option value="Carpetilla">Carpetilla</option>
-									<option value="Carpeta de palanca">Carpeta de palanca</option>
-									<option value="Otros">Otros</option>
-								</select>
-							</td>
+							<td width="130px" class="lblnombre">Nombre de carpeta</td>
+							<td width="220px"><input type="text" name="nom_car" class="txtcampo large" placeholder="ADJUDICATARIO/BENEFICIARIO" onkeypress="return sololetras(event);" onpaste="return false" ></td>
 						</tr>
 					</table>
+					<table>
+						<tr style="height: 30px;">
+							<td width="130px" class="lblnombre">Fecha Inicial Extrema</td>
+							<td width="220px"><input type="text" name="fec_ini" class="txtcampo datepicker" readonly="" placeholder="FECHA INICIAL" ></td>
+							<td width="100px" class="lblnombre">Fecha Final Extrema</td>
+							<td width="70px"><input type="text" name="fec_fin" class="txtcampo datepicker" readonly="" placeholder="FECHA FINAL" ></td>
+						</tr>
+						<tr style="height: 30px;">
+							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
+							<td width="70px"><input type="text" name="cant_fol" class="txtcampo " placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="80px" class="lblnombre">Hoja de ruta</td>
+							<td width="70px"><input type="text" name="hru_car" class="txtcampo " placeholder="NUMERO DE HOJA DE RUTA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+								
+						</tr>
+					</table>
+					<!--TIPOS DE DOCUMENTOS-->
+					<fieldset class="fieldcuerpo">
+						<legend>Documento</legend>
+						<table>
+							<tr style="height: 30px;">
+								<td width="80px" class="lblnombre">Descripción</td>
+								<td width="70px"><textarea name="des_car" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
+							</tr>
+						</table>
+					</fieldset>								
 				</fieldset>
+
 				<fieldset class="fieldcuerpo" align="left" >
 					<legend> DATOS TECNICOS </legend>
 					<table >
@@ -256,41 +269,33 @@
 						</tr>
 					</table>
 				</fieldset>
+
 				<fieldset class="fieldcuerpo" align="left">
-					<legend>DATOS DE CARPETA</legend>
-					<table>
+					<legend> DATOS GENERALES </legend>
+					<table >
 						<tr style="height: 30px;">
-							<td width="130px" class="lblnombre">Nombre de carpeta</td>
-							<td width="220px"><input type="text" name="nom_car" class="txtcampo large" placeholder="ADJUDICATARIO/BENEFICIARIO" onkeypress="return sololetras(event);" onpaste="return false" ></td>
+							<td width="100px" class="lblnombre">Nro. de caja</td>
+							<td width="240px" ><input type="text" name="ncj_arc" class="txtcampo" placeholder="NRO DE CAJA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="100px" class="lblnombre">Nro. de tomo</td>
+							<td width="240px" ><input type="text" name="ntm_arc" class="txtcampo" placeholder="NRO DE TOMO" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+						</tr>
+						<tr style="height: 30px;">
+							<td width="100px" class="lblnombre">Nro. de fojas</td>
+							<td width="240px"><input type="text" name="foj_arc" class="txtcampo" placeholder="NRO DE FOJAS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="100px" class="lblnombre">Cubierta</td>
+							<td width="240px">
+								<select name="cub_arc" class="txtselect">
+									<option value="">SELECCIONE</option>
+									<option value="Carpetilla">Carpetilla</option>
+									<option value="Carpeta de palanca">Carpeta de palanca</option>
+									<option value="Otros">Otros</option>
+								</select>
+							</td>
 						</tr>
 					</table>
-					<table>
-						<tr style="height: 30px;">
-							<td width="130px" class="lblnombre">Fecha Inicial Extrema</td>
-							<td width="220px"><input type="text" name="fec_ini" class="txtcampo datepicker" readonly="" placeholder="FECHA INICIAL" ></td>
-							<td width="100px" class="lblnombre">Fecha Final Extrema</td>
-							<td width="70px"><input type="text" name="fec_fin" class="txtcampo datepicker" readonly="" placeholder="FECHA FINAL" ></td>
-						</tr>
-						<tr style="height: 30px;">
-							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
-							<td width="70px"><input type="text" name="cant_fol" class="txtcampo " placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-							<td width="80px" class="lblnombre">Hoja de ruta</td>
-							<td width="70px"><input type="text" name="hru_car" class="txtcampo " placeholder="NUMERO DE HOJA DE RUTA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
-								
-						</tr>
-					</table>
-					<!--TIPOS DE DOCUMENTOS-->
-					<fieldset class="fieldcuerpo">
-						<legend>Documento</legend>
-						<table>
-							<tr style="height: 30px;">
-								<td width="80px" class="lblnombre">Descripción</td>
-								<td width="70px"><textarea name="des_car" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
-							</tr>
-						</table>
-					</fieldset>
-				
-				</fieldset>
+				</fieldset>	
+
+
 				<fieldset class="fieldcuerpo" align="left" >
 					<legend> UBICACION FISICA </legend>
 					<table >
