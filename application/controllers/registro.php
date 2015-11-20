@@ -115,6 +115,7 @@ class Registro extends CI_Controller
 			'TIP_CAR' =>('SOCIAL INDIVIDUAL'),
 			'HRU_CAR' =>($this->input->post('hru_car')),
 			'DES_CAR' =>($this->input->post('des_car')),
+			'CI_CAR' =>($this->input->post('ci_car')),
 		);
 		return $carpeta;
 	}
