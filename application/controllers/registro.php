@@ -2,25 +2,37 @@
 
 class Registro extends CI_Controller 
 {
+		      	
 	public function __construct()
 	{
         parent::__construct();
-        
-         $this->load->model('registro_model'); 
          $this->load->library('form_validation');
     	 $this->load->helper('form');
     	 $this->load->helper('date');
       	 $this->load->helper('url');
-    	 $this->load->database('default');
+    	 $this->load->database('default');  
     	 $this->load->model('usuarios_model');
+        if(!$this->session->userdata('logueado'))
+        {
+        	redirect('login');
+        }
     }
 	public function index()
 	{
-		$this->load->view('archivo_personal/registro_archivo');
+
+         	 $data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');
+		$this->load->view('archivo_personal/registro_archivo', 	$data2);
 	}
 	public function usuario()
 	{
-		$this->load->view('archivo_personal/registro_usuario');
+		$data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');
+		$this->load->view('archivo_personal/registro_usuario',$data2);
 	}
 	public function registro_very()
 	{
@@ -35,7 +47,7 @@ class Registro extends CI_Controller
 			if ($this->form_validation->run() != FALSE) {
 				$this->usuarios_model->add_user();
 				$data = array('mensaje' => 'El usuario se registro correctamente');
-				$this->load->view('archivo_personal/registro_usuario',$data);
+				$this->load->view('archivo_personal/registro_usuario',$data,$data2);
 			}
 			else 
 				$this->load->view('archivo_personal/registro_usuario');

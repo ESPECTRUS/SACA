@@ -53,7 +53,7 @@ class Login extends CI_Controller
 		public function logueado() {
     	  if($this->session->userdata('logueado')){
 
-        	 $data2=array();
+        	 $data2=array();	
          	 $data2['nombre'] = $this->session->userdata('nombre');
          	 $data2['apellidop'] = $this->session->userdata('apellidopat');
          	 $data2['apellidom'] = $this->session->userdata('apellidomat');
