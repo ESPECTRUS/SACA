@@ -88,8 +88,8 @@
 	                    <ul class="vnav-subnav2">
 	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
 	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
-	                    </ul>
+  	                        <li><a href="<?= base_url().'registro/usuario'?>">REGISTRAR USUARIO</a></li>
+                   </ul>
 	                </li>
 	                <li class="active2">
 	                    <a href="<?= base_url().'grilla'?>" class="vnav-item2">CONSULTAS Y REPORTES<span class="vnav-counter2">5</span></a>

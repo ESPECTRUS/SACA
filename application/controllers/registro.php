@@ -36,8 +36,7 @@ class Registro extends CI_Controller
 		$this->load->view('archivo_personal/registro_usuario',$data2);
 	}
 	public function registro_very()
-	{
-				$data=array();
+	{		 $data2=array();
          	 $data2['nombre'] = $this->session->userdata('nombre');
          	 $data2['apellidop'] = $this->session->userdata('apellidopat');
          	 $data2['apellidom'] = $this->session->userdata('apellidomat');
@@ -52,9 +51,13 @@ class Registro extends CI_Controller
 			$this->form_validation->set_message('very_user', 'El %s ya existe');
 			$this->form_validation->set_message('matches', 'La contraseña no es igual');
 			if ($this->form_validation->run() != FALSE) {
+				$data2['nombre'] = $this->session->userdata('nombre');
+                $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 	$data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 	$data2['nic']  =$this->session->userdata('nic_usu');	
 				$this->usuarios_model->add_user();
-				$data = array('mensaje' => 'El usuario se registro correctamente');
-				$this->load->view('archivo_personal/registro_usuario', $data, $data2);
+				$data2['mensaje']= 'El usuario se registro correctamente';
+				$this->load->view('archivo_personal/registro_usuario',$data2);
 			}
 			else 
 				$this->load->view('archivo_personal/registro_usuario',$data2);

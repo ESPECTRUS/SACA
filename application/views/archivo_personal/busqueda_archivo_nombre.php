@@ -105,7 +105,8 @@
 	                    <ul class="vnav-subnav2">
 	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
 	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro/usuario'?>">REGISTRAR USUARIO</a></li>
+
 	                    </ul>
 	                </li>
 	                <li class="active2">
