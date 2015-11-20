@@ -17,11 +17,8 @@ class Login extends CI_Controller
 	}
 	public function principal()
 	{
-<<<<<<< HEAD
+
 		$this->load->view('archivo_personal/principal');
-	}
-}
-=======
 		$this->load->view('archivo_personal/personal_view');
 	}
 	public function very_session(){
@@ -44,4 +41,4 @@ class Login extends CI_Controller
 		}
 	}
 }
->>>>>>> 225e67350616f6c4ee5cf621307fbb532476fde1
+

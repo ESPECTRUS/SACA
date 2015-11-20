@@ -200,10 +200,6 @@
 </center>
 </div>
 	<div style="clear: both;"></div>	
-<<<<<<< HEAD
-=======
-		<!--TIPOS DE DOCUMENTOS-->	
->>>>>>> 225e67350616f6c4ee5cf621307fbb532476fde1
 </form>
 		</div><!-- cB -->
 		<div class="Cpad">
@@ -223,3 +219,4 @@
 </div><!-- footer -->
 </body>
 </html>
+

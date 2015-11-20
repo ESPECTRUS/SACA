@@ -37,7 +37,8 @@ class Grilla extends CI_Controller
 	}
 	public function reporte()
 	{
-		$this->load->view('archivo_personal/reporte-fpdf');
+		//$this->load->view('Reporte/reporte2');
+		$this->load->view('Reporte/busqueda_archivo_nombre');
 	}
 	public function lista_archivo()
 	{
@@ -45,8 +46,6 @@ class Grilla extends CI_Controller
 		$data['result'] = $query1->result();
 		$this->load->view('Reporte/listado_archivo_nombre',$data);
 	}
-	public function exportarFpdf(){
 
-    }
     
 }
