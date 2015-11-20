@@ -121,6 +121,7 @@
 		<tr>
 			<th>CODIGO DE REFERENCIA</th>
             <th>ADJUDICATARIO</th>
+			<th>C.I.</th>
 			<th>NOM. PROYECTO</th>
 			<th>DESCRIPCION</th>			
 			<th>LUGAR</th>
@@ -135,6 +136,7 @@
 		<tr>
 			<th>CODIGO DE REFERENCIA</th>
             <th>ADJUDICATARIO</th>
+			<th>C.I.</th>
 			<th>NOM. PROYECTO</th>
 			<th>DESCRIPCION</th>			
 			<th>LUGAR</th>
@@ -154,6 +156,7 @@
 						echo "<tr>";
 						echo "<td align='center'>".$row->REF_ARC."</td>";
 						echo "<td align='center'>".$row->NOM_CAR."</td>";
+						echo "<td align='center'>".$row->CI_CAR."</td>";
 						echo "<td align='center'>".$row->NPR_DTE."</td>";
 						echo "<td align='center'>".$row->DES_CAR."</td>";
 						echo "<td align='center'>".$row->LUG_DTE."</td>";

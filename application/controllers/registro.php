@@ -12,6 +12,7 @@ class Registro extends CI_Controller
       	 $this->load->helper('url');
     	 $this->load->database('default');  
     	 $this->load->model('usuarios_model');
+    	 $this->load->model('registro_model');
         if(!$this->session->userdata('logueado'))
         {
         	redirect('login');
@@ -36,6 +37,7 @@ class Registro extends CI_Controller
 	}
 	public function registro_very()
 	{
+
 		if ($this->input->post('submit_reg')) {
 			$this->form_validation->set_rules('nic_usu','Usuario','required|trim|callback_very_user');
 			$this->form_validation->set_rules('pas_usu','Contraseña','required|trim|min_length[6]');
@@ -108,6 +110,7 @@ class Registro extends CI_Controller
 			'TIP_CAR' =>('SOCIAL INDIVIDUAL'),
 			'HRU_CAR' =>($this->input->post('hru_car')),
 			'DES_CAR' =>($this->input->post('des_car')),
+			'CI_CAR' =>($this->input->post('ci_car')),
 		);
 		return $carpeta;
 	}

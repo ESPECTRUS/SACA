@@ -32,7 +32,7 @@
 					(
 					 	{
 							rules:
-							{
+							{/*
 							'ncj_arc': {required: true},
 							'cub_arc': 'required',
 							'npr_dte': {required: true},
@@ -40,7 +40,7 @@
 							'man_dte': {required: true},
 							'lot_dte': {required: true},
 							'nom_car': {required: true},
-							'cant_fol': {required: true},
+							'ci_car': {required: true},
 							'fec_ini': {required: true},
 							'fec_fin': {required: true},
 							'tip_doc': {required: true},
@@ -50,7 +50,7 @@
 							'crp_ubi': 'required',
 							'bal_ubi': {required: true},
 							'pro_area': {required: true},
-							'obs_area': {required: true}
+							'obs_area': {required: true}*/
 
 							},
 							messages: 
@@ -63,7 +63,7 @@
 							'man_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'lot_dte':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'nom_car':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
-							'cant_fol':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'ci_car':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'fec_ini':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'fec_fin':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'tip_doc':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
@@ -85,6 +85,8 @@
 				}
 			);
 		</script>
+
+
 		<!--Datepicker-->
 		<script type="text/javascript">
 				$(function() {
@@ -214,8 +216,8 @@
 							<td width="70px"><input type="text" name="fec_fin" class="txtcampo datepicker" readonly="" placeholder="FECHA FINAL" ></td>
 						</tr>
 						<tr style="height: 30px;">
-							<td width="80px" class="lblnombre">Cantidad de Doc.</td>
-							<td width="70px"><input type="text" name="cant_fol" class="txtcampo " placeholder="CANTIDAD DE DOCUMENTOS" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="80px" class="lblnombre">CI</td>
+							<td width="70px"><input type="text" name="ci_car" class="txtcampo " placeholder="C.I." onkeypress="return solonumeros(event);" onpaste="return false"></td>
 							<td width="80px" class="lblnombre">Hoja de ruta</td>
 							<td width="70px"><input type="text" name="hru_car" class="txtcampo " placeholder="NUMERO DE HOJA DE RUTA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
 								
