@@ -2,14 +2,31 @@
 
 Class Registro_model extends CI_Model
 {
-     public $id_car=0;
+     
       function __construct()
     {
-        global $id_car;
         parent::__construct();
         
     }
 /*INSERTA PERSONAL*/
+
+
+public function very_adj($adj)
+    {
+        $consulta = $this->db->get_where('carpeta',array('NOM_CAR'=>$adj));
+        if($consulta->num_rows() == 1)
+        {
+            return true;    
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+
+
+
 
  public function inserta_archivo ($archivo)
     {

@@ -49,7 +49,7 @@
 					<div id="user-icon">
 						<img src="<?= base_url('templates/img/images/user-men.png');?>">
 					</div>
-					<span id="download-text"><a href="">eajahuanca.uet<br/>Edwin Ajahuanca Callisaya</a></span>
+					<span id="download-text"><a href=""><?php echo $nic ?><br/><?php echo $nombre.' '.$apellidop.' '.$apellidom ?></a></span>
 				</center>
 			</div>
 			<!-- icons -->
@@ -77,7 +77,7 @@
 	                    <ul class="vnav-subnav2">
 	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
 	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro/usuario'?>">REGISTRAR USUARIO</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
@@ -87,14 +87,14 @@
 	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
 	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
 	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
+	                        <li><a href="<?= base_url().'busquedausuario'?>">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">CUENTA DE USUARIO<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
 	                        <li><a href="index.html">CAMBIAR CONTRASEÑA</a></li>
-	                        <li><a href="index.html">CERRAR SESION</a></li>
+	                        <li><a href="<?php echo base_url() ?>login/cerrar_sesion">CERRAR SESION</a></li>
 	                    </ul>
 	                </li>
 	            </ul>

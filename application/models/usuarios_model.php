@@ -44,6 +44,14 @@ class Usuarios_model extends CI_Model
 		{
 			return FALSE;
 		}
-	}
-
+	}		
+ 	public function traedatos($nic_usu, $pas_usu){
+      $this->db->select('ID_USU,NOM_USU,APA_USU,AMA_USU,NIC_USU');
+      $this->db->from('usuario');
+      $this->db->where('NIC_USU', $nic_usu);
+      $this->db->where('PAS_USU', $pas_usu);
+      $consulta = $this->db->get();
+      $resultado = $consulta->row();
+      return $resultado;
+   }
 }

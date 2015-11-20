@@ -27,12 +27,12 @@
 					 	{
 							rules:
 							{
-							'nom_usu': {required: true},
+							'nic_usu': {required: true},
 							'pas_usu': {required: true}
 							},
 							messages: 
 							{
-							'nom_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							'nic_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							'pas_usu':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
 							},
 							debug: true,
@@ -78,7 +78,7 @@
 					<div id="user-icon">
 						<img src="<?= base_url('templates/img/images/user-men.png');?>">
 					</div>
-					<span id="download-text"><a href="">eajahuanca.uet<br/>Edwin Ajahuanca Callisaya</a></span>
+					<span id="download-text"><a href="">Usuario<br/>Invitado</a></span>
 				</center>
 			</div>
 			<!-- icons -->
@@ -106,7 +106,7 @@
 	                    <ul class="vnav-subnav2">
 	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
 	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
-	                        <li><a href="<?= base_url().'registro'?>">MODIFICAR ARCHIVO</a></li>
+	                        <li><a href="<?= base_url().'registro/usuario'?>">REGISTRAR USUARIO</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
@@ -116,14 +116,14 @@
 	                        <li><a href="<?= base_url().'busquedanomproy'?>">POR NOMBRE PROYECTO (URBANIZACION)</a></li>
 	                        <li><a href="<?= base_url().'busquedanomprod'?>">POR NOMBRE DE PRODUCTOR</a></li>
 	                        <li><a href="<?= base_url().'busquedaubicacion'?>">POR UBICACION</a></li>
-	                        <li><a href="index.html">POR USUARIOS QUE REGISTRARON</a></li>
+	                        <li><a href="<?= base_url().'busquedausuario'?>">POR USUARIOS QUE REGISTRARON</a></li>
 	                    </ul>
 	                </li>
 	                <li class="active2">
 	                    <a href="" class="vnav-item2">CUENTA DE USUARIO<span class="vnav-counter2">2</span></a>
 	                    <ul class="vnav-subnav2">
 	                        <li><a href="index.html">CAMBIAR CONTRASEÑA</a></li>
-	                        <li><a href="index.html">CERRAR SESION</a></li>
+	                        <li><a href="<?php echo base_url() ?>login/cerrar_sesion">CERRAR SESION</a></li>
 	                    </ul>
 	                </li>
 	            </ul>
@@ -131,10 +131,15 @@
 		</div><!-- cA -->
 
 		<div id="cB">
+		 <script type="text/javascript">
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeIn(1500); },0000); });
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeOut(1500); },5000); });
+            </script>
+       
 
 			<div class="titulo">INICIAR SESIÓN </div>
 			<?php if(isset($mensaje)):?>
-			<label class="mensaje"><?= $mensaje;?></label>
+			<div class="mensajelogin" id="mensaje"><label><?php echo $mensaje;?></label></div>
 			<?php endif;?>
 			<form name="frmlogin" id="frmlogin" action="<?= base_url().'login/very_session'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->

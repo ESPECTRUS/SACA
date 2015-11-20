@@ -1,11 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Autorizacion extends CI_Controller 
+class Busquedausuario extends CI_Controller 
 {
 	public function __construct()
 	{
         parent::__construct();
-            	 $this->load->model('usuarios_model');
+        $this->load->model('usuarios_model');
         if(!$this->session->userdata('logueado'))
         {
         	redirect('login');
@@ -14,10 +14,11 @@ class Autorizacion extends CI_Controller
     }
 	public function index()
 	{
+
          	 $data2['nombre'] = $this->session->userdata('nombre');
          	 $data2['apellidop'] = $this->session->userdata('apellidopat');
          	 $data2['apellidom'] = $this->session->userdata('apellidomat');
          	 $data2['nic']  =$this->session->userdata('nic_usu');
-		$this->load->view('archivo_personal/formulario_autorizacion',$data2);
+		$this->load->view('archivo_personal/busqueda_usuario', $data2);
 	}
 }

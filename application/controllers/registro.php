@@ -2,28 +2,46 @@
 
 class Registro extends CI_Controller 
 {
+		      	
 	public function __construct()
 	{
         parent::__construct();
-        
-         $this->load->model('registro_model'); 
          $this->load->library('form_validation');
     	 $this->load->helper('form');
     	 $this->load->helper('date');
       	 $this->load->helper('url');
-    	 $this->load->database('default');
+    	 $this->load->database('default');  
     	 $this->load->model('usuarios_model');
+    	 $this->load->model('registro_model');
+        if(!$this->session->userdata('logueado'))
+        {
+        	redirect('login');
+        }
     }
 	public function index()
 	{
-		$this->load->view('archivo_personal/registro_archivo');
+
+         	 $data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');
+		$this->load->view('archivo_personal/registro_archivo', 	$data2);
 	}
 	public function usuario()
 	{
-		$this->load->view('archivo_personal/registro_usuario');
+		$data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');
+		$this->load->view('archivo_personal/registro_usuario',$data2);
 	}
 	public function registro_very()
-	{
+	{		 $data2=array();
+         	 $data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');	
+
 		if ($this->input->post('submit_reg')) {
 			$this->form_validation->set_rules('nic_usu','Usuario','required|trim|callback_very_user');
 			$this->form_validation->set_rules('pas_usu','Contraseña','required|trim|min_length[6]');
@@ -33,16 +51,20 @@ class Registro extends CI_Controller
 			$this->form_validation->set_message('very_user', 'El %s ya existe');
 			$this->form_validation->set_message('matches', 'La contraseña no es igual');
 			if ($this->form_validation->run() != FALSE) {
+				$data2['nombre'] = $this->session->userdata('nombre');
+                $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 	$data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 	$data2['nic']  =$this->session->userdata('nic_usu');	
 				$this->usuarios_model->add_user();
-				$data = array('mensaje' => 'El usuario se registro correctamente');
-				$this->load->view('archivo_personal/registro_usuario',$data);
+				$data2['mensaje']= 'El usuario se registro correctamente';
+				$this->load->view('archivo_personal/registro_usuario',$data2);
 			}
 			else 
-				$this->load->view('archivo_personal/registro_usuario');
+				$this->load->view('archivo_personal/registro_usuario',$data2);
 		}
 		else
 		{
-			redirect(base_url().'registro/usuario');
+			redirect(base_url().'registro/usuario',$data2);
 		}
 	}
 
@@ -96,6 +118,7 @@ class Registro extends CI_Controller
 			'TIP_CAR' =>('SOCIAL INDIVIDUAL'),
 			'HRU_CAR' =>($this->input->post('hru_car')),
 			'DES_CAR' =>($this->input->post('des_car')),
+			'CI_CAR' =>($this->input->post('ci_car')),
 		);
 		return $carpeta;
 	}
@@ -190,17 +213,46 @@ class Registro extends CI_Controller
 		return $area;		
 	}
 /*FUNCION INSERTA*/
+
+
+
+
+	function very_adj($adj){
+
+		$variable = $this->registro_model->very_adj($adj);
+		if($variable == true)
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+
 	   public function insertar()
-    {  
+    {$id_car=0;  
+
+    	if ($this->input->post('submit_reg_arc')) {
+			$this->form_validation->set_rules('nom_car','Adjudicatario','trim|callback_very_adj');
+			$this->form_validation->set_message('very_adj', 'El %s ya esta registrado');
+
+			if ($this->form_validation->run() != FALSE) {
+				$carpeta=array();
+		 		$carpeta = $this->carpeta();
+         		$this->registro_model->inserta_carpeta($carpeta);
+         		$id_car = $this->registro_model->retornar_id();	
+			}
+			else 
+				$this->load->view('archivo_personal/registro_archivo');
+		}
+		else
+		{
+			$this->load->view('archivo_personal/registro_archivo');
+		}
+		
     	/*Declaracion de arrays*/
 	
-
-		 $carpeta=array();
-		 $carpeta = $this->carpeta();
-         $this->registro_model->inserta_carpeta($carpeta);
-         $id_car = $this->registro_model->retornar_id();
-
-
          $datos_tecnicos = array();
          $datos_tecnicos = $this->datos_tecnicos();
          $this->registro_model->inserta_datotecnico($datos_tecnicos);
@@ -297,12 +349,17 @@ class Registro extends CI_Controller
 	/*CONSULTA DE ARCHIVO POR NOMBRE*/
 	public function busca_archivo_nombre()
 	{
+         	 $data2['nombre'] = $this->session->userdata('nombre');
+         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 $data2['nic']  =$this->session->userdata('nic_usu');
+
 		$query = $this->input->post('nom_car');
 		if($query)
 		{
 			$query1 = $this->db->query("CALL busca_nombre('%".$query."%')");
-			$data['result'] = $query1;
-			$this->load->view('Consultas/grilla_nombrecarpeta',$data);
+			$data2['result'] = $query1;
+			$this->load->view('Consultas/grilla_nombrecarpeta',$data2);
 		}
 		else
 			redirect('busquedaarchivo');

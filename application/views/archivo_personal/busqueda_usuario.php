@@ -12,21 +12,38 @@
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_form.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_botones.css');?>"/>
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
-	    <link rel="stylesheet" type="text/css" href="<?= base_url();?>templates/css/jquery.dataTables.css">
-		<link rel="stylesheet" type="text/css" href="<?= base_url();?>templates/css/shCore.css">
-		<link rel="stylesheet" type="text/css" href="<?= base_url();?>templates/css/demo.css">
-		<style type="text/css" class="init">
-		</style>
-		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/jquery.js"></script>
-		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/jquery.dataTables.js"></script>
-		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/shCore.js"></script>
-		<script type="text/javascript" language="javascript" src="<?= base_url();?>templates/js/demo.js"></script>
-		<script type="text/javascript" language="javascript" class="init">
-			$(document).ready(function() {
-				$('#example').DataTable();
-			} );
+		<!-- validaciones -->
+        <script type="text/javascript" src="<?= base_url('templates/js/jquery_1.4.js');?>"/></script>
+        <script type="text/javascript" src="<?= base_url('templates/js/jquery_validate.js');?>"/></script>
+        <script type="text/javascript" src="<?= base_url('templates/js/validaciones.js');?>"/></script>
+        		
+		<!--Validacion de campos-->
+		<script type="text/javascript">
+			$(
+			   function()
+			   {
+					$('#frmbusquedanombre').validate
+					(
+					 	{
+							rules:
+							{
+							'nom_car': {required: true}
+							},
+							messages: 
+							{
+							'nom_car':{required:'<label class="mensajevalidacion">Campo requerido</label>'},
+							},
+							debug: true,
+							submitHandler: function(form)
+							{
+								document.getElementById("frmbusquedanombre").submit();
+							}
+					 	}
+					);
+				}
+			);
 		</script>
-		</head>
+	</head>
 <body>
 
 <div id="daddy">
@@ -60,7 +77,7 @@
 					<div id="user-icon">
 						<img src="<?= base_url('templates/img/images/user-men.png');?>">
 					</div>
-					<span id="download-text"><a href=""><?php echo $nic ?><br/><?php echo $nombre.' '.$apellidop.' '.$apellidom ?></a></span>
+					<span id="download-text"><?php echo $nic ?><br/><?php echo $nombre.' '.$apellidop.' '.$apellidom ?></a></span>
 				</center>
 			</div>
 			<!-- icons -->
@@ -89,6 +106,7 @@
 	                    	<li><a href="<?= base_url().'grilla'?>">LISTAR ARCHIVOS</a></li>
 	                        <li><a href="<?= base_url().'registro'?>">REGISTRAR NUEVO ARCHIVO</a></li>
 	                        <li><a href="<?= base_url().'registro/usuario'?>">REGISTRAR USUARIO</a></li>
+
 	                    </ul>
 	                </li>
 	                <li class="active2">
@@ -113,81 +131,38 @@
 		</div><!-- cA -->
 
 		<div id="cB">
-			<div class="titulo">LISTADO DE ARCHIVO POR NOMBRE</div>
-			<form name="frmpersonal" id="frmpersonal" action="<?=base_url();?>personal/insertar" method="post">
-			<div style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;border:1px #036 solid;margin-top:4px;padding:4px 0 4px 0;overflow:auto;">
-		<table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
-	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
-		<tr>
-			<th>CODIGO DE REFERENCIA</th>
-            <th>ADJUDICATARIO</th>
-			<th>C.I.</th>
-			<th>NOM. PROYECTO</th>
-			<th>DESCRIPCION</th>			
-			<th>LUGAR</th>
-			<th>PLAN</th>
-			<th>MANZANO</th>
-			<th>LOTE</th>
-			<th>PRODUCTOR</th>
-			<th>OBSERVACION</th>
-		</tr>
-	</thead>
-	<tfoot style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
-		<tr>
-			<th>CODIGO DE REFERENCIA</th>
-            <th>ADJUDICATARIO</th>
-			<th>C.I.</th>
-			<th>NOM. PROYECTO</th>
-			<th>DESCRIPCION</th>			
-			<th>LUGAR</th>
-			<th>PLAN</th>
-			<th>MANZANO</th>
-			<th>LOTE</th>
-			<th>PRODUCTOR</th>
-			<th>OBSERVACION</th>
-		</tr>
-	</tfoot>
-	<tbody style="font-size:11px;">
-		<?php
-				if ($result)
-				{
-					foreach ($result->result() as $row) 
-					{
-						echo "<tr>";
-						echo "<td align='center'>".$row->REF_ARC."</td>";
-						echo "<td align='center'>".$row->NOM_CAR."</td>";
-						echo "<td align='center'>".$row->CI_CAR."</td>";
-						echo "<td align='center'>".$row->NPR_DTE."</td>";
-						echo "<td align='center'>".$row->DES_CAR."</td>";
-						echo "<td align='center'>".$row->LUG_DTE."</td>";
-						echo "<td align='center'>".$row->PLN_DTE."</td>";
-						echo "<td align='center'>".$row->MAN_DTE."</td>";
-						echo "<td align='center'>".$row->LOT_DTE."</td>";
-						echo "<td align='center'>".$row->PRO_AREA."</td>";
-						echo "<td align='center'>".$row->OBS_AREA."</td>";
-						echo "</tr>";
-					}
-				}
-			?>
-	</tbody>
-</table>
-</div>
-<center>
-<table>
-	<tr style="height: 230px;">
-		<td>
-			<input type="submit" class="botones ico-btnsave" value="SOLICITUD DE ARCHIVO">
-        </td>
-	</tr>
-</table>
-    </td>
-    </tr>
-</table>
+			<div class="titulo">CONSULTA DE ARCHIVO POR NOMBRE </div>
+			<form name="frmbusquedanombre" id="frmbusquedanombre" action="<?=base_url();?>registro/busca_archivo_nombre" method="post">
+				<!--TIPOS DE DOCUMENTOS-->
+			<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
+				<center>
+            <div class="colordiv">
+                <center>
+	        <table>
+	        <tr>
+	            <td rowspan="5">
+	            <img height="160px" width="175px" src="<?= base_url('templates/img/images/usuarios.png');?>">
+	            </td>
+	        </tr>
+	        <tr>
+	        <tr style="height: 50px;">
+			   <td width="100px" class="lblnombre">Ingrese nombre de usuario:</td>
+			   <td width="100px"><input type="text" name="nic_usu" class="txtcampo" placeholder="NOMBRE DE USUARIO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>	
+		    </tr>  
+	        </tr>
+	        <tr>
+	           <td height="40px" colspan="2" style="padding-left:25px" align="center">
+				<input type="submit" class="botones ico-btnsearch" value="BUSCAR">
+                <input type="reset" class="botones ico-btnlimpiar" value="LIMPIAR DATOS">
+               </td>
+           </tr>
+	</table>
+</form>
 </center>
 </div>
-	<div style="clear: both;"></div>	
-		<!--TIPOS DE DOCUMENTOS-->	
-</form>
+</center>
+</fieldset>
+			</form>
 		</div><!-- cB -->
 		<div class="Cpad">
 			<br class="clear" />
