@@ -231,26 +231,22 @@ class Registro extends CI_Controller
 	}
 
 	   public function insertar()
-    {  
-
-    	/*if ($this->input->post('submit_reg_arc')) {
+    {  			$data2['nombre'] = $this->session->userdata('nombre');
+                $data2['apellidop'] = $this->session->userdata('apellidopat');
+         	 	$data2['apellidom'] = $this->session->userdata('apellidomat');
+         	 	$data2['nic']  =$this->session->userdata('nic_usu');	
+    	if ($this->input->post('submit_reg_arc')) {
 			$this->form_validation->set_rules('ci_car','Adjudicatario','trim|callback_very_adj');
 			$this->form_validation->set_message('very_adj', 'El %s ya esta registrado');
 
-			if ($this->form_validation->run() != FALSE) {*/
+			if ($this->form_validation->run() != FALSE) {
 				$carpeta=array();
 		 		$carpeta = $this->carpeta();
          		$this->registro_model->inserta_carpeta($carpeta);
          		$id_car = $this->registro_model->retornar_id();	
-			/*}
-			else 
-				$this->load->view('archivo_personal/registro_archivo');
-		}
-		else
-		{
-			$this->load->view('archivo_personal/registro_archivo');
-		}
-		*/
+				$data2['mensaje']= 'El usuario se registro correctamente';
+         		$this->load->view('archivo_personal/registro_archivo',$data2);
+		
     	/*Declaracion de arrays*/
 	
          $datos_tecnicos = array();
@@ -290,6 +286,15 @@ class Registro extends CI_Controller
          $archivo=$a+$archivo;
          $this->registro_model->inserta_archivo($archivo);
 
+			}
+			else
+	
+				$this->load->view('archivo_personal/registro_archivo',$data2);
+	}
+		else
+		{
+			redirect(base_url().'registro',$data2);
+		}
          /*INSERTA POR TIPO DE DOCUMENTO
          $resolucion = array();
          $resolucion = $this->resolucion();
