@@ -33,31 +33,31 @@ class PDF extends FPDF
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'ADJUDICATARIO',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_ADJUDICATARIO),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'FECHA INICIAL',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('INICIO_ACTIVIDAD'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_FEC_INI),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'FECHA FINAL',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('FIN_ACTIVIDAD'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_FEC_FIN),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'CI',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('DEPATAMENTO'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_CI),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,utf8_decode('Nª HOJA DE RUTA'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('ESTADO'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_HRU_CAR),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('DESCRIPCIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
-                $this->Line(15,100,205,100);
+                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode(_DES_CAR), 0, 'L');
+                //$this->Line(15,100,205,100);
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',9);
@@ -67,20 +67,20 @@ class PDF extends FPDF
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('Nª DE CAJA'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_NCJ_ARC),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,utf8_decode('Nª DE TOMO'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('Bs. '.'DEUDA_PRESUNTA'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_NTM_ARC),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('Nª DE FOJAS'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_FOJ_ARC),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'CUBIERTA',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_CUB_ARC),0,1,'L');
                 $this->Ln(7);
         $this->Cell(10);
             $this->SetFont('Arial','B',9);
@@ -90,30 +90,30 @@ class PDF extends FPDF
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('URBANIZACIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_NPR_DTE),0,1,'L');
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'LUGAR',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_LUG_DTE),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'SECTOR',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_SEC_DTE),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'PLAN',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('Bs. '.'DEUDA_PRESUNTA'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_PLN_DTE),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'MANZANO',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_MAN_DTE),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'LOTE',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_LOT_DTE),0,1,'L');
                 $this->Ln(7);
                 $this->Cell(10);
             $this->SetFont('Arial','B',9);
@@ -123,20 +123,20 @@ class PDF extends FPDF
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'AMBIENTE',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_AMB_UBI),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'ESTANTE',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('Bs. '.'DEUDA_PRESUNTA'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_EST_UBI),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'CUERPO',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_CUE_UBI),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'BALDA',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_BAL_UBI),0,1,'L');
                 $this->Ln(7);
                 $this->Cell(10);
             $this->SetFont('Arial','B',9);
@@ -146,12 +146,12 @@ class PDF extends FPDF
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('NOMBRE DEL PRODUCTOR'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_PRO_AREA),0,1,'L');
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('OBSERVACIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
+                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode(_OBS_AREA), 0, 'L');
         $this->Cell(10);
         $this->Ln(1);
     }
@@ -165,6 +165,38 @@ class PDF extends FPDF
         $this->Cell(0,4,utf8_decode('Página ').$this->PageNo().'/{nb}',1,0,'R');
     }
 }
+
+
+foreach($result->result() as $result):
+    DEFINE('_ADJUDICATARIO',$result->NOM_CAR);
+    DEFINE('_CI',$result->CI_CAR);
+    DEFINE('_FEC_INI',$result->FEC_INI);
+    DEFINE('_FEC_FIN',$result->FEC_INI);
+    DEFINE('_HRU_CAR',$result->HRU_CAR);
+    DEFINE('_FEC_INI',$result->FEC_INI);
+    DEFINE('_DES_CAR',$result->DES_CAR);
+    DEFINE('_NCJ_ARC',$result->NCJ_ARC);
+    DEFINE('_FOJ_ARC',$result->FOJ_ARC);
+    DEFINE('_NTM_ARC',$result->NTM_ARC);
+    DEFINE('_CUB_ARC',$result->CUB_ARC);
+    DEFINE('_NPR_DTE',$result->NPR_DTE);
+    DEFINE('_LUG_DTE',$result->LUG_DTE);
+    DEFINE('_SEC_DTE',$result->SEC_DTE);
+    DEFINE('_MAN_DTE',$result->MAN_DTE);
+    DEFINE('_PLN_DTE',$result->PLN_DTE);
+    DEFINE('_LOT_DTE',$result->LOT_DTE);
+    DEFINE('_AMB_UBI',$result->AMB_UBI);
+    DEFINE('_CUE_UBI',$result->CUE_UBI);
+    DEFINE('_EST_UBI',$result->EST_UBI);
+    DEFINE('_BAL_UBI',$result->BAL_UBI);
+    DEFINE('_PRO_AREA',$result->PRO_AREA);
+    DEFINE('_OBS_AREA',$result->OBS_AREA);
+endforeach;
+
+
+
+
+
 $pdf = new PDF();
 ob_end_clean();
 

@@ -9,6 +9,7 @@ class Reporte extends CI_Controller
          $this->load->helper('form');
     	   $this->load->helper('date');
       	 $this->load->helper('url');
+         $this->load->helper('array');
         if(!$this->session->userdata('logueado'))
         {
           redirect('login');
@@ -24,6 +25,7 @@ public function reporte_por_nombre()
       $data['result'] = $query;
     }
     $this->load->view('Reporte/busqueda_archivo_nombre',$data);
+
   }
 
 
