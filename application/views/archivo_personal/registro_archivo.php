@@ -32,7 +32,7 @@
 					(
 					 	{
 							rules:
-							{/*
+							{
 							'ncj_arc': {required: true},
 							'cub_arc': 'required',
 							'npr_dte': {required: true},
@@ -50,7 +50,7 @@
 							'crp_ubi': 'required',
 							'bal_ubi': {required: true},
 							'pro_area': {required: true},
-							'obs_area': {required: true}*/
+							'obs_area': {required: true}
 
 							},
 							messages: 
@@ -196,7 +196,18 @@
 		</div><!-- cA -->
 
 		<div id="cB">
+			<script type="text/javascript">
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeIn(1500); },0000); });
+              $(document).ready(function() { setTimeout(function(){ $(".mensajelogin").fadeOut(1500); },5000); });
+            </script>
 			<div class="titulo">REGISTRAR DATOS DE CARPETA SOCIAL INDIVIDUAL - CSI</div>
+			<?php if(isset($mensaje)):?>
+						<div class="mensajelogin" id="mensajebien"><label><?php echo $mensaje;?></label></div>
+		<?php endif;?>
+		<?php if(validation_errors()) {?>    
+				<div class="mensajelogin" id="mensaje"><label><?= validation_errors();?></label></div>
+		        <?php } ?>
+		
 			<form name="frmarchivo" id="frmarchivo" action="<?=base_url();?>registro/insertar" method="post">
 				
 				
@@ -219,7 +230,7 @@
 							<td width="80px" class="lblnombre">CI</td>
 							<td width="70px"><input type="text" name="ci_car" class="txtcampo " placeholder="C.I." onkeypress="return solonumeros(event);" onpaste="return false"></td>
 							<td width="80px" class="lblnombre">Hoja de ruta</td>
-							<td width="70px"><input type="text" name="hru_car" class="txtcampo " placeholder="NUMERO DE HOJA DE RUTA" onkeypress="return solonumeros(event);" onpaste="return false"></td>
+							<td width="70px"><input type="text" name="hru_car" class="txtcampo " placeholder="NUMERO DE HOJA DE RUTA" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 								
 						</tr>
 					</table>
@@ -229,7 +240,7 @@
 						<table>
 							<tr style="height: 30px;">
 								<td width="80px" class="lblnombre">Descripción</td>
-								<td width="70px"><textarea name="des_car" class="txtcampo large2" placeholder="DESCRIPCION" onkeypress="return alfanumerico(event);" onpaste="return false" ></textarea></td>
+								<td width="70px"><textarea name="des_car" class="txtcampo large2" placeholder="DESCRIPCION"  onpaste="return false" ></textarea></td>
 							</tr>
 						</table>
 					</fieldset>								
