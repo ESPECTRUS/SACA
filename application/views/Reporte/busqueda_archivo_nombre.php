@@ -27,8 +27,9 @@ class PDF extends FPDF
 //datos generales de archivo y carpeta
        $this->Cell(10);
             $this->SetFont('Arial','B',9);
-                $this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
-                $this->Ln(7);
+            //izquierda,abajo,ancho,alto
+                $this->Rect(15,54,185,45,'D').$this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'ADJUDICATARIO',0,0,'L');
@@ -57,12 +58,11 @@ class PDF extends FPDF
                 $this->Cell(50,7,utf8_decode('DESCRIPCIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
                 $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
-                $this->Line(15,100,205,100);
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,'DATOS GENERALES',0,0,'L');
-                $this->Ln(8);
+                $this->Rect(15,114,185,15,'D').$this->Cell(50,7,'DATOS GENERALES',0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('Nª DE CAJA'),0,0,'L');
@@ -84,8 +84,8 @@ class PDF extends FPDF
                 $this->Ln(7);
         $this->Cell(10);
             $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
-                $this->Ln(8);
+                $this->Rect(15,144,185,30,'D').$this->Cell(50,7,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('URBANIZACIÓN'),0,0,'L');
@@ -117,8 +117,8 @@ class PDF extends FPDF
                 $this->Ln(7);
                 $this->Cell(10);
             $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
-                $this->Ln(8);
+                $this->Rect(15,188,185,15,'D').$this->Cell(50,7,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'AMBIENTE',0,0,'L');
@@ -140,8 +140,8 @@ class PDF extends FPDF
                 $this->Ln(7);
                 $this->Cell(10);
             $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,utf8_decode('ÁREA'),0,0,'L');
-                $this->Ln(8);
+                $this->Rect(15,218,185,35,'D').$this->Cell(50,7,utf8_decode('ÁREA'),0,0,'L');
+                $this->Ln(9);
                 $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('NOMBRE DEL PRODUCTOR'),0,0,'L');
@@ -154,6 +154,10 @@ class PDF extends FPDF
                 $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
         $this->Cell(10);
         $this->Ln(1);
+      //  $this->SetFillColor(255,20,147);
+        //$this->Rect(10,100,90,50,'F');
+      
+
     }
     function Footer()
     {
