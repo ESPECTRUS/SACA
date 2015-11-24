@@ -141,7 +141,7 @@
 	        <table>
 	        <tr>
 	            <td rowspan="5">
-	            <img height="160px" width="175px" src="<?= base_url('templates/img/images/buscar.jpg');?>">
+	            <img height="160px" width="175px" src="<?= base_url('templates/img/images/buscar_folder.png');?>">
 	            </td>
 	        </tr>
 	        <tr>

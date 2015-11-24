@@ -143,13 +143,14 @@
 			<?php endif;?>
 			<form name="frmlogin" id="frmlogin" action="<?= base_url().'login/very_session'?>" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
-				<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
+				<fieldset class="fieldcuerpo" align="left" style="height: 655px;">
+				<center>
 					<table>
 					<tr>
 						<td>
 						<table style="padding-top: 40px;">
 					    <tr>
-                            <td><img src="<?= base_url('templates/img/images/team.png');?>" title="Login"></td>
+                            <td><img height="200px" width="200px" src="<?= base_url('templates/img/images/team.png');?>" title="Login"></td>
                         </tr>
                     </table>
                     </td>
