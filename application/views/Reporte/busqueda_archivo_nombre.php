@@ -2,6 +2,62 @@
 require_once(APPPATH."/libraries/fpdf.php");
 class PDF extends FPDF
 {
+    function RoundedRect($x, $y, $w, $h, $r, $corners = '1234', $style = '')
+    {
+        $k = $this->k;
+        $hp = $this->h;
+        if($style=='F')
+            $op='f';
+        elseif($style=='FD' || $style=='DF')
+            $op='B';
+        else
+            $op='S';
+        $MyArc = 4/3 * (sqrt(2) - 1);
+        $this->_out(sprintf('%.2F %.2F m',($x+$r)*$k,($hp-$y)*$k ));
+
+        $xc = $x+$w-$r;
+        $yc = $y+$r;
+        $this->_out(sprintf('%.2F %.2F l', $xc*$k,($hp-$y)*$k ));
+        if (strpos($corners, '2')===false)
+            $this->_out(sprintf('%.2F %.2F l', ($x+$w)*$k,($hp-$y)*$k ));
+        else
+            $this->_Arc($xc + $r*$MyArc, $yc - $r, $xc + $r, $yc - $r*$MyArc, $xc + $r, $yc);
+
+        $xc = $x+$w-$r;
+        $yc = $y+$h-$r;
+        $this->_out(sprintf('%.2F %.2F l',($x+$w)*$k,($hp-$yc)*$k));
+        if (strpos($corners, '3')===false)
+            $this->_out(sprintf('%.2F %.2F l',($x+$w)*$k,($hp-($y+$h))*$k));
+        else
+            $this->_Arc($xc + $r, $yc + $r*$MyArc, $xc + $r*$MyArc, $yc + $r, $xc, $yc + $r);
+
+        $xc = $x+$r;
+        $yc = $y+$h-$r;
+        $this->_out(sprintf('%.2F %.2F l',$xc*$k,($hp-($y+$h))*$k));
+        if (strpos($corners, '4')===false)
+            $this->_out(sprintf('%.2F %.2F l',($x)*$k,($hp-($y+$h))*$k));
+        else
+            $this->_Arc($xc - $r*$MyArc, $yc + $r, $xc - $r, $yc + $r*$MyArc, $xc - $r, $yc);
+
+        $xc = $x+$r ;
+        $yc = $y+$r;
+        $this->_out(sprintf('%.2F %.2F l',($x)*$k,($hp-$yc)*$k ));
+        if (strpos($corners, '1')===false)
+        {
+            $this->_out(sprintf('%.2F %.2F l',($x)*$k,($hp-$y)*$k ));
+            $this->_out(sprintf('%.2F %.2F l',($x+$r)*$k,($hp-$y)*$k ));
+        }
+        else
+            $this->_Arc($xc - $r, $yc - $r*$MyArc, $xc - $r*$MyArc, $yc - $r, $xc, $yc - $r);
+        $this->_out($op);
+    }
+
+    function _Arc($x1, $y1, $x2, $y2, $x3, $y3)
+    {
+        $h = $this->h;
+        $this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c ', $x1*$this->k, ($h-$y1)*$this->k,
+            $x2*$this->k, ($h-$y2)*$this->k, $x3*$this->k, ($h-$y3)*$this->k));
+    }
     function Header()
     {
         $this->Image(APPPATH.'/libraries/escudo.jpg',15,8, 24,20);
@@ -26,9 +82,9 @@ class PDF extends FPDF
         $this->Ln(4);
 //datos generales de archivo y carpeta
        $this->Cell(10);
-            $this->SetFont('Arial','B',9);
+            $this->SetFont('Arial','UB',9);
             //izquierda,abajo,ancho,alto
-                $this->Rect(15,54,185,45,'D').$this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
+                $this->RoundedRect(15,54,185,45,5,'1234','D').$this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
@@ -60,8 +116,8 @@ class PDF extends FPDF
                 $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
                 $this->Ln(9);
         $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Rect(15,114,185,15,'D').$this->Cell(50,7,'DATOS GENERALES',0,0,'L');
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,114,185,15,5,'1234','D').$this->Cell(50,7,'DATOS GENERALES',0,0,'L');
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
@@ -83,8 +139,8 @@ class PDF extends FPDF
                 $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
                 $this->Ln(7);
         $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Rect(15,144,185,30,'D').$this->Cell(50,7,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,144,185,30,5,'1234','D').$this->Cell(50,7,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
                 $this->Ln(9);
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
@@ -116,8 +172,8 @@ class PDF extends FPDF
                 $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
                 $this->Ln(7);
                 $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Rect(15,188,185,15,'D').$this->Cell(50,7,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,188,185,15,5,'1234','D').$this->Cell(50,7,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
@@ -139,8 +195,8 @@ class PDF extends FPDF
                 $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
                 $this->Ln(7);
                 $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Rect(15,218,185,35,'D').$this->Cell(50,7,utf8_decode('ÁREA'),0,0,'L');
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,218,185,35,5,'1234','D').$this->Cell(50,7,utf8_decode('ÁREA'),0,0,'L');
                 $this->Ln(9);
                 $this->Cell(10);
                 $this->SetFont('Arial','B',8);
@@ -180,9 +236,7 @@ $pdf->SetFontSize(10);
 $pdf->SetFont('Arial','B',10);
 //CONTENIDO
 //for($i=1;$i<=80;$i++){  $pdf->Cell(0,10,'Imprimiendo línea número '.$i,0,1);}
-
 //FINALIZA Y MUESTRA EN PANTALLA PDF
-//$pdf->Output('REPORTE_UBICACION'.".pdf","I");
 $pdf->Output('REPORTE-ARCHIVO'.".pdf","I");
 
 
