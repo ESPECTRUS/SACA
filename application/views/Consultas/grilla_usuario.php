@@ -118,46 +118,41 @@
 		<table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
 	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
-			<th>ID CARPETA.</th>
-            <th>TIPO DE CARPETA</th>
-			<th>NOMBRE DE LA CARPETA</th>
-			<th>NRO. DE CAJA DE ARCHIVO</th>
-			<th>NRO. DE TOMO DE ARCHIVO</th>
-			<th>NRO. FOJAS DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
+			<th>C.I.</th>
+            <th>NOMBRE</th>
+			<th>APELLIDO PATERNO</th>
+			<th>APELLIDO MATERNO</th>
+			<th>FECHA QUE SE REGISTRO</th>
+			<th>NRO. ARCHIVOS QUE REGISTRO</th>
 		</tr>
 	</thead>
 	<tfoot style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
 		<tr>
-			<th>ID CARPETA.</th>
-            <th>TIPO DE CARPETA</th>
-			<th>NOMBRE DE LA CARPETA</th>
-			<th>NRO. DE CAJA DE ARCHIVO</th>
-			<th>NRO. DE TOMO DE ARCHIVO</th>
-			<th>NRO. FOJAS DE ARCHIVO</th>
-			<th>CUBIERTA DE ARCHIVO</th>
+			<th>C.I.</th>
+            <th>NOMBRE</th>
+			<th>APELLIDO PATERNO</th>
+			<th>APELLIDO MATERNO</th>
+			<th>FECHA QUE SE REGISTRO</th>
+			<th>NRO. ARCHIVOS QUE REGISTRO</th>
 		</tr>
 	</tfoot>
 	<tbody style="font-size:11px;">
-    	<tr>
 		<?php
 				if ($result)
 				{
 					foreach ($result->result() as $row) 
 					{
 						echo "<tr>";
-						echo "<td align='center'>".$row->ID_CAR."</td>";
-						echo "<td align='center'>".$row->TIP_CAR."</td>";
-						echo "<td align='center'>".$row->NOM_CAR."</td>";
-						echo "<td align='center'>".$row->NCJ_ARC."</td>";
-						echo "<td align='center'>".$row->NTM_ARC."</td>";
-						echo "<td align='center'>".$row->FOJ_ARC."</td>";
-						echo "<td align='center'>".$row->CUB_ARC."</td>";
+						echo "<td align='center'>".$row->CI_USU."</td>";
+						echo "<td align='center'>".$row->NOM_USU."</td>";
+						echo "<td align='center'>".$row->APA_USU."</td>";
+						echo "<td align='center'>".$row->AMA_USU."</td>";
+						echo "<td align='center'>".$row->REG_USU."</td>";
+						echo "<td align='center'>".$row->NRO_ARCHIVOS."</td>";
 						echo "</tr>";
 					}
 				}
 			?>
-		</tr>
 	</tbody>
 </table>
 <center>

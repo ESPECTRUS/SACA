@@ -25,6 +25,7 @@ class Registro extends CI_Controller
          	 $data2['apellidop'] = $this->session->userdata('apellidopat');
          	 $data2['apellidom'] = $this->session->userdata('apellidomat');
          	 $data2['nic']  =$this->session->userdata('nic_usu');
+         	 $data2['id'] = $this->session->userdata('id');
 		$this->load->view('archivo_personal/registro_archivo', 	$data2);
 	}
 	public function usuario()
@@ -272,7 +273,7 @@ class Registro extends CI_Controller
          $this->registro_model->inserta_productor($area);
          $id_area = $this->registro_model->retornar_id();
 
-         
+         $id_usu = $this->session->userdata('id');
          $archivo = array();
          $archivo = $this->archivo();
          $a = array(
@@ -281,6 +282,7 @@ class Registro extends CI_Controller
          			    'ID_FEC'=>$id_fec,
          			    'ID_UBI'=>$id_ubi,
          			    'ID_AREA'=>$id_area,
+         			    'ID_USU' => $id_usu,
          			    'REG_ARC' => (date('Y').'-'.date('m').'-'.date('d').'-'.date('H:i:s')),
          			    );
          $archivo=$a+$archivo;
@@ -349,28 +351,6 @@ class Registro extends CI_Controller
     	}
     }
 
-    /*CONSULTAS*/
-
-	/*CONSULTA DE ARCHIVO POR NOMBRE*/
-	public function busca_archivo_nombre()
-	{
-         	 
-         	 $data2['nombre'] = $this->session->userdata('nombre');
-         	 $data2['apellidop'] = $this->session->userdata('apellidopat');
-         	 $data2['apellidom'] = $this->session->userdata('apellidomat');
-         	 $data2['nic']  =$this->session->userdata('nic_usu');
-         	 
-
-		$query = $this->input->post('nom_car');
-		if($query)
-		{
-			$query1 = $this->db->query("CALL busca_nombre('%".$query."%')");
-			$data2['result'] = $query1;
-			$this->load->view('Consultas/grilla_nombrecarpeta',$data2);
-		}
-		else
-			redirect('busquedaarchivo');
-	}
-
+    
 
 }
