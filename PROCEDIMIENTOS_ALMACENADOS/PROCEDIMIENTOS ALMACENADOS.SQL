@@ -21,3 +21,11 @@ select c.NOM_CAR,f.FEC_FIN,f.FEC_FIN,c.CI_CAR,c.HRU_CAR,c.DES_CAR,a.NCJ_ARC,a.FO
 	   u.AMB_UBI,u.CUE_UBI,u.EST_UBI,u.BAL_UBI,ar.PRO_AREA,ar.OBS_AREA
 	   from archivo a join carpeta c on (a.ID_CAR=c.ID_CAR) join datos_tecnicos d on (a.ID_DTE=d.ID_DTE) join fechas_extremas f on (a.ID_FEC=f.ID_FECHA) join area ar on (a.ID_AREA=ar.ID_AREA) join ubicacion_topografica u on (u.ID_UBI=a.ID_UBI)
 where c.ID_CAR=id_car;
+
+
+
+
+create procedure busca_usuario(nom varchar(25))
+select u.CI_USU,u.NOM_USU,u.APA_USU,u.AMA_USU,u.REG_USU,count(a.ID_USU) as 'NRO_ARCHIVOS'
+from usuario u join archivo a on (u.ID_USU=a.ID_USU)
+where NOM_USU like nom or APA_USU like nom or AMA_USU like nom;
