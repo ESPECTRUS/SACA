@@ -8,6 +8,7 @@
 		<meta name="Robots" content=""/>
 		<meta http-equiv="imagetoolbar" content="no"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_general.css');?>"/>
+		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_form.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/style_menu.css');?>"/>
 		<link rel="stylesheet" media="screen" href="<?= base_url('templates/css/ico_menu.css');?>"/>
 		<link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
@@ -96,9 +97,10 @@
 	        </nav> 
 		</div><!-- cA -->
 		<div id="cB">
-		<div style="background: url(../img/images/fondos_archivo2.jpg) no-repeat top left">
+		<div id="portada">
+		<div >
 			<h1 class="mensaje_bienvenida"> Bienvenido/a <?php echo $nombre.' '.$apellidop.' '.$apellidom ?> </h1>
-
+		</div>
 		</div>
     	</div><!-- cB -->
 		<div class="Cpad">
