@@ -104,7 +104,8 @@
 		<div id="cB">
 
 			<div class="titulo">BUSQUEDA DE ARCHIVO POR URBANIZACIÓN </div>
-			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>personal/insertar" method="post">
+			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>grilla/busqueda_proyecto" method="post">
+
 
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" style="height: 585px;">

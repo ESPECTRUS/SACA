@@ -132,7 +132,7 @@
 
 		<div id="cB">
 			<div class="titulo">CONSULTA DE ARCHIVO POR NOMBRE </div>
-			<form name="frmbusquedanombre" id="frmbusquedanombre" action="<?=base_url();?>registro/busca_archivo_nombre" method="post">
+			<form name="frmbusquedanombre" id="frmbusquedanombre" action="<?=base_url();?>grilla/busca_usuario" method="post">
 				<!--TIPOS DE DOCUMENTOS-->
 			<fieldset class="fieldcuerpo" align="left" style="height: 555px;">
 				<center>
