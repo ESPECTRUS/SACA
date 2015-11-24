@@ -96,11 +96,11 @@
 	        </nav> 
 		</div><!-- cA -->
 		<div id="cB">
-			<h1> Bienvenido/a <?php echo $nombre.' '.$apellidop.' '.$apellidom ?> </h1>
-    <p>
-       <a href="<?php echo base_url() ?>login/cerrar_sesion"> Cerrar sesión </a>
-    </p>	
-		</div><!-- cB -->
+		<div style="background: url(../img/images/fondos_archivo2.jpg) no-repeat top left">
+			<h1 class="mensaje_bienvenida"> Bienvenido/a <?php echo $nombre.' '.$apellidop.' '.$apellidom ?> </h1>
+
+		</div>
+    	</div><!-- cB -->
 		<div class="Cpad">
 			<br class="clear" /></div>
 		</div><!-- Cpad -->

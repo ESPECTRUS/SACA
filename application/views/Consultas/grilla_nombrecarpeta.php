@@ -114,7 +114,7 @@
 
 		<div id="cB">
 			<div class="titulo">LISTADO DE ARCHIVO POR NOMBRE</div>
-			<form name="frmpersonal" id="frmpersonal" action="<?=base_url();?>personal/insertar" method="post">
+			<form name="frmpersonal" id="frmpersonal" action="<?=base_url();?>reporte/insertar" method="post">
 <div style="border-radius:4px;-webkit-border-radius:4px;-moz-border-radius:4px;-ms-border-radius:4px;border:1px #036 solid;margin-top:4px;padding:4px 0 4px 0;overflow:auto;">
 <table id="example" class="display" cellspacing="5" width="100%" style="border-radius:4px 4px 4px 4px;-moz-border-radius:4px 4px 4px 4px;-webkit-border-radius:4px 4px 4px 4px;border:1px #444444 solid;font-family:Verdana, Geneva, sans-serif;">
 	<thead style="font-size:11px;color:#FFF;background-color:#444444;heigth=40px;">
@@ -153,7 +153,7 @@
 		?>
 						<tr>
 						<td>
-						<a href="<?= base_url();?>registro/index/<?php echo $row->ID_CAR; ?>">
+						<a href="<?= base_url();?>reporte/reporte_por_nombre/<?php echo $row->ID_CAR; ?>">
 						<img src="<?= base_url();?>templates/img/images/pdf.gif" title="Reporte">
 						</td>
 						<td align="center"><?php echo $row->ID_CAR;?></td>
