@@ -102,8 +102,10 @@
 		</div><!-- cA -->
 
 		<div id="cB">
-			<div class="titulo">BUSQUEDA DE ARCHIVO POR PROYECTO </div>
+
+			<div class="titulo">BUSQUEDA DE ARCHIVO POR URBANIZACIÓN </div>
 			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>consultas/busqueda_proyecto" method="post">
+
 
 				<!--TIPOS DE DOCUMENTOS-->
 				<fieldset class="fieldcuerpo" align="left" style="height: 585px;">
@@ -125,14 +127,7 @@
 						</tr>
 				    </table>
 						<table>
-						<tr>
-							</td>
-							<td width="60px" class="lblnombre">Manzano</td>
-				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo short"  placeholder="MANZANO"></td>
-				    	    <td width="60px" class="lblnombre">Lote</td>
-				    	    <td width="100px"><input type="text" name="lot_dte" class="txtcampo short"  placeholder="LOTE"></td>
-						<table >
-				    	<tr style="height: 50px;">
+						<tr style="height: 50px;">
 				    		<td width="135px" class="lblnombre">Manzano</td>
 				    	    <td width="100px"><input type="text" name="man_dte" class="txtcampo medio" value="" placeholder="MANZANO"></td>
 				    	</tr>

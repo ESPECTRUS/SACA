@@ -354,10 +354,12 @@ class Registro extends CI_Controller
 	/*CONSULTA DE ARCHIVO POR NOMBRE*/
 	public function busca_archivo_nombre()
 	{
+         	 
          	 $data2['nombre'] = $this->session->userdata('nombre');
          	 $data2['apellidop'] = $this->session->userdata('apellidopat');
          	 $data2['apellidom'] = $this->session->userdata('apellidomat');
          	 $data2['nic']  =$this->session->userdata('nic_usu');
+         	 
 
 		$query = $this->input->post('nom_car');
 		if($query)
