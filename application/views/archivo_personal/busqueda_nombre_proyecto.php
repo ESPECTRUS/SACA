@@ -102,9 +102,6 @@
 		</div><!-- cA -->
 
 		<div id="cB">
-
-			<div class="titulo">BUSQUEDA DE ARCHIVO POR URBANIZACIÓN </div>
-			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>personal/insertar" method="post">
 			<div class="titulo">BUSQUEDA DE ARCHIVO POR PROYECTO </div>
 			<form name="frmdatos_tecnicos" id="frmdatos_tecnicos" action="<?=base_url();?>consultas/busqueda_proyecto" method="post">
 
