@@ -2,6 +2,62 @@
 require_once(APPPATH."/libraries/fpdf.php");
 class PDF extends FPDF
 {
+    function RoundedRect($x, $y, $w, $h, $r, $corners = '1234', $style = '')
+    {
+        $k = $this->k;
+        $hp = $this->h;
+        if($style=='F')
+            $op='f';
+        elseif($style=='FD' || $style=='DF')
+            $op='B';
+        else
+            $op='S';
+        $MyArc = 4/3 * (sqrt(2) - 1);
+        $this->_out(sprintf('%.2F %.2F m',($x+$r)*$k,($hp-$y)*$k ));
+
+        $xc = $x+$w-$r;
+        $yc = $y+$r;
+        $this->_out(sprintf('%.2F %.2F l', $xc*$k,($hp-$y)*$k ));
+        if (strpos($corners, '2')===false)
+            $this->_out(sprintf('%.2F %.2F l', ($x+$w)*$k,($hp-$y)*$k ));
+        else
+            $this->_Arc($xc + $r*$MyArc, $yc - $r, $xc + $r, $yc - $r*$MyArc, $xc + $r, $yc);
+
+        $xc = $x+$w-$r;
+        $yc = $y+$h-$r;
+        $this->_out(sprintf('%.2F %.2F l',($x+$w)*$k,($hp-$yc)*$k));
+        if (strpos($corners, '3')===false)
+            $this->_out(sprintf('%.2F %.2F l',($x+$w)*$k,($hp-($y+$h))*$k));
+        else
+            $this->_Arc($xc + $r, $yc + $r*$MyArc, $xc + $r*$MyArc, $yc + $r, $xc, $yc + $r);
+
+        $xc = $x+$r;
+        $yc = $y+$h-$r;
+        $this->_out(sprintf('%.2F %.2F l',$xc*$k,($hp-($y+$h))*$k));
+        if (strpos($corners, '4')===false)
+            $this->_out(sprintf('%.2F %.2F l',($x)*$k,($hp-($y+$h))*$k));
+        else
+            $this->_Arc($xc - $r*$MyArc, $yc + $r, $xc - $r, $yc + $r*$MyArc, $xc - $r, $yc);
+
+        $xc = $x+$r ;
+        $yc = $y+$r;
+        $this->_out(sprintf('%.2F %.2F l',($x)*$k,($hp-$yc)*$k ));
+        if (strpos($corners, '1')===false)
+        {
+            $this->_out(sprintf('%.2F %.2F l',($x)*$k,($hp-$y)*$k ));
+            $this->_out(sprintf('%.2F %.2F l',($x+$r)*$k,($hp-$y)*$k ));
+        }
+        else
+            $this->_Arc($xc - $r, $yc - $r*$MyArc, $xc - $r*$MyArc, $yc - $r, $xc, $yc - $r);
+        $this->_out($op);
+    }
+
+    function _Arc($x1, $y1, $x2, $y2, $x3, $y3)
+    {
+        $h = $this->h;
+        $this->_out(sprintf('%.2F %.2F %.2F %.2F %.2F %.2F c ', $x1*$this->k, ($h-$y1)*$this->k,
+            $x2*$this->k, ($h-$y2)*$this->k, $x3*$this->k, ($h-$y3)*$this->k));
+    }
     function Header()
     {
         $this->Image(APPPATH.'/libraries/escudo.jpg',15,8, 24,20);
@@ -26,134 +82,138 @@ class PDF extends FPDF
         $this->Ln(4);
 //datos generales de archivo y carpeta
        $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
-                $this->Ln(7);
+            $this->SetFont('Arial','UB',9);
+            //izquierda,abajo,ancho,alto
+                $this->RoundedRect(15,54,185,45,5,'1234','D').$this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'ADJUDICATARIO',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_ADJUDICATARIO),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'FECHA INICIAL',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_FEC_INI),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('INICIO_ACTIVIDAD'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'FECHA FINAL',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_FEC_FIN),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('FIN_ACTIVIDAD'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'CI',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_CI),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('DEPATAMENTO'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,utf8_decode('Nª HOJA DE RUTA'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_HRU_CAR),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('ESTADO'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('DESCRIPCIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode(_DES_CAR), 0, 'L');
-                //$this->Line(15,100,205,100);
+                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
                 $this->Ln(9);
         $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,'DATOS GENERALES',0,0,'L');
-                $this->Ln(8);
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,114,185,15,5,'1234','D').$this->Cell(50,7,'DATOS GENERALES',0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('Nª DE CAJA'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_NCJ_ARC),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,utf8_decode('Nª DE TOMO'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_NTM_ARC),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('Bs. '.'DEUDA_PRESUNTA'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('Nª DE FOJAS'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_FOJ_ARC),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'CUBIERTA',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_CUB_ARC),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
                 $this->Ln(7);
         $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
-                $this->Ln(8);
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,144,185,30,5,'1234','D').$this->Cell(50,7,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('URBANIZACIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_NPR_DTE),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'LUGAR',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_LUG_DTE),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'SECTOR',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_SEC_DTE),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'PLAN',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_PLN_DTE),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('Bs. '.'DEUDA_PRESUNTA'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'MANZANO',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_MAN_DTE),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'LOTE',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_LOT_DTE),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
                 $this->Ln(7);
                 $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
-                $this->Ln(8);
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,188,185,15,5,'1234','D').$this->Cell(50,7,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
+                $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'AMBIENTE',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_AMB_UBI),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'ESTANTE',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_EST_UBI),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('Bs. '.'DEUDA_PRESUNTA'),0,1,'L');
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,'CUERPO',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode(_CUE_UBI),0,0,'L');
+                $this->SetFont('Arial','',8);$this->Cell(45,7,utf8_decode('SECTOR'),0,0,'L');
             $this->SetFont('Arial','B',8);
                 $this->Cell(35,7,'BALDA',0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_BAL_UBI),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('DEUDA_PRESUNTA'),0,1,'L');
                 $this->Ln(7);
                 $this->Cell(10);
-            $this->SetFont('Arial','B',9);
-                $this->Cell(50,7,utf8_decode('ÁREA'),0,0,'L');
-                $this->Ln(8);
+            $this->SetFont('Arial','UB',9);
+                $this->RoundedRect(15,218,185,35,5,'1234','D').$this->Cell(50,7,utf8_decode('ÁREA'),0,0,'L');
+                $this->Ln(9);
                 $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('NOMBRE DEL PRODUCTOR'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode(_PRO_AREA),0,1,'L');
+                $this->SetFont('Arial','',8);$this->Cell(25,7,utf8_decode('NAPO'),0,1,'L');
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
                 $this->Cell(50,7,utf8_decode('OBSERVACIÓN'),0,0,'L');
                 $this->Cell(3,7,utf8_decode(':'),0,0,'C');
-                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode(_OBS_AREA), 0, 'L');
+                $this->SetFont('Arial','',8);$this->MultiCell(120,7,utf8_decode('AQUI PONDREMOS UN EXPLICACIÓN PARA DESCRIBIR ALGUN PROCESO O EL TIPO DE FORMATO QUE SE ESTA DEFINIENDO O CUALQUIER OTRA COSA <span class="wp-smiley wp-emoji wp-emoji-tongue" title=":P">:P</span>'), 0, 'L');
         $this->Cell(10);
         $this->Ln(1);
+      //  $this->SetFillColor(255,20,147);
+        //$this->Rect(10,100,90,50,'F');
+      
+
     }
     function Footer()
     {
@@ -165,38 +225,6 @@ class PDF extends FPDF
         $this->Cell(0,4,utf8_decode('Página ').$this->PageNo().'/{nb}',1,0,'R');
     }
 }
-
-
-foreach($result->result() as $result):
-    DEFINE('_ADJUDICATARIO',$result->NOM_CAR);
-    DEFINE('_CI',$result->CI_CAR);
-    DEFINE('_FEC_INI',$result->FEC_INI);
-    DEFINE('_FEC_FIN',$result->FEC_INI);
-    DEFINE('_HRU_CAR',$result->HRU_CAR);
-    DEFINE('_FEC_INI',$result->FEC_INI);
-    DEFINE('_DES_CAR',$result->DES_CAR);
-    DEFINE('_NCJ_ARC',$result->NCJ_ARC);
-    DEFINE('_FOJ_ARC',$result->FOJ_ARC);
-    DEFINE('_NTM_ARC',$result->NTM_ARC);
-    DEFINE('_CUB_ARC',$result->CUB_ARC);
-    DEFINE('_NPR_DTE',$result->NPR_DTE);
-    DEFINE('_LUG_DTE',$result->LUG_DTE);
-    DEFINE('_SEC_DTE',$result->SEC_DTE);
-    DEFINE('_MAN_DTE',$result->MAN_DTE);
-    DEFINE('_PLN_DTE',$result->PLN_DTE);
-    DEFINE('_LOT_DTE',$result->LOT_DTE);
-    DEFINE('_AMB_UBI',$result->AMB_UBI);
-    DEFINE('_CUE_UBI',$result->CUE_UBI);
-    DEFINE('_EST_UBI',$result->EST_UBI);
-    DEFINE('_BAL_UBI',$result->BAL_UBI);
-    DEFINE('_PRO_AREA',$result->PRO_AREA);
-    DEFINE('_OBS_AREA',$result->OBS_AREA);
-endforeach;
-
-
-
-
-
 $pdf = new PDF();
 ob_end_clean();
 
@@ -208,9 +236,7 @@ $pdf->SetFontSize(10);
 $pdf->SetFont('Arial','B',10);
 //CONTENIDO
 //for($i=1;$i<=80;$i++){  $pdf->Cell(0,10,'Imprimiendo línea número '.$i,0,1);}
-
 //FINALIZA Y MUESTRA EN PANTALLA PDF
-//$pdf->Output('REPORTE_UBICACION'.".pdf","I");
 $pdf->Output('REPORTE-ARCHIVO'.".pdf","I");
 
 
