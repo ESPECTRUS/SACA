@@ -153,7 +153,7 @@
 		?>
 						<tr>
 						<td>
-						<a href="<?= base_url();?>reporte/reporte_por_nombre/<?php echo $row->ID_CAR; ?>">
+						<a href="<?= base_url();?>reporte/reporte_por_nombre/<?php echo $row->ID_CAR; ?>" target="_blank">
 						<img src="<?= base_url();?>templates/img/images/pdf.gif" title="Reporte">
 						</td>
 						<td align="center"><?php echo $row->ID_CAR;?></td>

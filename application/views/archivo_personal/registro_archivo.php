@@ -314,15 +314,15 @@
 					<table >
 						<tr style="height: 30px;">
 							<td width="100px" class="lblnombre">Ambiente</td>
-							<td width="240px"><input type="text" name="amb_ubi" class="txtcampo" placeholder="AMBIENTE" onkeypress="return alfanumerico(event);" onpaste="return false" ></td>
+							<td width="240px"><input type="text" name="amb_ubi" value="0" class="txtcampo" placeholder="AMBIENTE" onkeypress="return alfanumerico(event);" onpaste="return false" ></td>
 							<td width="100px" class="lblnombre">Estante</td>
-							<td width="240px"><input type="text" name="est_ubi" class="txtcampo" placeholder="ESTANTE" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="240px"><input type="text" name="est_ubi" value="0" class="txtcampo" placeholder="ESTANTE" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 						</tr>
 						<tr style="height: 30px;">
 							<td width="100px" class="lblnombre">Cuerpo</td>
-							<td width="240px"><input type="text" name="cue_ubi" class="txtcampo" placeholder="CUERPO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="240px"><input type="text" name="cue_ubi" value="0" class="txtcampo" placeholder="CUERPO" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 							<td width="100px" class="lblnombre">Balda</td>
-							<td width="240px"><input type="text" name="bal_ubi" class="txtcampo" placeholder="BALDA" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
+							<td width="240px"><input type="text" name="bal_ubi" value="0" class="txtcampo" placeholder="BALDA" onkeypress="return alfanumerico(event);" onpaste="return false"></td>
 						</tr>
 					</table>
 				</fieldset>

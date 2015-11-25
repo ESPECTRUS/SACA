@@ -119,8 +119,6 @@
   color: red;
   font-size: 9px;
 }
-<<<<<<< HEAD
-=======
 .mensaje{
   background-color: red;
   color: white;
@@ -157,4 +155,11 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ef757', end
   height:30px; 
   border-radius: 8px; 
   padding:6px;
+}
+#portada{
+background-image: url(../img/images/fondos_archivo2.jpg);
+height:650px;
+}
+.portada_capa{
+  margin-top: 200px;
 }
