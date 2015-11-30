@@ -158,8 +158,14 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2ef757', end
 }
 #portada{
 background-image: url(../img/images/fondos_archivo2.jpg);
-height:650px;
+height:450px;
 }
 .portada_capa{
-  margin-top: 200px;
+  border: 1px solid #08395F;
+  background-color: #023;
+  margin-top: 220px;
+}
+.mensaje_bienvenida{
+  color: white;
+  font-size: 18px;
 }

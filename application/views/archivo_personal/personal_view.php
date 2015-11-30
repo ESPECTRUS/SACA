@@ -96,10 +96,14 @@
 	            </ul>
 	        </nav> 
 		</div><!-- cA -->
+
 		<div id="cB">
-		<div id="portada">
-		<div >
+		<div id="portada" style="padding-top: 200px;">
+		<div style="border: 0px solid #036; background-color: rgba(255, 0, 0, 0.5); height: 200px; padding-top: 40px;">
+			<center>
+			<img src="<?= base_url('templates/img/images/logo.png');?>">
 			<h1 class="mensaje_bienvenida"> Bienvenido/a <?php echo $nombre.' '.$apellidop.' '.$apellidom ?> </h1>
+			</center>
 		</div>
 		</div>
     	</div><!-- cB -->

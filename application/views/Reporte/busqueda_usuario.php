@@ -18,7 +18,7 @@ class PDF extends FPDF
         $this->Line(55,22,155,22);
         $this->Ln(8);
         $this->Cell(80);$this->SetFont('Arial','B',12);
-        $this->Cell(30,5,utf8_decode('REPORTE DE ARCHIVO POR NOMBRE DE CARPETA'),0,1,'C');
+        $this->Cell(30,5,utf8_decode('REPORTE DE ARCHIVO POR USUARIO'),0,1,'C');
 //fecha y hora del reporte
         $this->SetFont('Arial','',7);
         $this->Cell(80);
@@ -27,12 +27,12 @@ class PDF extends FPDF
 //datos generales de archivo y carpeta
         $this->Cell(10);
         $this->SetFont('Arial','B',8);
-        $this->Cell(50,4,'USUARIO',0,0,'L');
+        $this->Cell(50,4,'ID DE USUARIO',0,0,'L');
         $this->Cell(3,4,utf8_decode(':'),0,0,'C');
      // $fpdf->SetFont('Arial','',8);$fpdf->Cell(25,4,utf8_decode(_NAPO),0,1,'L'); NRO_ARC
         $this->Ln(7);
         $this->Cell(10);
-        $this->Cell(50,4,utf8_decode('CÓDIGO DE REFERENCIA'),0,0,'L');
+        $this->Cell(50,4,utf8_decode('NOMBRE DE USUARIO'),0,0,'L');
         $this->Cell(3,4,utf8_decode(':'),0,0,'C');
     //$fpdf->SetFont('Arial','',8);$fpdf->Cell(25,4,utf8_decode(_NAPO),0,1,'L'); REF_ARC
         $this->Ln(7);
@@ -42,7 +42,7 @@ class PDF extends FPDF
     //$fpdf->SetFont('Arial','',8);$fpdf->Cell(25,4,utf8_decode(_NAPO),0,1,'L'); REG_ARC
         $this->Ln(7);
         $this->Cell(10);
-        $this->Cell(50,4,'ADJUDICATARIO',0,0,'L');
+        $this->Cell(50,4,'DOCUMENTOS REGISTRADOS',0,0,'L');
         $this->Cell(3,4,utf8_decode(':'),0,0,'C');
     //$fpdf->SetFont('Arial','',8);$fpdf->Cell(25,4,utf8_decode(_NAPO),0,1,'L'); NOM_CAR
 
@@ -54,9 +54,9 @@ class PDF extends FPDF
         $this->SetFillColor(185,170,200);
         $this->SetFont('Arial', 'B', 8);
         $this->Cell(15, 7,utf8_decode("Nª"), 1,0,'C',true);
-        $this->Cell(35, 7,"ADJUDICATARIO", 1,0,'C',true);
+        $this->Cell(35, 7,"NOMBRE DE CARPETA", 1,0,'C',true);
         $this->Cell(35, 7,"TIPO DE CARPETA", 1,0,'C',True);
-        $this->Cell(35,7,utf8_decode("Nª DE HOJA DE RUTA"),1,0,'C',true);
+        $this->Cell(35,7,utf8_decode("FECHA DE REGISTRO"),1,0,'C',true);
         $this->Cell(21,7,utf8_decode("ESTADO"),1,0,'C',true);
         $this->Cell(47,7,utf8_decode("DESCRIPCION DE CARPETA"),1,1,'C',true);
         

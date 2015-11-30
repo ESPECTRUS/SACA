@@ -23,11 +23,24 @@ public function reporte_por_nombre()
       $id_car = $this->uri->segment(3); 
       $query = $this->db->query("CALL reporte_por_nombre($id_car)");
       $data['result'] = $query;
+      $data['datos'] = array('ID'=>$this->session->userdata('id'));
     }
     $this->load->view('Reporte/busqueda_archivo_nombre',$data);
 
   }
 
+public function reporte_por_usuario()
+  {
+    $recuperar = array();
+    if($this->uri->segment(3)!='')
+    {
+      $id_car = $this->uri->segment(3); 
+      $query = $this->db->query("CALL reporte_por_nombre($id_car)");
+      $data['result'] = $query;
+    }
+    $this->load->view('Reporte/busqueda_usuario');
+
+  }
 
 
 }
