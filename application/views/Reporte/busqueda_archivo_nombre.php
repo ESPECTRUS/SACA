@@ -78,15 +78,26 @@ class PDF extends FPDF
 //fecha y hora del reporte
         $this->SetFont('Arial','',7);
         $this->Cell(80);
+<<<<<<< HEAD
         $this->Cell(30,3,'FECHA Y HORA : '.' : '.date('d/m/Y - H:i:s'),0,1,'C');
         $this->Ln(1);
         $this->Cell(190,3,'USUARIO'.' : '.utf8_decode(_ID_USU),0,1,'C');
         $this->Ln(1);
+=======
+        $this->Cell(30,3,'FECHA Y HORA'.' : '.date('d/m/Y - H:i:s'),0,1,'C');
+        $this->Cell(80);
+        $this->Cell(30,3,'USUARIO'.' : '.'TTTTTTTTTTTTTTT',0,1,'C');
+        $this->Ln(4);
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
 //datos generales de archivo y carpeta
        $this->Cell(10);
             $this->SetFont('Arial','UB',9);
             //izquierda,abajo,ancho,alto
+<<<<<<< HEAD
                             $this->RoundedRect(15,53,185,31,3,'1234','D').$this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
+=======
+                $this->RoundedRect(15,56,185,31,3,'1234','D').$this->Cell(50,4,'DATOS DE CARPETA',0,0,'L');
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
@@ -119,7 +130,11 @@ class PDF extends FPDF
                 $this->Ln(15);
         $this->Cell(10);
             $this->SetFont('Arial','UB',9);
+<<<<<<< HEAD
                 $this->RoundedRect(15,93,185,15,2,'1234','D').$this->Cell(50,4,'DATOS GENERALES',0,0,'L');
+=======
+                $this->RoundedRect(15,96,185,15,2,'1234','D').$this->Cell(50,4,'DATOS GENERALES',0,0,'L');
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
@@ -142,7 +157,11 @@ class PDF extends FPDF
                 $this->Ln(7);
         $this->Cell(10);
             $this->SetFont('Arial','UB',9);
+<<<<<<< HEAD
                 $this->RoundedRect(15,117,185,20,3,'1234','D').$this->Cell(50,4,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
+=======
+                $this->RoundedRect(15,120,185,20,3,'1234','D').$this->Cell(50,4,utf8_decode('DATOS TÉCNICOS'),0,0,'L');
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
                 $this->Ln(9);
         $this->Cell(10);
                 $this->SetFont('Arial','B',8);
@@ -175,7 +194,11 @@ class PDF extends FPDF
                 $this->Ln(5);
                 $this->Cell(10);
             $this->SetFont('Arial','UB',9);
+<<<<<<< HEAD
                 $this->RoundedRect(15,147,185,13,2,'1234','D').$this->Cell(50,4,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
+=======
+                $this->RoundedRect(15,150,185,13,2,'1234','D').$this->Cell(50,4,utf8_decode('UBICACIÓN FÍSICA'),0,0,'L');
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
                 $this->Ln(9);
         $this->Cell(10);
             $this->SetFont('Arial','B',8);
@@ -198,7 +221,11 @@ class PDF extends FPDF
                 $this->Ln(7);
                 $this->Cell(10);
             $this->SetFont('Arial','UB',9);
+<<<<<<< HEAD
                 $this->RoundedRect(15,171,185,27,3,'1234','D').$this->Cell(50,4,utf8_decode('ÁREA'),0,0,'L');
+=======
+                $this->RoundedRect(15,174,185,27,3,'1234','D').$this->Cell(50,4,utf8_decode('ÁREA'),0,0,'L');
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
                 $this->Ln(9);
                 $this->Cell(10);
                 $this->SetFont('Arial','B',8);
@@ -227,14 +254,24 @@ class PDF extends FPDF
         $this->Cell(0,4,utf8_decode('Página ').$this->PageNo().'/{nb}',1,0,'R');
     }
 }
+<<<<<<< HEAD
     DEFINE('_ID_USU',$datos->ID);
+=======
+
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
 
 foreach($result->result() as $result):
     DEFINE('_ADJUDICATARIO',$result->NOM_CAR);
     DEFINE('_CI',$result->CI_CAR);
     DEFINE('_FEC_INI',$result->FEC_INI);
+<<<<<<< HEAD
     DEFINE('_FEC_FIN',$result->FEC_FIN);
     DEFINE('_HRU_CAR',$result->HRU_CAR);
+=======
+    DEFINE('_FEC_FIN',$result->FEC_INI);
+    DEFINE('_HRU_CAR',$result->HRU_CAR);
+    DEFINE('_FEC_INI',$result->FEC_INI);
+>>>>>>> e5d1bddec00a2355185caa92956e393e4404d592
     DEFINE('_DES_CAR',$result->DES_CAR);
     DEFINE('_NCJ_ARC',$result->NCJ_ARC);
     DEFINE('_FOJ_ARC',$result->FOJ_ARC);
@@ -265,8 +302,6 @@ $pdf->AliasNbPages();
 $pdf->SetFontSize(10);
 $pdf->SetFont('Arial','B',10);
 //CONTENIDO
-//for($i=1;$i<=80;$i++){  $pdf->Cell(0,10,'Imprimiendo línea número '.$i,0,1);}
-//FINALIZA Y MUESTRA EN PANTALLA PDF
 $pdf->Output('REPORTE-ARCHIVO'.".pdf","I");
 
 

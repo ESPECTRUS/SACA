@@ -22,7 +22,7 @@ class Grilla extends CI_Controller
          	 $data2['apellidom'] = $this->session->userdata('apellidomat');
          	 $data2['nic']  =$this->session->userdata('nic_usu');
 		$query = $this->db->query("CALL listar_archivos()");
-        $data2['result'] = $query;   
+        $data2['result'] = $query;    
 		$this->load->view('consultas/archivo_grilla',$data2);
 	}
 	public function pornombre()
@@ -69,6 +69,10 @@ class Grilla extends CI_Controller
 	{
 		//$this->load->view('Reporte/reporte2');
 		$this->load->view('Reporte/busqueda_archivo_nombre');
+	}
+	public function reporte2()
+	{
+		$this->load->view('Reporte/busqueda_por_usuario');
 	}
 	public function lista_archivo()
 	{
